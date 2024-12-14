@@ -6,3 +6,13 @@ declare interface UserSession {
 }
 
 declare type nullable = string | null | undefined;
+
+declare type variants =
+  | "default"
+  | "destructive"
+  | "outline"
+  | "secondary"
+  | "ghost"
+  | "link"
+  | null
+  | undefined;

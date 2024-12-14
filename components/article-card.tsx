@@ -34,7 +34,7 @@ const ArticleCard: React.FC<CardProps> = ({
 
   return (
     <Suspense fallback={<ArticleCardSkeleton />}>
-      <div className="max-w-full border border-foreground/20 bg-secondary rounded-lg shadow">
+      <div className="max-w-full border duration-300 transition-colors hover:bg-accent border-foreground/20 bg-accent/30 rounded-lg shadow">
         <Link
           href={href}
           className="w-full block overflow-hidden max-w-full h-64 content-center max-h-96"

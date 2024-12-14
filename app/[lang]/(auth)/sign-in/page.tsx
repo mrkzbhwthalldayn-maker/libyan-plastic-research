@@ -1,4 +1,4 @@
-import LangRenderer from "../../components/lang";
+import LangRenderer from "../../../../components/lang";
 import { LoginForm } from "../components/forms";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/session";

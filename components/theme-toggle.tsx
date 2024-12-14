@@ -7,7 +7,7 @@ import { MdOutlineLaptopChromebook } from "react-icons/md";
 import { CiDark, CiLight } from "react-icons/ci";
 import { cn } from "@/lib/utils";
 
-const ToggleTheme = () => {
+const ToggleTheme = ({ className }: { className?: string }) => {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -20,7 +20,7 @@ const ToggleTheme = () => {
   }
 
   return (
-    <Tabs defaultValue={theme ?? "system"}>
+    <Tabs className={cn(className)} defaultValue={theme ?? "system"}>
       <TabsList className="rounded-xl border text-foreground m-0 p-0">
         <TabsTrigger
           aria-label="light mode on"

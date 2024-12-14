@@ -1,4 +1,4 @@
-import LangRenderer from "@/app/[lang]/components/lang";
+import LangRenderer from "@/components/lang";
 import { decrypt } from "@/lib/auth";
 // import prisma from "@/prisma/db";
 // import { UserSession } from "@/types";

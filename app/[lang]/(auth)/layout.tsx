@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import LangRenderer from "../components/lang";
+import LangRenderer from "../../../components/lang";
 // import Logo from "../components/header/logo";
 import Image from "next/image";
 import { CustomLink } from "@/components/custom-link";

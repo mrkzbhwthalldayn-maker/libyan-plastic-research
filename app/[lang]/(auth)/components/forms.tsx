@@ -17,7 +17,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
-import LangRenderer from "../../components/lang";
+import LangRenderer from "../../../../components/lang";
 
 // export const SignUpForm = () => {
 //   const { lang } = useParams();

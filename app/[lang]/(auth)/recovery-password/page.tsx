@@ -1,4 +1,4 @@
-import LangRenderer from "../../components/lang";
+import LangRenderer from "../../../../components/lang";
 // import { RecoverPasswordForm } from "../components/forms";
 
 const page = async (props: {

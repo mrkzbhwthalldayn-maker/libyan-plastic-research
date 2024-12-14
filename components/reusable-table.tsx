@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/table";
 import SearchInput from "./search";
 import { cn } from "@/lib/utils";
-import LangRenderer from "@/app/[lang]/components/lang";
+import LangRenderer from "@/components/lang";
 
 export default function ReusableTable<T>({
   data = [],

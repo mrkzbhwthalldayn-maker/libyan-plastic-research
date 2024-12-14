@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
 import { Cairo, Outfit } from "next/font/google";
-import "./globals.css";
-import { i18n } from "@/i18n-config";
+import "./[lang]/globals.css";
 import { cn } from "@/lib/utils";
+import ThemeProvider from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
-const outfit = Outfit({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["arabic"] });
-
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
-}
 
 export const metadata: Metadata = {
   title: "المركز الليبي لبحوث اللدائن",
@@ -18,24 +14,27 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{
-    lang: string;
-  }>;
 }>) {
-  const lang = (await params).lang;
+  const lang = "ar";
   return (
-    <div
+    <html
       lang={lang}
       dir={lang === "ar" ? "rtl" : "ltr"}
-      className={cn(
-        lang === "ar" ? cairo.className : outfit.className,
-        "relative"
-      )}
+      suppressHydrationWarning
     >
-      {children}
-    </div>
+      <body className={cn(cairo.className)}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>{" "}
+      </body>
+    </html>
   );
 }

@@ -4,13 +4,15 @@ import { decrypt } from "@/lib/auth";
 // import { UserSession } from "@/types";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
-import { ResetPasswordForm } from "../../components/forms";
+// import { ResetPasswordForm } from "../../components/forms";
 
-const page = async ({
-  params: { token, lang },
-}: {
-  params: { token: string; lang: string };
+const page = async (props: {
+  params: Promise<{ token: string; lang: string }>;
 }) => {
+  const params = await props.params;
+
+  const { token, lang } = params;
+
   // Redirect if no token is provided
   if (!token) {
     redirect("/");

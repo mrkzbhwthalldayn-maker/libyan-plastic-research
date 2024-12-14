@@ -5,6 +5,7 @@
 //   resetPassword,
 //   verifyUser,
 // } from "@/db/users";
+import { login } from "@/database/users";
 import { logout } from "@/lib/auth";
 import { z } from "zod";
 
@@ -98,15 +99,15 @@ export async function loginUserAction(
     const { email, password } = data.data;
 
     // Attempt to create the user
-    // const res = await login({
-    //   user: {
-    //     email,
-    //     password,
-    //   },
-    // });
+    const res = await login({
+      user: {
+        email,
+        password,
+      },
+    });
 
     // Return the message from the createUser function
-    return { message: "res.message" };
+    return { message: res.message };
   } catch (error) {
     console.error(error);
     return { message: "فشلت العملية، يرجى المحاولة لاحقاً" }; // "The operation failed, please try again later"

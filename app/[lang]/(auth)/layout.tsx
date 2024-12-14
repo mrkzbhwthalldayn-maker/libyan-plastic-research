@@ -6,16 +6,19 @@ import { CustomLink } from "@/components/custom-link";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
-const layout = ({
-  children,
-  params: { lang },
-}: {
+const layout = async (props: {
   children: ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) => {
+  const params = await props.params;
+
+  const { lang } = params;
+
+  const { children } = props;
+
   return (
     <main className="md:flex h-screen">
-      <section className="auth-bg hidden md:block md:flex-[3] text-lg text-center content-center">
+      <section className="bg-primary hidden md:block md:flex-[3] text-lg text-center content-center">
         <div>
           <div className=" h-full w-full md:w-1/2 md:h-1/2 mx-auto">
             <Image

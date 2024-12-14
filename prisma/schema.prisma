@@ -1,0 +1,52 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
+  fullName      String
+  phoneNumber   Int
+  password      String
+  email         String       @unique
+  verified      Boolean      @default(false)
+  verifyingCode Int?
+  role          Roles        @default(admin)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  posts         News[]
+  conferences   Conference[]
+}
+
+model News {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  body      String
+  poster    String?
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String   @db.ObjectId
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Conference {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  body      String
+  poster    String?
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String   @db.ObjectId
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Roles {
+  admin
+  superAdmin
+}

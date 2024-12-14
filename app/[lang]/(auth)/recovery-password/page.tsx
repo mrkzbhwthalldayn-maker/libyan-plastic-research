@@ -1,7 +1,10 @@
 import LangRenderer from "../../components/lang";
-import { RecoverPasswordForm } from "../components/forms";
+// import { RecoverPasswordForm } from "../components/forms";
 
-const page = ({ searchParams }: { searchParams?: { sentToken?: string } }) => {
+const page = async (props: {
+  searchParams?: Promise<{ sentToken?: string }>;
+}) => {
+  const searchParams = await props.searchParams;
   return (
     <div className="text-center mx-2 bg-secondary px-2 py-10 rounded-md">
       <h1 className="font-bold text-xl">
@@ -12,12 +15,12 @@ const page = ({ searchParams }: { searchParams?: { sentToken?: string } }) => {
       </h1>
 
       <br />
-      <div className="mx-auto w-full">
+      {/* <div className="mx-auto w-full">
         <RecoverPasswordForm>
           {searchParams?.sentToken === "true" &&
             "تم الإرسال بنجاح. تحقق من بريدك الإلكتروني."}
         </RecoverPasswordForm>
-      </div>
+      </div> */}
     </div>
   );
 };

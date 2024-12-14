@@ -4,7 +4,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import { useFormStatus } from "react-dom";
 import Loading from "./loading";
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, useEffect } from "react";
 
 interface SubmitButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -20,6 +20,8 @@ interface SubmitButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | null
     | undefined;
   type?: "submit" | "reset" | "button" | undefined;
+  forceOpen?: boolean;
+  pending: boolean;
 }
 
 export default function SubmitButton({
@@ -28,12 +30,18 @@ export default function SubmitButton({
   size,
   variant,
   type,
+  forceOpen,
+  pending,
   ...rest
 }: SubmitButtonProps) {
-  const { pending } = useFormStatus();
+  // const { pending } = useFormStatus();
+  // useEffect(() => {
+  //   console.log(`pending: ${pending}`);
+  // }, [pending]);
+
   return (
     <>
-      {pending && <Loading open={undefined} setOpen={undefined} />}
+      {pending && <Loading open={forceOpen} setOpen={undefined} />}
       <Button
         className={cn("w-full md:w-auto", className, pending && "cursor-wait")}
         size={size}

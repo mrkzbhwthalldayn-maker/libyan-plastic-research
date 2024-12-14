@@ -3,14 +3,12 @@ import { SignInForm } from "../components/forms";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/session";
 
-const page = async ({
-  searchParams,
-  params,
-}: {
-  searchParams?: { redirect?: string };
+const page = async (props: {
+  searchParams?: Promise<{ redirect?: string }>;
   params: Promise<{ lang: string }>;
 }) => {
-  const lang = (await params).lang;
+  const searchParams = await props.searchParams;
+  const lang = (await props.params).lang;
   const user = await getSession();
   const redirectLink = searchParams?.redirect;
   // const

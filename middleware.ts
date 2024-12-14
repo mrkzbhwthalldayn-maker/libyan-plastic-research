@@ -22,22 +22,23 @@ function getLocale(request: NextRequest): string | undefined {
   return locale;
 }
 
+const protectedRoutes = {
+  // userRoutes: ["/profile"],
+  adminsRoutes: ["/dashboard"],
+  superAdminsRoutes: ["/dashboard/users"],
+}; // Define your protected routes
+
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Authentication logic: Apply to language-prefixed protected routes
-  const protectedRoutes = {
-    userRoutes: ["/profile"],
-    adminsRoutes: ["/dashboard"],
-    superAdminsRoutes: ["/dashboard/vouchers", "/dashboard/users"],
-  }; // Define your protected routes
   const localeRegex = new RegExp(`^/(${i18n.locales.join("|")})`);
 
   // Check if the request contains a locale prefix and a protected route
   const localeMatch = pathname.match(localeRegex);
   const hasLocalePrefix = localeMatch && localeMatch[0];
 
-  if (hasLocalePrefix) {
+  /*  if (hasLocalePrefix) {
     const pathWithoutLocale = pathname.replace(localeRegex, "");
     //super admin routes
     if (
@@ -90,39 +91,8 @@ export async function middleware(request: NextRequest) {
           )
         );
       }
-      // if (session.role === "user") {
-      //   // Redirect to login with the same locale
-      //   const locale = localeMatch[1];
-      //   return NextResponse.redirect(
-      //     new URL(
-      //       `/${locale}/sign-in?redirect=${pathname.toString()}`,
-      //       request.url
-      //     )
-      //   );
-      // }
     }
-
-    //user router
-    if (
-      protectedRoutes.userRoutes.some((route) =>
-        pathWithoutLocale.includes(route)
-      )
-    ) {
-      // Check if the user is authenticated
-      const session = await getSession();
-
-      if (!session) {
-        // Redirect to login with the same locale
-        const locale = localeMatch[1];
-        return NextResponse.redirect(
-          new URL(
-            `/${locale}/sign-in?redirect=${pathname.toString()}`,
-            request.url
-          )
-        );
-      }
-    }
-  }
+  } */
 
   // Locale check remains the same
   const pathnameIsMissingLocale = i18n.locales.every(
@@ -140,7 +110,6 @@ export async function middleware(request: NextRequest) {
     );
   }
 
-  // Continue with request
   // return NextResponse.next();
   return await updateSession();
 }
@@ -148,6 +117,6 @@ export async function middleware(request: NextRequest) {
 export const config = {
   // Matcher ignoring API, Next.js files, and static assets
   matcher: [
-    "/((?!api|_next/static|_next/image|images|content|favicon.ico|robots.txt|sitemap.xml|logo.png|white-logo.png|images/|logos/).*)",
+    "/((?!api|_next/static|_next/image|images|dashboard|dashboard/|content|favicon.ico|robots.txt|sitemap.xml|logo.png|white-logo.png|images/|logos/).*)",
   ],
 };

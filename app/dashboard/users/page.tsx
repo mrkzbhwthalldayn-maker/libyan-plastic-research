@@ -35,7 +35,7 @@ const page = async (props: {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href={`/${lang}/dashboard`}>لوحة التحكم</Link>
+                <Link href={`/dashboard`}>لوحة التحكم</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />

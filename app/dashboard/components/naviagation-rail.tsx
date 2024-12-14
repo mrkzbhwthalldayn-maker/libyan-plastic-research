@@ -5,7 +5,11 @@ import { Button } from "@/components/ui/button";
 import { FaBars, FaMoneyCheckAlt, FaUsers } from "react-icons/fa";
 import { useParams, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { FaCodePullRequest, FaUserDoctor } from "react-icons/fa6";
+import {
+  FaCodePullRequest,
+  FaRegNewspaper,
+  FaUserDoctor,
+} from "react-icons/fa6";
 import { TfiLayoutMediaCenterAlt } from "react-icons/tfi";
 import {
   MdLocalOffer,
@@ -147,6 +151,14 @@ const NavigationRail = () => {
             name="الموظفين"
           />
         </li>
+        <li className="w-full">
+          <NavigationRailItem
+            collapsed={collapsed}
+            href="/dashboard/articles"
+            Icon={FaRegNewspaper}
+            name="المقالات"
+          />
+        </li>
       </Menu>
     </Sidebar>
   );
@@ -178,8 +190,16 @@ export const DashboardNavigation = () => {
             <li className="w-full">
               <NavigationRailItem
                 href="/dashboard/users"
-                Icon={MdOutlineManageAccounts}
+                Icon={FaRegNewspaper}
                 name="الموظفين"
+                onClick={toggleOpen}
+              />
+            </li>
+            <li className="w-full">
+              <NavigationRailItem
+                href="/dashboard/articles"
+                Icon={MdOutlineManageAccounts}
+                name="المقالات"
                 onClick={toggleOpen}
               />
             </li>

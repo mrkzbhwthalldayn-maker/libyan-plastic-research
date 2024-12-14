@@ -8,7 +8,7 @@ const Header = async () => {
   const user = await getSession();
   if (!user) return null;
   return (
-    <header className="flex-between-row bg-secondary py-2 px-4">
+    <header className="flex justify-between items-center bg-secondary py-2 px-4">
       <div>
         <Input type="text" placeholder="ابحث" />
       </div>

@@ -16,7 +16,12 @@ import { toast } from "@/hooks/use-toast";
 import { User } from "@prisma/client";
 import { IoMdCheckmark } from "react-icons/io";
 import { FaXmark } from "react-icons/fa6";
-import { UpdateUserRoleForm } from "./forms";
+import {
+  DeleteUserForm,
+  ResetPasswordForm,
+  UpdateUserForm,
+  UpdateUserRoleForm,
+} from "./forms";
 
 export const usersTable: ColumnDef<User>[] = [
   {
@@ -89,30 +94,6 @@ export const usersTable: ColumnDef<User>[] = [
       }
     },
   },
-  // {
-  //   accessorKey: "البريد",
-  //   header: "البريد",
-  //   cell: ({ row }) => {
-  //     if (row) {
-  //       const email = row.original?.email;
-  //       return <div>{email}</div>;
-  //     } else {
-  //       <div>لايوجد</div>;
-  //     }
-  //   },
-  // },
-  // {
-  //   accessorKey: "المحتوى",
-  //   header: "المحتوى",
-  //   cell: ({ row }) => {
-  //     if (row) {
-  //       const content = row.original?.content;
-  //       return <div>{content.substring(0, 200)}</div>;
-  //     } else {
-  //       <div>لايوجد</div>;
-  //     }
-  //   },
-  // },
 
   {
     id: "actions",
@@ -144,7 +125,13 @@ export const usersTable: ColumnDef<User>[] = [
 
             <DropdownMenuSeparator />
             <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-              <UpdateUserRoleForm user={user} />
+              <UpdateUserForm user={user} />
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+              <DeleteUserForm id={user.id} />
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+              <ResetPasswordForm user={user} />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

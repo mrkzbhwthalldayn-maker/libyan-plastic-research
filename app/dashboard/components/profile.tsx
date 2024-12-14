@@ -10,7 +10,7 @@ interface Props {
 
 const Profile = ({ fullName, role }: Props) => {
   return (
-    <div className="flex-between-row gap-3">
+    <div className="flex justify-between items-center gap-3">
       <Button variant={"ghost"} size={"icon"}>
         <Info fontSize={"12px"} />
       </Button>

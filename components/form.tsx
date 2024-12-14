@@ -4,6 +4,7 @@ import { ReactNode, useActionState, useEffect } from "react";
 // import { useFormState } from "react-dom";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import SubmitButton from "./submit-button";
 
 type Action = (
   prevState: { message: string },
@@ -17,18 +18,10 @@ interface Props {
   success?: string;
   replaceLink?: string;
   dontReplace?: boolean;
+  submit?: ReactNode | string;
+  submitClass?: string;
 }
 
-/**
- * Accessible form component with custom dialog, actions, and success handling.
- *
- * @param {Action} action - The async function to be called on form submission.
- * @param {string} [className] - Optional class names for the form.
- * @param {ReactNode} children - The form elements.
- * @param {string} [success] - Message to display on successful action.
- * @param {string} [replaceLink] - URL to navigate to after success. Defaults to "/".
- * @param {boolean} [dontReplace=false] - Whether to prevent navigation on success.
- */
 const Form = ({
   action,
   className,
@@ -36,9 +29,11 @@ const Form = ({
   success = "تمت العملية بنجاح",
   replaceLink = "/",
   dontReplace = false,
+  submit = "تم",
+  submitClass,
 }: Props) => {
   const router = useRouter();
-  const [msg, dispatch] = useActionState(action, { message: "" });
+  const [msg, dispatch, pending] = useActionState(action, { message: "" });
 
   useEffect(() => {
     if (!msg.message) return;
@@ -53,6 +48,9 @@ const Form = ({
   return (
     <form action={dispatch} className={cn(className)}>
       {children}
+      <SubmitButton className={cn(submitClass)} pending={pending}>
+        {submit}
+      </SubmitButton>
     </form>
   );
 };

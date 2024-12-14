@@ -8,45 +8,41 @@ generator client {
 }
 
 model User {
-  id            String       @id @default(auto()) @map("_id") @db.ObjectId
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
   fullName      String
   phoneNumber   Int
   password      String
-  email         String       @unique
-  verified      Boolean      @default(false)
+  email         String    @unique
+  verified      Boolean   @default(false)
   verifyingCode Int?
-  role          Roles        @default(admin)
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  posts         News[]
-  conferences   Conference[]
+  role          Roles     @default(admin)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  articles      Article[]
 }
 
-model News {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+model Article {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   body      String
+  enTitle   String
+  enBody    String
   poster    String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String   @db.ObjectId
-  views     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Conference {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  body      String
-  poster    String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String   @db.ObjectId
-  views     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  author    User        @relation(fields: [authorId], references: [id])
+  authorId  String      @db.ObjectId
+  views     Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  type      ArticleType @default(news)
 }
 
 enum Roles {
   admin
   superAdmin
+}
+
+enum ArticleType {
+  news
+  confrenece
+  research
 }

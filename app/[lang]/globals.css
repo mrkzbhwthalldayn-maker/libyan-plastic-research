@@ -13,7 +13,9 @@ body {
 .spin-animation {
   animation: spin 1s infinite ease-in-out;
 }
-
+.upload-border {
+  @apply border-foreground/50 !important;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);

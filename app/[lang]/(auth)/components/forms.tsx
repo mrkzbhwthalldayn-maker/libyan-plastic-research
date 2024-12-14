@@ -1,25 +1,15 @@
 "use client";
 import Form from "@/components/form";
 import {
-  createUserAction,
   loginUserAction,
   recoverPasswordAction,
   resetPasswordAction,
-  verifyUserAction,
 } from "../actions";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import SubmitButton from "@/components/submit-button";
 import { CustomLink } from "@/components/custom-link";
 import { useParams } from "next/navigation";
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { Dispatch, SetStateAction } from "react";
 import {
   InputOTP,
   InputOTPGroup,
@@ -112,7 +102,7 @@ import LangRenderer from "../../components/lang";
 //   );
 // };
 
-export const SignInForm = ({ href }: { href?: string }) => {
+export const LoginForm = ({ href }: { href?: string }) => {
   const { lang } = useParams();
 
   return (
@@ -120,6 +110,7 @@ export const SignInForm = ({ href }: { href?: string }) => {
       action={loginUserAction}
       success="تم تسجيل الدخول بنجاح."
       replaceLink={href ? `/${href}` : `/${lang}`}
+      submit="تسجيل الدخول"
     >
       <div className="text-start grid gap-4 mb-4">
         <div>
@@ -150,9 +141,7 @@ export const SignInForm = ({ href }: { href?: string }) => {
           />
         </div>
       </div>
-      {/* <SubmitButton className="sm:w-auto w-full">
-        <LangRenderer ar="تسجيل الدخول" en="Sign In" />
-      </SubmitButton> */}
+
       <CustomLink
         className="block my-2"
         variant="link"

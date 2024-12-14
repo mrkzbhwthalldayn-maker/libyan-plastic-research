@@ -34,6 +34,24 @@ interface Props {
   open: boolean;
   submit: ReactNode | string;
   submitClass?: string;
+  discardVariant?:
+    | "default"
+    | "link"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | null
+    | undefined;
+  submitVariant?:
+    | "default"
+    | "link"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | null
+    | undefined;
 }
 const AccessibleDialogForm = ({
   action,
@@ -50,6 +68,8 @@ const AccessibleDialogForm = ({
   setOpen,
   submit,
   submitClass,
+  discardVariant = "destructive",
+  submitVariant = "default",
 }: Props) => {
   const router = useRouter();
   const [msg, dispatch, isPending] = useActionState(action, { message: "" });
@@ -84,7 +104,7 @@ const AccessibleDialogForm = ({
         {children}
         <DialogFooter className="gap-2 mt-2 phone-only:hidden">
           <Button
-            variant={"destructive"}
+            variant={discardVariant}
             type="button"
             onClick={() => {
               setOpen(!open);
@@ -92,9 +112,12 @@ const AccessibleDialogForm = ({
           >
             تجاهل
           </Button>
-          <SubmitButton pending={isPending}>انشاء</SubmitButton>
+          <SubmitButton variant={submitVariant} pending={isPending}>
+            {submit}
+          </SubmitButton>
         </DialogFooter>
         <SubmitButton
+          variant={submitVariant}
           className={cn("hidden phone-only:flex", submitClass)}
           pending={isPending}
         >

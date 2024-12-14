@@ -1,5 +1,5 @@
 import LangRenderer from "../../components/lang";
-import { SignInForm } from "../components/forms";
+import { LoginForm } from "../components/forms";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/session";
 
@@ -24,7 +24,7 @@ const page = async (props: {
         />
       </h1>
       <br />
-      <SignInForm href={redirectLink} />
+      <LoginForm href={redirectLink} />
     </div>
   );
 };

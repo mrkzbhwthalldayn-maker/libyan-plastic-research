@@ -37,6 +37,72 @@ const createUser = async ({
   }
 };
 
+const updateUser = async ({
+  id,
+  email,
+  fullName,
+  phoneNumber,
+  role,
+  password,
+  verified,
+}: Omit<User, "createdAt" | "updatedAt" | "verifyingCode" | "password"> & {
+  password: nullable;
+}) => {
+  try {
+    let user;
+    if (password) {
+      const hashedPassword = await hashPassword(password);
+      user = await prisma.user.update({
+        where: { id },
+        data: {
+          email,
+          fullName,
+          phoneNumber,
+          role,
+          verified,
+          password: hashedPassword,
+        },
+      });
+    } else {
+      user = await prisma.user.update({
+        where: { id },
+        data: {
+          email,
+          fullName,
+          phoneNumber,
+          role,
+          verified,
+        },
+      });
+    }
+
+    if (!user) {
+      return { message: "فشل تحديث المستخدم" }; // "Failed to update user"
+    }
+    revalidateTag("users");
+    return { message: "تم تحديث المستخدم بنجاح" }; // "User updated successfully"
+  } catch (error: any) {
+    console.dir(error, { depth: null });
+    return { message: "فشل تحديث الحساب" }; // "Failed to update account"
+  }
+};
+
+const deleteUser = async ({ id }: { id: string }) => {
+  try {
+    const user = await prisma.user.delete({
+      where: { id },
+    });
+    if (!user) {
+      return { message: "فشل حذف المستخدم" }; // "Failed to delete user"
+    }
+    revalidateTag("users");
+    return { message: "تم حذف المستخدم بنجاح" }; // "User deleted successfully"
+  } catch (error: any) {
+    console.dir(error, { depth: null });
+    return { message: "فشل حذف الحساب" }; // "Failed to delete account"
+  }
+};
+
 const login = async ({
   user: { email, password },
 }: {
@@ -99,4 +165,4 @@ export const getUsers = unstable_cache(
   { tags: ["users"] }
 );
 
-export { createUser, login };
+export { createUser, login, updateUser, deleteUser };

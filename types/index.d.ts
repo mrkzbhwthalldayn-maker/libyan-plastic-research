@@ -4,3 +4,5 @@ declare interface UserSession {
   role: "admin" | "superAdmin";
   email: string;
 }
+
+declare type nullable = string | null | undefined;

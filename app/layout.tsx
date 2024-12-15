@@ -4,6 +4,7 @@ import "./[lang]/globals.css";
 import { cn } from "@/lib/utils";
 import ThemeProvider from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import CanvasCursor from "@/components/cusor";
 
 const cairo = Cairo({ subsets: ["arabic"] });
 
@@ -32,6 +33,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <CanvasCursor />
           <Toaster />
         </ThemeProvider>{" "}
       </body>

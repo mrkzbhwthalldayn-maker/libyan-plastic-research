@@ -22,20 +22,18 @@ const Carousel = () => {
         en: "Libyan Center for Plastic Research",
       },
       description: {
-        ar: `هو مؤسسة علمية متخصصة في بحوث وتقنية البوليمرات (اللدائن)،
-             تم انشاؤه بقرار رقم 625 لسنة 1999م كمركز بحثي متخصص...`,
-        en: `A scientific institution specializing in research and
-             technology related to polymers (plastics)...`,
+        ar: `هو مؤسسة علمية متخصصة في بحوث وتقنية البوليمرات (اللدائن)، تم إنشاؤه بقرار رقم 625 لسنة 1999م كمركز بحثي متخصص يهدف إلى تحقيق نهضة تقنية وعلمية شاملة في مجال تقنية البوليميرات وتطبيقاتها.`,
+        en: `A scientific institution specializing in polymer (plastic) research and technology. Established by decision No. 625 of 1999 as a specialized research center aimed at achieving a comprehensive scientific and technical renaissance in polymer technology and its applications.`,
       },
       links: [
         {
-          href: `/${lang}/#news`,
-          text: { ar: "اخر الأخبار", en: "Latest News" },
+          href: `/${lang}/#our-vision`,
+          text: { ar: "اكتشف المزيد", en: "Discover More" },
         },
-        {
-          href: `/${lang}/#researches`,
-          text: { ar: "اخر البحوث", en: "Latest Researches" },
-        },
+        // {
+        //   href: `/${lang}/#researches`,
+        //   text: { ar: "اخر البحوث", en: "Latest Researches" },
+        // },
       ],
     },
     {
@@ -57,7 +55,7 @@ const Carousel = () => {
           href: `/${lang}/#labs`,
           text: { ar: "اكتشف مختبراتنا", en: "Explore Our Labs" },
         },
-        { href: `/${lang}/#goals`, text: { ar: "أهدافنا", en: "Our Goals" } },
+        // { href: `/${lang}/#goals`, text: { ar: "أهدافنا", en: "Our Goals" } },
       ],
     },
     {
@@ -79,10 +77,10 @@ const Carousel = () => {
           href: `/${lang}/#vision`,
           text: { ar: "تعرف على رؤيتنا", en: "Learn About Our Vision" },
         },
-        {
-          href: `/${lang}/#achievements`,
-          text: { ar: "إنجازاتنا", en: "Our Achievements" },
-        },
+        // {
+        //   href: `/${lang}/#achievements`,
+        //   text: { ar: "إنجازاتنا", en: "Our Achievements" },
+        // },
       ],
     },
   ];
@@ -105,7 +103,7 @@ const Carousel = () => {
       className="mySwiper text-white select-none"
     >
       {slides.map((slide, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide className="select-none" key={index}>
           <ReusableSwiperSlide index={index} {...slide} />
         </SwiperSlide>
       ))}
@@ -132,8 +130,8 @@ const ReusableSwiperSlide = ({
   description,
   links,
 }: SlideProps) => (
-  <div className="min-h-[90vh] relative flex items-center justify-center bg-secondary/50">
-    <div className="h-[90vh] w-full overflow-hidden relative">
+  <div className="min-h-[85vh] relative flex items-center justify-center bg-secondary/50">
+    <div className="h-[85vh] w-full overflow-hidden relative">
       <Image
         src={image}
         alt={alt}
@@ -172,9 +170,10 @@ const ReusableSwiperSlide = ({
                 {title.en}
               </h1>
               <p className="md:text-xl">{description.en}</p>
-              <div className="w-fit mx-auto flex justify-center items-center gap-5 phone-only:gap-1 phone-only:flex-col   phone-only:w-full">
+              <div className="w-fit mx-auto flex justify-center items-center gap-5 phone-only:gap-1 phone-only:flex-col  ">
                 {links.map((link, index) => (
                   <CustomLink
+                    scroll
                     key={index}
                     href={link.href}
                     className="phone-only:w-full"

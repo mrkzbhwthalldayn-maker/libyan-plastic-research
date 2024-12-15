@@ -1,6 +1,6 @@
-"use client"; // Ensures this component is client-side
+"use client";
 
-import { Swiper, SwiperSlide, SwiperSlideProps } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -8,9 +8,7 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { CustomLink } from "../custom-link";
 import { useParams } from "next/navigation";
-import { PiNewspaperBold } from "react-icons/pi";
 import LangRenderer from "../lang";
-import { GiArchiveResearch } from "react-icons/gi";
 
 const Carousel = () => {
   const { lang } = useParams();

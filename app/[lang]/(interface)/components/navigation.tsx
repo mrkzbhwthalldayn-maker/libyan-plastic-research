@@ -31,10 +31,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { HiBars2 } from "react-icons/hi2";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { CustomLink } from "@/components/custom-link";
 import ToggleTheme from "@/components/theme-toggle";
+import { FaBars } from "react-icons/fa";
 
 const about: {
   title: string;
@@ -337,7 +337,7 @@ export default function NavigationSheet() {
           className="hidden phone-only:flex"
           size={"icon"}
         >
-          <HiBars2 size={24} />
+          <FaBars size={24} />
         </Button>
       </SheetTrigger>
       <SheetContent>

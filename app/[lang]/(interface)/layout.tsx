@@ -75,7 +75,7 @@ export default async function RootLayout({
           <ToggleTheme className="phone-only:hidden" />
           <NavigationSheet />
           <NavigationMenuDesktop />
-          <div className="md:w-32 w-24 overflow-hidden">
+          <div className="md:w-24 w-16 overflow-hidden">
             <Image
               src={"/logo.png"}
               alt="logo"

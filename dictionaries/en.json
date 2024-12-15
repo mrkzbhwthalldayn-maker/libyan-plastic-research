@@ -1,76 +1,184 @@
 {
-  "main": {
-    "heading": "Grow Your Telegram Community in Seconds",
-    "p": "No matter your goals, TeMe has everything you need to boost your Telegram group's members and views effortlessly.",
-    "buttons": {
-      "start": "Get Started",
-      "learn": "Learn More"
+  "about": {
+    "title": "Introduction to the Libyan Polymer Research Center",
+    "description": "A scientific institution specializing in polymer (plastic) research and technology. Established by decision No. 625 of 1999 as a specialized research center aimed at achieving a comprehensive scientific and technical renaissance in polymer technology and its applications."
+  },
+  "goals": [
+    "Prepare national cadres in the field of polymer material technology.",
+    "Conduct physical, chemical, and mechanical analysis of plastic materials.",
+    "Develop and implement research and training programs related to polymer materials.",
+    "Collaborate with national and international institutions.",
+    "Provide technical assistance and consultations to public and private entities.",
+    "Raise awareness about the environmental and economic risks of plastic waste and promote recycling."
+  ],
+  "hopes": {
+    "vision": "To be a distinguished research center in the field of polymers (plastics), a partner in development, and a safeguard for the environment and public health.",
+    "mission": "To publish scientific research and studies in the field of polymers aimed at utilizing natural resources, protecting the environment and public health, and enhancing the economy."
+  },
+  "organizational_structure": [
+    {
+      "title": "General Director",
+      "description": "Responsible for the overall management of the center."
+    },
+    {
+      "title": "Administrative and Financial Affairs Department",
+      "description": "Oversees administrative and financial operations."
+    },
+    {
+      "title": "Laboratories and Research Department",
+      "description": "Manages all laboratory activities."
+    },
+    {
+      "title": "Research Affairs Department",
+      "description": "Supervises the implementation of research and scientific studies."
+    },
+    {
+      "title": "Planning and Follow-up Office",
+      "description": "Monitors the implementation of the center's plans and programs."
+    },
+    {
+      "title": "Quality Assurance Office",
+      "description": "Ensures the quality of services and research products."
+    },
+    {
+      "title": "Training and Development Office",
+      "description": "Organizes training sessions and enhances staff capabilities."
+    },
+    {
+      "title": "International Cooperation Office",
+      "description": "Manages relationships with foreign institutions and international organizations."
+    },
+    {
+      "title": "Media Office",
+      "description": "Promotes the activities and objectives of the center."
+    },
+    {
+      "title": "Legal Affairs Office",
+      "description": "Provides legal consultations and manages the center's legal matters."
     }
+  ],
+  "fields_of_activity": [
+    "Scientific research.",
+    "Standards and specifications.",
+    "Education (to be activated in the future).",
+    "Consultations.",
+    "Awareness and guidance.",
+    "Lectures and training courses for center employees.",
+    "Small projects (to be activated in the future).",
+    "Community service."
+  ],
+  "training_courses": [
+    "Training courses in administrative, financial, quality, and public relations fields in Jordan.",
+    "Course to obtain the international computer driving license (ICDL).",
+    "English language courses.",
+    "Course on mechanical properties of polymers in cooperation with Marrakech University and UNESCO.",
+    "Safety and security course.",
+    "Quality course for engineers and technicians (ISO 17025).",
+    "Quality course for administrators and financiers (ISO 9001)."
+  ],
+  "scientific_and_technical_consultations": [
+    "Judicial authorities (Public Prosecution).",
+    "Housing and Utilities Projects Execution Agency.",
+    "Libyan-Brazilian Construction Company.",
+    "Al-Dera’a Al-Ahliya Pipes Manufacturing Company.",
+    "Excellence Engineering Consulting Office.",
+    "Sinohydro Chinese Construction Company.",
+    "Giosan Czech Construction Company.",
+    "Enmaa Company (Janzour Pipe Factory).",
+    "Technobell Slovenia for GRP Pipes Manufacturing.",
+    "Al-Waseet Company for Public Hygiene Services and Environmental Protection.",
+    "Al-Wafeer Company for Public Hygiene Services and Waste Transportation.",
+    "Amitec Libya for GRP Manufacturing.",
+    "Cengiz Turkish Construction Company.",
+    "Distinguished Pipes Manufacturing Company.",
+    "Industrial Safety and Engineering Works Company.",
+    "Elite Plastic Industries Company.",
+    "Sultan Plastic Industries Company.",
+    "Al-Nabaa Water Bottling Factory.",
+    "Al-Ghweel Plastic Bags Factory.",
+    "Abu Dabbous Plastic Bottles Factory.",
+    "Organization of Plastic Material Manufacturers.",
+    "Al-Saqi Water Bottling Partnership.",
+    "Technology Food Industries Company.",
+    "Dafiq Food Industries Company.",
+    "Luceen Import and Export Company.",
+    "Customs Clearance."
+  ],
+  "scientific_events": {
+    "conferences": 2,
+    "workshops": 34,
+    "scientific_seminars": 18,
+    "scientific_meetings": 2,
+    "internal_training_courses": 64,
+    "external_training_courses": 9,
+    "lectures": 140,
+    "open_days": 38,
+    "national_and_religious_activities": 6
   },
-  "brand": "More than 100+ communities have grown with TeMe",
-  "start": {
-    "heading": "From influencers to businesses, we’ve got your Telegram covered.",
-    "p": "Whether you're growing your personal brand or managing a community, TeMe provides all the tools you need to add members, increase views, and manage your Telegram account with ease.",
-    "buttons": {
-      "start": "Get Started"
+  "labs": [
+    {
+      "title": "Thermal Analysis Laboratory",
+      "tools": [
+        {
+          "name": "Dynamic Mechanical Analyzer",
+          "description": "Analyzes thermal properties of materials."
+        },
+        {
+          "name": "Differential Scanning Calorimeter",
+          "description": "Measures thermal changes in materials."
+        }
+      ]
+    },
+    {
+      "title": "Spectroscopy Laboratory",
+      "tools": [
+        {
+          "name": "Infrared Spectrometer",
+          "description": "Studies molecular structures of materials."
+        },
+        {
+          "name": "UV-Visible Spectrometer",
+          "description": "Analyzes light spectrum."
+        },
+        {
+          "name": "Atomic Absorption Spectrometer",
+          "description": "Measures the concentration of chemical elements."
+        }
+      ]
+    },
+    {
+      "title": "Mechanical Properties Laboratory",
+      "tools": [
+        {
+          "name": "Impact Resistance Tester",
+          "description": "Analyzes material resistance to impacts."
+        },
+        {
+          "name": "Melt Flow Indexer",
+          "description": "Measures flow properties of melted materials."
+        }
+      ]
+    },
+    {
+      "title": "Microscopic and Surface Properties Laboratory",
+      "tools": [
+        {
+          "name": "Polarized Light Microscope",
+          "description": "Determines microscopic structures."
+        },
+        {
+          "name": "Contact Angle Meter",
+          "description": "Measures surface tension."
+        }
+      ]
     }
-  },
-  "feature": {
-    "heading": "Product Features"
-  },
-  "customization": {
-    "heading": "Fully Automated Telegram Services",
-    "first": "Add multiple Telegram accounts and automate the process of growing your group members.",
-    "second": "Purchase real members or views instantly. Manage your growth with ease and track your progress.",
-    "third": "Gain valuable insights into your Telegram groups and performance with our analytics tools.",
-    "forth": "Best-in-class security to protect your accounts and data, ensuring complete privacy and reliability."
-  },
-  "sales": {
-    "heading": "Start building your Telegram community today.",
-    "p": "Curious about how TeMe can help your Telegram group grow? Get in touch with our team to learn more about our platform and how we can help you scale.",
-    "buttons": {
-      "sales": "Contact Sales"
-    }
-  },
-  "Pricing": {
-    "heading": "Pricing",
-    "p": "Flexible and transparent pricing plans for all your Telegram growth needs.",
-    "offers": [
-      {
-        "id": "basic",
-
-        "h": "Basic Plan",
-        "price": "200 Dinars/month",
-        "desc": "Start adding members or increasing views on your Telegram group with our basic plan.",
-        "button": "Start Now",
-        "accounts": "10 accounts",
-        "members": "At least 8000 members can be added",
-        "price_int": 200,
-        "allowedAccounts": 10
-      },
-      {
-        "id": "sponsered",
-
-        "h": "Sponsored Plan",
-        "price": "500 Dinars/month",
-        "desc": "Boost your Telegram community with advanced tools and features for faster group management and growth.",
-        "button": "Start Now",
-        "accounts": "33 accounts",
-        "members": "At least 39,600 members can be added",
-        "price_int": 500,
-        "allowedAccounts": 33
-      },
-      {
-        "id": "premium",
-        "h": "Premium Plan",
-        "price": "200 Dinars/month",
-        "desc": "For large businesses or communities needing advanced management tools, automation, and priority support for growth on Telegram.",
-        "button": "Start Now",
-        "accounts": "10 accounts initially, but you can add as many as needed",
-        "members": "Unlimited",
-        "price_int": 200,
-        "allowedAccounts": 10
-      }
-    ]
-  }
+  ],
+  "partners": [
+    "Technobell Slovenia for GRP Pipes Manufacturing",
+    "Al-Waseet Company for Public Hygiene Services and Environmental Protection",
+    "Dafiq Food Industries Company",
+    "Cengiz Turkish Construction Company",
+    "Amitec Libya for GRP Manufacturing",
+    "Elite Plastic Industries Company"
+  ]
 }

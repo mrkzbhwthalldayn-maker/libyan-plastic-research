@@ -48,7 +48,7 @@ export default async function Home({
                 lang === "en" && "before:-left-2"
               )}
             >
-              "{dictionary.hopes.vision}"
+              {`"${dictionary.hopes.vision}"`}
             </p>
             <p
               className={cn(
@@ -56,7 +56,7 @@ export default async function Home({
                 lang === "en" && "before:-left-2"
               )}
             >
-              "{dictionary.hopes.mission}"
+              {`"${dictionary.hopes.mission}"`}
             </p>
           </div>
           <div className="relative max-w-sm max-h-96 overflow-hidden">

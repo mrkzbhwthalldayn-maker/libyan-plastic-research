@@ -16,17 +16,18 @@ const Carousel = () => {
     <Swiper
       spaceBetween={0}
       centeredSlides={true}
+      allowTouchMove={false}
       autoplay={{
         delay: 4000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
+        disableOnInteraction: true,
+        // pauseOnMouseEnter: true,
       }}
       pagination={{
         clickable: true,
       }}
       loop
-      draggable
-      navigation={true}
+      draggable={false}
+      navigation={false}
       modules={[Autoplay, Pagination, Navigation]}
       className="mySwiper text-white select-none"
     >

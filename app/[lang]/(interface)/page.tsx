@@ -195,7 +195,7 @@ export default async function Home({
           </div>
         </div>
       </section>
-      <section dir="ltr" id="atricles" className="min-h-[50vh] py-20">
+      <section dir="ltr" id="atricles" className="min-h-[50vh] py-10">
         <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
           <LangRenderer ar="احدث المقالات" en="Latest Articles" />
         </h3>
@@ -236,6 +236,54 @@ export default async function Home({
           ))}
         </div>
       </section>
+      <section id="our-goals" className="min-h-[50vh] py-20">
+        <div className="container phone-only:gap-10 grid md:grid-cols-2">
+          <div className="content-center">
+            <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl phone-only:text-center">
+              <LangRenderer ar="اهدافنا" en="Our Goals" />
+            </h3>
+            <ul className="grid gap-2 phone-only:text-center">
+              {dictionary.goals.map((goal, i) => (
+                <li key={i} className="md:text-lg text-base">
+                  - {goal}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            className={cn(
+              "max-w-sm",
+              lang === "en"
+                ? "md:ml-auto phone-only:mx-auto"
+                : "md:mr-auto phone-only:mx-auto"
+            )}
+          >
+            <svg width="0" height="0" className="absolute">
+              <clipPath id="clip-goey5" clipPathUnits="objectBoundingBox">
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M0.0249688 0C0.0111789 0 0 0.0112775 0 0.0251889V0.851385C0 0.865297 0.0111789 0.876574 0.0249688 0.876574H0.179775V0.974811C0.179775 0.988723 0.190954 1 0.204744 1H0.975031C0.988821 1 1 0.988723 1 0.974811V0.157431C1 0.143519 0.988821 0.132242 0.975031 0.132242H0.810237V0.0251889C0.810237 0.0112775 0.799058 0 0.785268 0H0.0249688Z"
+                  fill="#D9D9D9"
+                />
+              </clipPath>
+            </svg>
+            <figure className="p-8 group hover:p-4 transition-all duration-200 bg-gradient-to-b to-[#022641] from-[#356778] rounded-xl">
+              <div style={{ clipPath: "url(#clip-goey5)" }}>
+                <Image
+                  src={"/images/goals.jpg"}
+                  alt="goals"
+                  width={1000}
+                  height={1000}
+                  className="transition-all duration-300 align-bottom rounded-lg aspect-square object-cover group-hover:scale-110 w-full"
+                />
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
+
+import React from "react";

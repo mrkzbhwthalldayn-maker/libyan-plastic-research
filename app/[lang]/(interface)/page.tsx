@@ -9,6 +9,109 @@ import { Locale } from "@/i18n-config";
 import { cn } from "@/lib/utils";
 import { EmblaOptionsType } from "embla-carousel";
 import Image from "next/image";
+import {
+  FaFlask,
+  FaBalanceScale,
+  FaChalkboardTeacher,
+  FaLightbulb,
+  FaHandshake,
+  FaUsers,
+  FaProjectDiagram,
+  FaServicestack,
+} from "react-icons/fa";
+import { IconType } from "react-icons/lib";
+import FieldOfActivityCard from "./components/field-of-activity-card";
+
+const fieldsOfActivity: FieldOfActivity[] = [
+  {
+    icon: FaFlask,
+    title: {
+      en: "Scientific Research",
+      ar: "مجال البحث العلمي",
+    },
+    description: {
+      en: "Conducting and supporting research to advance knowledge and innovation.",
+      ar: "إجراء ودعم الأبحاث لتعزيز المعرفة والابتكار.",
+    },
+  },
+  {
+    icon: FaBalanceScale,
+    title: {
+      en: "Standards and Specifications",
+      ar: "مجال المواصفات والمقاييس",
+    },
+    description: {
+      en: "Developing and implementing quality standards and specifications.",
+      ar: "تطوير وتنفيذ معايير ومواصفات الجودة.",
+    },
+  },
+  {
+    icon: FaChalkboardTeacher,
+    title: {
+      en: "Education (to be activated in the future)",
+      ar: "مجال التعليم (سيتم تفعيله مستقبلا)",
+    },
+    description: {
+      en: "Providing educational programs and opportunities in the future.",
+      ar: "تقديم برامج وفرص تعليمية مستقبلاً.",
+    },
+  },
+  {
+    icon: FaHandshake,
+    title: {
+      en: "Consultations",
+      ar: "مجال الاستشارات",
+    },
+    description: {
+      en: "Offering expert advice and solutions to various challenges.",
+      ar: "تقديم النصائح والخبرات لحل التحديات المختلفة.",
+    },
+  },
+  {
+    icon: FaLightbulb,
+    title: {
+      en: "Awareness and Guidance",
+      ar: "مجال التوعية والترشيد",
+    },
+    description: {
+      en: "Promoting awareness and providing guidance on key issues.",
+      ar: "تعزيز الوعي وتقديم الإرشادات حول القضايا المهمة.",
+    },
+  },
+  {
+    icon: FaUsers,
+    title: {
+      en: "Lectures and Training Courses for Center Employees",
+      ar: "مجال المحاضرات والدورات التدريبية للعاملين بالمركز",
+    },
+    description: {
+      en: "Organizing lectures and training programs for staff development.",
+      ar: "تنظيم محاضرات وبرامج تدريبية لتطوير الموظفين.",
+    },
+  },
+  {
+    icon: FaProjectDiagram,
+    title: {
+      en: "Small Projects (to be activated in the future)",
+      ar: "جانب المشاريع الصغيرة (سيتم تفعيله مستقبلا)",
+    },
+    description: {
+      en: "Fostering small-scale projects to support innovation and growth.",
+      ar: "تعزيز المشاريع الصغيرة لدعم الابتكار والنمو.",
+    },
+  },
+  {
+    icon: FaServicestack,
+    title: {
+      en: "Community Service",
+      ar: "جانب خدمة المجتمع المحلي",
+    },
+    description: {
+      en: "Engaging in activities that benefit and support the local community.",
+      ar: "المشاركة في أنشطة تفيد وتدعم المجتمع المحلي.",
+    },
+  },
+];
 
 export default async function Home({
   params,
@@ -19,23 +122,7 @@ export default async function Home({
   const dictionary = await getDictionary(lang);
   const OPTIONS: EmblaOptionsType = { align: "start" };
   const articles = await getArticles({});
-  // const SLIDE_COUNT = 6;
-  // const SLIDES =
-  // const aa = [
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  //   ...articles,
-  // ];
+
   return (
     <main>
       <section>
@@ -60,7 +147,7 @@ export default async function Home({
           )}
         </Marquee>
       </section>
-      <section id="our-vision" className="min-h-[50vh] bg-secondary ">
+      <section id="our-vision" className="min-h-[50vh] bg-secondary">
         <div className="container flex justify-between phone-only:flex-col phone-only:gap-5 py-20 items-center">
           <div className="grid gap-5">
             <h2 className="font-bold text-primary text-3xl phone-only:text-xl">
@@ -129,6 +216,25 @@ export default async function Home({
             />
           ))}
         </EmblaCarousel>
+      </section>
+      <section
+        id="fields-of-activity"
+        className="min-h-[50vh] py-20 bg-secondary"
+      >
+        <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
+          <LangRenderer ar="مجالات العمل" en="Field Of Activity" />
+        </h3>
+        <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {fieldsOfActivity.map((field, index) => (
+            <FieldOfActivityCard
+              key={index}
+              title={field.title}
+              description={field.description}
+              lang={lang}
+              icon={field.icon}
+            />
+          ))}
+        </div>
       </section>
     </main>
   );

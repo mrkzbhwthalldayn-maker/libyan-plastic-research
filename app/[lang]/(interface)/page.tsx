@@ -20,8 +20,15 @@ import {
   FaServicestack,
 } from "react-icons/fa";
 import FieldOfActivityCard from "./components/field-of-activity-card";
-import { AnimatedCounter } from "@/components/animations";
+import { AnimatedCard, AnimatedCounter } from "@/components/animations";
 import ImageTabSection from "./components/image-tabs-section";
+import {
+  FaLaptopCode,
+  FaLanguage,
+  FaMicroscope,
+  FaShieldAlt,
+  FaCheckCircle,
+} from "react-icons/fa";
 
 const fieldsOfActivity: FieldOfActivity[] = [
   {
@@ -114,6 +121,86 @@ const fieldsOfActivity: FieldOfActivity[] = [
   },
 ];
 
+const trainingCourses: FieldOfActivity[] = [
+  {
+    icon: FaChalkboardTeacher,
+    title: {
+      en: "Administrative, Financial, Quality, and Public Relations Training",
+      ar: "التدريب في المجالات الإدارية والمالية والجودة والعلاقات العامة",
+    },
+    description: {
+      en: "Training programs in administrative, financial, quality, and public relations fields, conducted in the Hashemite Kingdom of Jordan.",
+      ar: "برامج تدريبية في المجالات الإدارية والمالية والجودة والعلاقات العامة تُعقد في المملكة الأردنية الهاشمية.",
+    },
+  },
+  {
+    icon: FaLaptopCode,
+    title: {
+      en: "ICDL Certification Course",
+      ar: "دورة للحصول على شهادة الرخصة الدولية لقيادة الحاسب الآلي",
+    },
+    description: {
+      en: "A course to obtain the International Computer Driving License (ICDL) certification.",
+      ar: "دورة تدريبية لنيل شهادة الرخصة الدولية لقيادة الحاسب الآلي.",
+    },
+  },
+  {
+    icon: FaLanguage,
+    title: {
+      en: "English Language Courses",
+      ar: "دورات في اللغة الإنجليزية",
+    },
+    description: {
+      en: "Comprehensive courses to enhance English language proficiency.",
+      ar: "دورات شاملة لتحسين مستوى اللغة الإنجليزية.",
+    },
+  },
+  {
+    icon: FaMicroscope,
+    title: {
+      en: "Mechanical Properties of Polymers",
+      ar: "خواص البوليميرات الميكانيكية",
+    },
+    description: {
+      en: "A specialized course on the mechanical properties of polymers, conducted in collaboration with the University of Marrakesh and UNESCO.",
+      ar: "دورة متخصصة في الخواص الميكانيكية للبوليميرات بالتعاون مع جامعة مراكش ومنظمة اليونسكو.",
+    },
+  },
+  {
+    icon: FaShieldAlt,
+    title: {
+      en: "Safety and Security Training",
+      ar: "دورة في مجال الأمن والسلامة",
+    },
+    description: {
+      en: "Training programs focused on safety and security practices in the workplace.",
+      ar: "برامج تدريبية تركز على ممارسات الأمن والسلامة في مكان العمل.",
+    },
+  },
+  {
+    icon: FaCheckCircle,
+    title: {
+      en: "ISO 17025 Quality Training for Engineers and Technicians",
+      ar: "تدريب على الجودة ISO 17025 للمهندسين والفنيين",
+    },
+    description: {
+      en: "A course on quality standards ISO 17025, tailored for engineers and technicians.",
+      ar: "دورة تدريبية على معايير الجودة ISO 17025 موجهة للمهندسين والفنيين.",
+    },
+  },
+  {
+    icon: FaCheckCircle,
+    title: {
+      en: "ISO 9001 Quality Training for Administrators and Financial Staff",
+      ar: "تدريب على الجودة ISO 9001 للإداريين والماليين",
+    },
+    description: {
+      en: "A course on quality standards ISO 9001, designed for administrative and financial personnel.",
+      ar: "دورة تدريبية على معايير الجودة ISO 9001 مصممة للإداريين والماليين.",
+    },
+  },
+];
+
 export default async function Home({
   params,
 }: {
@@ -154,24 +241,32 @@ export default async function Home({
             <h2 className="font-bold text-primary text-3xl phone-only:text-xl">
               {dictionary.hopes.title}
             </h2>
-            <p
-              className={cn(
-                "bg-primary/20 text-secondary-foreground relative before:absolute before:-right-2 before:w-2 before:h-full before:bg-primary before:top-0 w-fit px-2 py-3",
-                lang === "en" && "before:-left-2"
-              )}
-            >
-              {`"${dictionary.hopes.vision}"`}
-            </p>
-            <p
-              className={cn(
-                "bg-primary/20 text-secondary-foreground relative before:absolute before:-right-2 before:w-2 before:h-full before:bg-primary before:top-0 w-fit px-2 py-3",
-                lang === "en" && "before:-left-2"
-              )}
-            >
-              {`"${dictionary.hopes.mission}"`}
-            </p>
+            <AnimatedCard XorY="x" initialX={lang === "ar" ? 20 : -20}>
+              <p
+                className={cn(
+                  "bg-primary/20 text-secondary-foreground relative before:absolute before:-right-2 before:w-2 before:h-full before:bg-primary before:top-0 w-fit px-2 py-3",
+                  lang === "en" && "before:-left-2"
+                )}
+              >
+                {`"${dictionary.hopes.vision}"`}
+              </p>
+            </AnimatedCard>
+            <AnimatedCard XorY="x" initialX={lang === "ar" ? 20 : -20}>
+              <p
+                className={cn(
+                  "bg-primary/20 text-secondary-foreground relative before:absolute before:-right-2 before:w-2 before:h-full before:bg-primary before:top-0 w-fit px-2 py-3",
+                  lang === "en" && "before:-left-2"
+                )}
+              >
+                {`"${dictionary.hopes.mission}"`}
+              </p>
+            </AnimatedCard>
           </div>
-          <div className="relative max-w-sm max-h-96 overflow-hidden">
+          <AnimatedCard
+            XorY="x"
+            className="relative max-w-sm max-h-96 overflow-hidden"
+            initialX={lang === "en" ? 20 : -20}
+          >
             <svg className="clipppy absolute -top-[999px] -left-[999px] w-0 h-0">
               <defs>
                 <clipPath id="clip-another" clipPathUnits={"objectBoundingBox"}>
@@ -193,7 +288,7 @@ export default async function Home({
                 className="transition-all h-full duration-300 aspect-[3/4] min-h-full align-top object-fill hover:scale-105 w-full"
               />
             </figure>
-          </div>
+          </AnimatedCard>
         </div>
       </section>
       <section dir="ltr" id="atricles" className="min-h-[50vh] py-10">
@@ -245,13 +340,13 @@ export default async function Home({
             </h3>
             <ul className="grid gap-2 phone-only:text-center">
               {dictionary.goals.map((goal, i) => (
-                <li key={i} className="md:text-lg text-base">
-                  - {goal}
-                </li>
+                <AnimatedCard key={i} initialY={20 + i}>
+                  <li className="md:text-lg text-base">- {goal}</li>
+                </AnimatedCard>
               ))}
             </ul>
           </div>
-          <div
+          <AnimatedCard
             className={cn(
               "max-w-sm",
               lang === "en"
@@ -280,7 +375,7 @@ export default async function Home({
                 />
               </div>
             </figure>
-          </div>
+          </AnimatedCard>
         </div>
       </section>
       <div className="sm:gap-4 gap-2 text-center grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-row bg-cardColor px-4 md:px-16 py-10 mb-2 text-foreground bg-secondary">
@@ -406,10 +501,29 @@ export default async function Home({
         </div>
       </div>
       <section id="q&a" className="py-10">
-        <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl phone-only:text-center">
+        <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl text-center">
           <LangRenderer ar="الأسئلة والأجوبة" en="Q & A" />
         </h3>
         <ImageTabSection />
+      </section>
+      <section
+        id="training-courses"
+        className="min-h-[50vh] py-20 bg-secondary"
+      >
+        <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
+          <LangRenderer ar="الدورات التدريبية" en="Training Courses" />
+        </h3>
+        <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {trainingCourses.map((field, index) => (
+            <FieldOfActivityCard
+              key={index}
+              title={field.title}
+              description={field.description}
+              lang={lang}
+              icon={field.icon}
+            />
+          ))}
+        </div>
       </section>
     </main>
   );

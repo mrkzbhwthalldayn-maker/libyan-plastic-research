@@ -1,3 +1,4 @@
+import { AnimatedCard } from "@/components/animations";
 import { Locale } from "@/i18n-config";
 
 const FieldOfActivityCard = ({
@@ -7,7 +8,9 @@ const FieldOfActivityCard = ({
   lang,
 }: FieldOfActivity & { lang: Locale }) => {
   return (
-    <div
+    <AnimatedCard
+      XorY="y"
+      initialY={30}
       className="text-center transition-all
         md:w-11/12 duration-300 min-h-44 px-2 gap-4 text-base md:text-lg flex justify-center items-center flex-col bg-card hover:bg-card/80 rounded-lg shadow-md hover:scale-105 py-5 md:py-8"
     >
@@ -20,7 +23,7 @@ const FieldOfActivityCard = ({
           {lang === "en" ? description.en : description.ar}
         </div>
       </div>
-    </div>
+    </AnimatedCard>
   );
 };
 

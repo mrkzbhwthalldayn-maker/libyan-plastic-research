@@ -11,6 +11,7 @@ import Image from "next/image";
 import LocaleSwitcher from "@/components/locale-switcher";
 import { MdOutlinePermPhoneMsg } from "react-icons/md";
 import LangRenderer from "@/components/lang";
+import Footer from "./components/footer";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["arabic"] });
@@ -43,7 +44,7 @@ export default async function RootLayout({
         "relative"
       )}
     >
-      <header className="bg">
+      <header className="fixed z-[1000] w-full bg-background top-0 left-0 ">
         <div className="bg-primary selection:bg-secondary selection:text-foreground text-white px-4 flex justify-between items-center">
           <div className="flex gap-2 items-center">
             <LangRenderer
@@ -87,7 +88,8 @@ export default async function RootLayout({
           </div>
         </div>
       </header>
-      {children}
+      <div className="md:mt-24 mt-16">{children}</div>
+      <Footer lang={lang} />
     </div>
   );
 }

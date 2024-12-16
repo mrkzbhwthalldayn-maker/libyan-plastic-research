@@ -282,8 +282,131 @@ export default async function Home({
           </div>
         </div>
       </section>
+      <div className="sm:gap-4 gap-2 text-center grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-row bg-cardColor px-4 md:px-16 py-10 mb-2 text-foreground bg-secondary">
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter
+              to={dictionary.scientific_events.conferences}
+              duration={0.9}
+            />{" "}
+            +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="المؤتمرات العلمية التي نظمها المركز."
+              en="Scientific conferences organized by the center."
+            />
+          </p>
+        </div>
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter to={dictionary.scientific_events.workshops} /> +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="ورش العمل التي عقدها المركز."
+              en="Workshops conducted by the center."
+            />
+          </p>
+        </div>
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter
+              to={dictionary.scientific_events.scientific_seminars}
+            />{" "}
+            +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="الندوات العلمية التي نظمها المركز."
+              en="Scientific seminars held by the center."
+            />
+          </p>
+        </div>
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter
+              to={dictionary.scientific_events.scientific_meetings}
+            />{" "}
+            +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="الاجتماعات العلمية التي تمت في المركز."
+              en="Scientific meetings conducted at the center."
+            />
+          </p>
+        </div>
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter
+              to={dictionary.scientific_events.internal_training_courses}
+            />{" "}
+            +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="الدورات التدريبية الداخلية التي نظمها المركز."
+              en="Internal training courses organized by the center."
+            />
+          </p>
+        </div>
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter
+              to={dictionary.scientific_events.external_training_courses}
+            />{" "}
+            +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="الدورات التدريبية الخارجية التي حضرها أعضاء المركز."
+              en="External training courses attended by center members."
+            />
+          </p>
+        </div>
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter to={dictionary.scientific_events.lectures} /> +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="المحاضرات التي قدمها المركز."
+              en="Lectures delivered by the center."
+            />
+          </p>
+        </div>
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter to={dictionary.scientific_events.open_days} /> +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="الأيام المفتوحة التي نظمها المركز."
+              en="Open days organized by the center."
+            />
+          </p>
+        </div>
+        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
+          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+            <AnimatedCounter
+              to={
+                dictionary.scientific_events.national_and_religious_activities
+              }
+            />{" "}
+            +
+          </h4>
+          <p>
+            <LangRenderer
+              ar="الأنشطة الوطنية والدينية التي شارك فيها المركز."
+              en="National and religious activities participated by the center."
+            />
+          </p>
+        </div>
+      </div>
     </main>
   );
 }
 
 import React from "react";
+import { AnimatedCounter } from "@/components/animations";

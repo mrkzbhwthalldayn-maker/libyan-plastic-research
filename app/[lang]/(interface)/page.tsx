@@ -1,8 +1,13 @@
+import ArticleCard from "@/components/article-card";
+import EmblaCarousel from "@/components/carsuoel/embla-carousel";
+import LangRenderer from "@/components/lang";
 import Marquee from "@/components/marquee";
 import Carousel from "@/components/ui/carouel";
+import { getArticles } from "@/database/articles";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
 import { cn } from "@/lib/utils";
+import { EmblaOptionsType } from "embla-carousel";
 import Image from "next/image";
 
 export default async function Home({
@@ -12,6 +17,25 @@ export default async function Home({
 }) {
   const lang = (await params).lang;
   const dictionary = await getDictionary(lang);
+  const OPTIONS: EmblaOptionsType = { align: "start" };
+  const articles = await getArticles({});
+  // const SLIDE_COUNT = 6;
+  // const SLIDES =
+  // const aa = [
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  //   ...articles,
+  // ];
   return (
     <main>
       <section>
@@ -83,6 +107,28 @@ export default async function Home({
             </figure>
           </div>
         </div>
+      </section>
+      <section dir="ltr" id="atricles" className="min-h-[50vh] py-20">
+        <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
+          <LangRenderer ar="احدث المقالات" en="Latest Articles" />
+        </h3>
+        <EmblaCarousel
+          slides={Array.from(Array(articles.length).keys())}
+          options={OPTIONS}
+        >
+          {articles?.map((article, index) => (
+            <ArticleCard
+              createdAt={article.createdAt}
+              className="h-full"
+              key={index}
+              title={lang === "ar" ? article.title : article.enTitle}
+              body={lang === "ar" ? article.body : article.enBody}
+              src={article.poster!}
+              views={article.views}
+              lang={lang}
+            />
+          ))}
+        </EmblaCarousel>
       </section>
     </main>
   );

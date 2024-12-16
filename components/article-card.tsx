@@ -4,6 +4,10 @@ import React, { Fragment, ReactNode, Suspense } from "react";
 import { parseDocument } from "htmlparser2";
 import { DomUtils } from "htmlparser2";
 import { Skeleton } from "./ui/skeleton";
+import LangRenderer from "./lang";
+import { cn } from "@/lib/utils";
+import { Locale } from "@/i18n-config";
+import { formatToDate } from "@/lib/date";
 
 // Function to extract text from HTML string and truncate it
 const extractText = (html: string, maxLength: number): string => {
@@ -19,6 +23,10 @@ interface CardProps {
   href?: string;
   edit?: boolean;
   children?: ReactNode;
+  className?: string;
+  lang?: Locale;
+  createdAt: Date;
+  views?: number;
 }
 
 const ArticleCard: React.FC<CardProps> = ({
@@ -28,13 +36,23 @@ const ArticleCard: React.FC<CardProps> = ({
   href = "#",
   edit = false,
   children,
+  className,
+  lang,
+  createdAt,
+  views,
 }) => {
   // Truncate the HTML body into plain text
   const truncatedBody = extractText(body, 200);
 
   return (
     <Suspense fallback={<ArticleCardSkeleton />}>
-      <div className="max-w-full border duration-300 transition-colors hover:bg-accent border-foreground/20 bg-accent/30 rounded-lg shadow">
+      <div
+        dir={lang === "en" ? "ltr" : "rtl"}
+        className={cn(
+          "max-w-full flex flex-col justify-between border duration-300 transition-colors hover:bg-accent border-foreground/20 bg-accent/30 rounded-lg shadow",
+          className
+        )}
+      >
         <Link
           href={href}
           className="w-full block overflow-hidden max-w-full h-64 content-center max-h-96"
@@ -47,7 +65,7 @@ const ArticleCard: React.FC<CardProps> = ({
             height={1000}
           />
         </Link>
-        <div className="p-5">
+        <div className="p-5 flex flex-col justify-between flex-1">
           <Link href={href}>
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-foreground">
               {title}
@@ -57,27 +75,28 @@ const ArticleCard: React.FC<CardProps> = ({
           {edit ? (
             <Fragment>{children}</Fragment>
           ) : (
-            <Link
-              href={href}
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Read more
-              <svg
-                className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
+            <div className="flex justify-between items-center">
+              {" "}
+              <Link
+                href={href}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </Link>
+                <LangRenderer ar="اقرأ المزيد" en="Read more" />
+              </Link>
+              <div
+                className={cn(
+                  "flex flex-col items-start gap-1",
+                  lang === "en" && "items-end"
+                )}
+              >
+                <div className="text-sm rounded-md py-0.5 px-2 text-white bg-green-400 dark:bg-green-600">
+                  {formatToDate(new Date(createdAt))}
+                </div>
+                <div className="text-sm text-foreground/60">
+                  {lang === "ar" ? `${views} مشاهدة` : `${views} views`}
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>

@@ -52,6 +52,7 @@ const page = async (props: { searchParams: Promise<{ content?: string }> }) => {
                 src={article.poster!}
                 href={`/dashboard/articles/${article.id}`}
                 edit
+                createdAt={article.createdAt}
               >
                 <div className="flex justify-between items-center">
                   <div className="flex gap-2 items-center">

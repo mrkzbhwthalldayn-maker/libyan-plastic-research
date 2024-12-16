@@ -19,8 +19,9 @@ import {
   FaProjectDiagram,
   FaServicestack,
 } from "react-icons/fa";
-import { IconType } from "react-icons/lib";
 import FieldOfActivityCard from "./components/field-of-activity-card";
+import { AnimatedCounter } from "@/components/animations";
+import ImageTabSection from "./components/image-tabs-section";
 
 const fieldsOfActivity: FieldOfActivity[] = [
   {
@@ -404,9 +405,12 @@ export default async function Home({
           </p>
         </div>
       </div>
+      <section id="q&a" className="py-10">
+        <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl phone-only:text-center">
+          <LangRenderer ar="الأسئلة والأجوبة" en="Q & A" />
+        </h3>
+        <ImageTabSection />
+      </section>
     </main>
   );
 }
-
-import React from "react";
-import { AnimatedCounter } from "@/components/animations";

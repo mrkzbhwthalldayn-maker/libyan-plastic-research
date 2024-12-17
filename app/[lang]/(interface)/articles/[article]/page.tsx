@@ -25,11 +25,10 @@ export async function generateStaticParams() {
 }
 
 // **2. Generate Metadata**
-export async function generateMetadata({
-  params,
-}: {
-  params: { article: string; lang: string };
+export async function generateMetadata(props: {
+  params: Promise<{ article: string; lang: string }>;
 }) {
+  const params = await props.params;
   const { article: articleId, lang } = params;
   const article = await getArticleById(articleId, true);
 
@@ -61,11 +60,10 @@ export async function generateMetadata({
 }
 
 // **3. Article Page Component**
-const ArticlePage = async ({
-  params,
-}: {
-  params: { article: string; lang: string };
+const ArticlePage = async (props: {
+  params: Promise<{ article: string; lang: string }>;
 }) => {
+  const params = await props.params;
   const id = params.article;
   const lang = params.lang;
 

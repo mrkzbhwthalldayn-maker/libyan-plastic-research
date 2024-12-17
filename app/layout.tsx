@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Cairo, Outfit } from "next/font/google";
+import { Cairo } from "next/font/google";
 import "./[lang]/globals.css";
 import { cn } from "@/lib/utils";
 import ThemeProvider from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
-import CanvasCursor from "@/components/cusor";
 import "./css/base.css";
 import "./css/embla.css";
 

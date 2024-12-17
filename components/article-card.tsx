@@ -1,20 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { Fragment, ReactNode, Suspense } from "react";
-import { parseDocument } from "htmlparser2";
-import { DomUtils } from "htmlparser2";
 import { Skeleton } from "./ui/skeleton";
 import LangRenderer from "./lang";
 import { cn } from "@/lib/utils";
 import { Locale } from "@/i18n-config";
 import { formatToDate } from "@/lib/date";
-
-// Function to extract text from HTML string and truncate it
-const extractText = (html: string, maxLength: number): string => {
-  const dom = parseDocument(html); // Parse the HTML into a DOM-like structure
-  const text = DomUtils.textContent(dom); // Extract text content
-  return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
-};
+import { extractText } from "@/lib/text";
 
 interface CardProps {
   title: string;

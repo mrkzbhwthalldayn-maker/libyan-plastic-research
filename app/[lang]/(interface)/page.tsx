@@ -309,6 +309,7 @@ export default async function Home({
               src={article.poster!}
               views={article.views}
               lang={lang}
+              href={`/${lang}/articles/${article.id}`}
             />
           ))}
         </EmblaCarousel>

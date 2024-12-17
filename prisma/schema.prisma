@@ -27,7 +27,7 @@ model Article {
   body      String
   enTitle   String
   enBody    String
-  poster    String?
+  poster    String?     @default("/images/default_image.png")
   author    User        @relation(fields: [authorId], references: [id])
   authorId  String      @db.ObjectId
   views     Int         @default(0)

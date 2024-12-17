@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Cairo, Outfit } from "next/font/google";
 import "../globals.css";
-import { i18n } from "@/i18n-config";
 import { cn } from "@/lib/utils";
 import ToggleTheme from "@/components/theme-toggle";
 import NavigationSheet, {
@@ -15,10 +14,6 @@ import Footer from "./components/footer";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["arabic"] });
-
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
-}
 
 export const metadata: Metadata = {
   title: "المركز الليبي لبحوث اللدائن",

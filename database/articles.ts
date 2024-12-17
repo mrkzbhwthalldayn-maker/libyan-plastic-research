@@ -151,9 +151,14 @@ const getArticles = unstable_cache(
   { tags: ["articles"] }
 );
 
-const getArticleById = async (id: string) => {
+const getArticleById = async (id: string, author = false) => {
   try {
-    const article = await prisma.article.findUnique({ where: { id } });
+    const article = await prisma.article.findUnique({
+      where: { id },
+      include: {
+        author,
+      },
+    });
     if (!article) {
       return undefined;
     }

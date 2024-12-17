@@ -16,6 +16,9 @@ import { Locale } from "@/i18n-config";
 import { after } from "next/server";
 import prisma from "@/prisma/db";
 import { cn } from "@/lib/utils";
+import ShareDialog from "@/components/share-dialog";
+import uri from "@/lib/uri";
+import CopyToClipboard from "@/components/copy-to-clipboard";
 
 // **1. Generate Static Params**
 export async function generateStaticParams() {
@@ -177,7 +180,7 @@ const ArticlePage = async (props: {
           </div>
           <div
             className={cn(
-              "phone-only:my-6 grid gap-2 md:absolute bottom-0",
+              "grid mt-6 gap-2 md:absolute -bottom-2",
               lang === "en" ? "right-0" : "left-0"
             )}
           >
@@ -192,6 +195,13 @@ const ArticlePage = async (props: {
               <li>
                 <LangRenderer ar={"تاريخ التحميل: "} en={"Upload date: "} />
                 {formatDateInDetails(article.createdAt, lang as Locale)}
+              </li>
+              <li className="flex gap-2 items-center">
+                <ShareDialog
+                  title={lang === "en" ? article.enTitle : article.title}
+                  url={`${uri}/articles/${article.slug}`}
+                />
+                <CopyToClipboard content={`${uri}/articles/${article.slug}`} />
               </li>
             </ul>
           </div>

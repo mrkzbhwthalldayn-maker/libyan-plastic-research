@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   }));
 }
 
-import { CreateNewArticleForm, UpdateArticleForm } from "../components/forms";
+import { UpdateArticleForm } from "../components/forms";
 import { getArticleById, getArticles } from "@/database/articles";
 import { notFound } from "next/navigation";
 const EditArticlePage = async ({
@@ -23,8 +23,8 @@ const EditArticlePage = async ({
 }: {
   params: Promise<{ article: string }>;
 }) => {
-  const id = (await params).article;
-  const article = await getArticleById(id);
+  const slug = (await params).article;
+  const article = await getArticleById(slug);
   if (!article) {
     return notFound();
   }

@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const NotFound = async () => {
   return (
-    <main className="phone-only:px-4 h-[80vh]">
+    <main className="phone-only:px-4 h-[75vh] py-2 bg-secondary">
       <Breadcrumb className="my-2" dir="rtl">
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -34,7 +34,7 @@ const NotFound = async () => {
       <div className="my-4 md:container content-center h-full text-center">
         <h1 className="text-red-500 font-bold text-6xl">404</h1>
         <p className="mb-2">لم يتم ايجاد المقالة</p>
-        <CustomLink href="/dashboard/articles">ادارة المقالات</CustomLink>
+        <CustomLink href="/articles">كل المقالات</CustomLink>
       </div>
     </main>
   );

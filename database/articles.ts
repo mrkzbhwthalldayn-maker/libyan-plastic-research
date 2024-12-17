@@ -1,6 +1,7 @@
 "use server";
 
 import { getSession } from "@/lib/session";
+import { generateSlug } from "@/lib/slug";
 import prisma from "@/prisma/db";
 import { Article } from "@prisma/client";
 import { revalidateTag, unstable_cache } from "next/cache";
@@ -14,7 +15,7 @@ const createArtcle = async ({
   type,
 }: Omit<
   Article,
-  "id" | "createdAt" | "updatedAt" | "views" | "poster" | "authorId"
+  "id" | "createdAt" | "updatedAt" | "views" | "poster" | "authorId" | "slug"
 > & {
   poster: nullable;
 }) => {
@@ -23,6 +24,7 @@ const createArtcle = async ({
     if (!user) {
       return { message: "يجب تسجيل الدخول اولا" };
     }
+    const slug = await generateSlug(enTitle);
     const article = await prisma.article.create({
       data: {
         body,
@@ -32,6 +34,7 @@ const createArtcle = async ({
         authorId: user.id,
         poster,
         type,
+        slug,
       },
     });
     if (!article) {
@@ -70,7 +73,7 @@ const updateArticle = async ({
   poster,
 }: Omit<
   Article,
-  "createdAt" | "updatedAt" | "authorId" | "views" | "poster"
+  "createdAt" | "updatedAt" | "authorId" | "views" | "poster" | "slug"
 > & { poster: nullable }) => {
   try {
     const updatedArticle = await prisma.article.update({
@@ -151,10 +154,10 @@ const getArticles = unstable_cache(
   { tags: ["articles"] }
 );
 
-const getArticleById = async (id: string, author = false) => {
+const getArticleById = async (slug: string, author = false) => {
   try {
     const article = await prisma.article.findUnique({
-      where: { id },
+      where: { slug },
       include: {
         author,
       },

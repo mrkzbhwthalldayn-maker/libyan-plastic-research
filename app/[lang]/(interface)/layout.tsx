@@ -83,7 +83,7 @@ export default async function RootLayout({
           </div>
         </div>
       </header>
-      <div className="md:mt-24 mt-16">{children}</div>
+      <div className="md:mt-32 mt-24">{children}</div>
       <Footer lang={lang} />
     </div>
   );

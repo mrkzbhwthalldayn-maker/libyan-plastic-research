@@ -24,6 +24,7 @@ model User {
 model Article {
   id        String      @id @default(auto()) @map("_id") @db.ObjectId
   title     String
+  slug      String      @unique
   body      String
   enTitle   String
   enBody    String
@@ -43,6 +44,6 @@ enum Roles {
 
 enum ArticleType {
   news
-  confrenece
+  conference
   research
 }

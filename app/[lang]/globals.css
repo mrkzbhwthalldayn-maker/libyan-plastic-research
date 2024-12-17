@@ -79,7 +79,7 @@ body {
     margin-top: 0;
   }
   img {
-    @apply phone-only:my-4 !important;
+    @apply my-4 rounded-md !important;
   }
 
   /* List styles */

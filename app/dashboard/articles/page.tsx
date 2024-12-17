@@ -1,5 +1,3 @@
-import UsersTable from "@/components/reusable-table";
-import { Suspense } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -50,14 +48,14 @@ const page = async (props: { searchParams: Promise<{ content?: string }> }) => {
                 title={article.title}
                 body={article.body}
                 src={article.poster!}
-                href={`/dashboard/articles/${article.id}`}
+                href={`/dashboard/articles/${article.slug}`}
                 edit
                 createdAt={article.createdAt}
               >
                 <div className="flex justify-between items-center">
                   <div className="flex gap-2 items-center">
                     <DeleteArticleForm id={article.id} />
-                    <CustomLink href={`/dashboard/articles/${article.id}`}>
+                    <CustomLink href={`/dashboard/articles/${article.slug}`}>
                       تعديل المقالة
                     </CustomLink>
                   </div>

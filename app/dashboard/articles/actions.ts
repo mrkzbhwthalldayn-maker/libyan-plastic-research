@@ -19,6 +19,7 @@ export async function createArticleAction(
       enBody: z.string().min(3, "The English body is required"), // "The English body is required"
       poster: z.string().nullable().optional(), // "Poster URL is required"
       type: z.nativeEnum(ArticleType), // "Type is required"
+      readTime: z.string().nullable().optional(), // Optional poster image
     });
 
     // Parse and validate form data using the schema
@@ -29,6 +30,7 @@ export async function createArticleAction(
       enBody: formData.get("enBody") || "",
       poster: formData.get("poster") || "",
       type: formData.get("type") || "",
+      readTime: formData.get("readTime") || "",
     });
 
     if (!data.success) {
@@ -38,7 +40,7 @@ export async function createArticleAction(
       };
     }
 
-    const { title, body, enTitle, enBody, poster, type } = data.data;
+    const { title, body, enTitle, enBody, poster, type, readTime } = data.data;
 
     // Create the article in the database using Prisma
     const res = await createArtcle({
@@ -48,6 +50,7 @@ export async function createArticleAction(
       enBody,
       poster,
       type,
+      readTime: Number(readTime),
     });
 
     return { message: res.message }; // "Article created successfully"
@@ -69,6 +72,7 @@ export async function updateArticleAction(
       enBody: z.string().min(1, "محتوى المقالة بالإنجليزية مطلوب"), // "English article body is required"
       type: z.nativeEnum(ArticleType), // "Article type is required"
       poster: z.string().nullable().optional(), // Optional poster image
+      readTime: z.string().nullable().optional(), // Optional poster image
     });
 
     const data = schema.safeParse({
@@ -79,6 +83,7 @@ export async function updateArticleAction(
       enBody: formData.get("enBody") || "",
       type: formData.get("type") || "news",
       poster: formData.get("poster"),
+      readTime: formData.get("readTime"),
     });
 
     if (!data.success) {
@@ -88,7 +93,8 @@ export async function updateArticleAction(
       };
     }
 
-    const { id, title, body, enTitle, enBody, type, poster } = data.data;
+    const { id, title, body, enTitle, enBody, type, poster, readTime } =
+      data.data;
 
     const res = await updateArticle({
       id,
@@ -98,6 +104,7 @@ export async function updateArticleAction(
       enBody,
       type,
       poster,
+      readTime: Number(readTime),
     });
 
     console.log("Article updated successfully:", res);

@@ -13,11 +13,20 @@ const createArtcle = async ({
   poster,
   title,
   type,
+  readTime,
 }: Omit<
   Article,
-  "id" | "createdAt" | "updatedAt" | "views" | "poster" | "authorId" | "slug"
+  | "id"
+  | "createdAt"
+  | "updatedAt"
+  | "views"
+  | "poster"
+  | "authorId"
+  | "slug"
+  | "readTime"
 > & {
-  poster: nullable;
+  poster?: nullable | string;
+  readTime?: nullable | number;
 }) => {
   try {
     const user = await getSession();
@@ -35,6 +44,7 @@ const createArtcle = async ({
         poster,
         type,
         slug,
+        readTime,
       },
     });
     if (!article) {
@@ -71,10 +81,17 @@ const updateArticle = async ({
   enBody,
   type,
   poster,
+  readTime,
 }: Omit<
   Article,
-  "createdAt" | "updatedAt" | "authorId" | "views" | "poster" | "slug"
-> & { poster: nullable }) => {
+  | "createdAt"
+  | "updatedAt"
+  | "authorId"
+  | "views"
+  | "poster"
+  | "slug"
+  | "readTime"
+> & { poster?: nullable | string; readTime?: nullable | number }) => {
   try {
     const updatedArticle = await prisma.article.update({
       where: { id },
@@ -84,6 +101,7 @@ const updateArticle = async ({
         enTitle,
         enBody,
         type,
+        readTime,
         poster, // Assuming the `poster` field is a string representing the image URL or path
       },
     });

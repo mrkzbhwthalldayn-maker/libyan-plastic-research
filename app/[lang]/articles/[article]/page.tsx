@@ -22,6 +22,7 @@ import CopyToClipboard from "@/components/copy-to-clipboard";
 import { SideCard } from "@/components/cards";
 import { parseArticleType } from "@/lib/parse";
 import { extractText } from "@/lib/text";
+import { Separator } from "@/components/ui/separator";
 
 // **1. Generate Static Params**
 export async function generateStaticParams() {
@@ -134,40 +135,60 @@ const ArticlePage = async (props: {
 
   return (
     <main className="phone-only:px-4 relative py-2 bg-secondary min-h-[50vh]">
-      <Breadcrumb className="px-4">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href={`/${lang}`}>
-                <LangRenderer ar={"الرئيسية"} en={"Home"} />
-              </Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <LangBreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href={`/${lang}/articles`}>
-                <LangRenderer ar={"المقالات"} en={"Articles"} />
-              </Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <LangBreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>
-              {lang === "en" ? article.enTitle : article.title}
-            </BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      <div className="my-4 px-2 md:px-16 xl:px-24">
+      <div className="my-2 px-2 md:px-16 xl:px-24">
         <article className="relative">
           <div></div>
           <div className="md:w-1/2 mx-auto">
-            <h1 className="my-4 font-bold md:text-3xl text-xl">
-              {lang === "en" ? article.enTitle : article.title}
-            </h1>
-            <RenderHtml html={lang === "en" ? article.enBody : article.body} />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link href={`/${lang}`}>
+                      <LangRenderer ar={"الرئيسية"} en={"Home"} />
+                    </Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <LangBreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link href={`/${lang}/articles`}>
+                      <LangRenderer ar={"المقالات"} en={"Articles"} />
+                    </Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <LangBreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>
+                    {lang === "en" ? article.enTitle : article.title}
+                  </BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+            <div className="mt-8">
+              <div className="flex items-center gap-2">
+                {article.readTime && (
+                  <>
+                    <span className="my-2">
+                      <LangRenderer
+                        ar={`${article.readTime} دقائق قرازةً`}
+                        en={`${article.readTime} min read`}
+                      />
+                    </span>
+                    {" | "}
+                  </>
+                )}
+                <span className="my-2">
+                  <LangRenderer ar={"تاريخ التحميل: "} en={"Upload date: "} />
+                  {formatDateInDetails(article.createdAt, lang as Locale)}
+                </span>
+              </div>{" "}
+              <h1 className="my-4 font-bold md:text-6xl text-2xl">
+                {lang === "en" ? article.enTitle : article.title}
+              </h1>
+              <RenderHtml
+                html={lang === "en" ? article.enBody : article.body}
+              />
+            </div>
           </div>
           <div
             className={cn(
@@ -197,26 +218,28 @@ const ArticlePage = async (props: {
             </ul>
           </div>
         </article>
-      </div>
-      <div className="bg-background px-4">
-        <h2 className="my-2">
-          <LangRenderer ar="محتوى مشابه" en="Related Content" />
-        </h2>
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {articles.map((content, index) => (
-            <SideCard
-              key={index}
-              imageUrl={`${content.poster}`}
-              tag={parseArticleType(content.type, lang as Locale)}
-              title={lang === "en" ? content.enTitle : content.title}
-              description={
-                lang === "en"
-                  ? extractText(content.enBody, 50)
-                  : extractText(content.body, 50)
-              }
-              link={`/articles/${content.slug}`}
-            />
-          ))}
+        <div className="py-20 md:w-4/6 mx-auto  px-4">
+          <h2 className="my-2">
+            <LangRenderer ar="محتوى مشابه" en="Related Content" />
+          </h2>
+          <div className="grid">
+            {articles.map((content, index) => (
+              <div key={index} className="">
+                <SideCard
+                  imageUrl={`${content.poster}`}
+                  tag={parseArticleType(content.type, lang as Locale)}
+                  title={lang === "en" ? content.enTitle : content.title}
+                  description={
+                    lang === "en"
+                      ? extractText(content.enBody, 35)
+                      : extractText(content.body, 35)
+                  }
+                  link={`/articles/${content.slug}`}
+                />
+                <Separator className="bg-foreground/50" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </main>

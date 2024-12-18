@@ -5,7 +5,7 @@ declare interface UserSession {
   email: string;
 }
 
-declare type nullable = string | null | undefined;
+declare type nullable = null | undefined;
 
 declare type variants =
   | "default"

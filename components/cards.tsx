@@ -34,43 +34,28 @@ const SideCard: React.FC<SideCardProps> = ({
   link,
 }) => {
   return (
-    <div className="relative flex flex-col md:flex-row w-full my-6 bg-secondary shadow-sm border border-fotext-foreground rounded-lg">
-      <div className="relative p-2.5 md:w-2/5 shrink-0 overflow-hidden max-w-sm h-48">
+    <Link
+      href={link}
+      className="relative justify-between  hover:underline shadow-secondary flex flex-col md:flex-row items-start w-full mt-3 mb-1 shadow-md "
+    >
+      <div className="px-2 flex flex-col h-full justify-between py-4">
+        <div className="">
+          <h4 className="mb-2 text-foreground text-xl font-semibold">
+            {title}
+          </h4>
+          <p className="mb-8 text-foreground leading-normal font-light">
+            {description}
+          </p>
+        </div>
+      </div>
+      <div className="md:w-3/12 shrink-0 overflow-hidden h-36">
         <img
           src={imageUrl}
           alt="card-image"
-          className="h-full w-full rounded-md md:rounded-lg object-cover"
+          className="h-full w-full object-cover"
         />
       </div>
-      <div className="p-6">
-        <h4 className="mb-2 text-foreground text-xl font-semibold">{title}</h4>
-        <p className="mb-8 text-foreground leading-normal font-light">
-          {description}
-        </p>
-        <div>
-          <a
-            href={link}
-            className="text-foreground font-semibold text-sm hover:underline flex items-center"
-          >
-            Learn More
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="ml-2 h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+    </Link>
   );
 };
 

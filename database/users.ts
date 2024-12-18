@@ -46,7 +46,7 @@ const updateUser = async ({
   password,
   verified,
 }: Omit<User, "createdAt" | "updatedAt" | "verifyingCode" | "password"> & {
-  password: nullable;
+  password?: nullable | string;
 }) => {
   try {
     let user;

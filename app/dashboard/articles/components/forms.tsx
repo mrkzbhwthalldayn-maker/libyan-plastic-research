@@ -29,7 +29,7 @@ export const CreateNewArticleForm = () => {
 
   return (
     <Form
-      success="تم انشاء المقالةة بنجاح"
+      success="تم انشاء المقالة بنجاح"
       replaceLink="/dashboard/articles"
       className="my-2 px-4 md:w-1/2 md:mx-auto"
       action={createArticleAction}
@@ -45,7 +45,7 @@ export const CreateNewArticleForm = () => {
       <Separator className="bg-foreground/50 my-4" />
 
       <div className="flex flex-col gap-2 my-2 md:flex-row justify-start items-start md:justify-between md:items-center">
-        <Label htmlFor="type">نوع المقالةة</Label>
+        <Label htmlFor="type">نوع المقالة</Label>
         <Select name="type" dir="rtl" defaultValue={"news"}>
           <SelectTrigger id="type" className="md:w-[180px] w-full">
             <SelectValue placeholder="حدد النوع" />
@@ -57,12 +57,22 @@ export const CreateNewArticleForm = () => {
           </SelectContent>
         </Select>
       </div>
+      <div className="flex flex-col gap-2 my-2 md:flex-row justify-start items-start md:justify-between md:items-center">
+        <Label htmlFor="readTime">مدة القراءة</Label>
+        <Input
+          className="md:w-1/2"
+          type="number"
+          name="readTime"
+          id="readTime"
+          placeholder="أدخل مدة قراءة المقالة"
+        />
+      </div>
       <LanguageTabs
         arabicContent={
           <div className="mx-auto">
             <Input value={body} type={"hidden"} name="body" />
             <div className="mb-4">
-              <Label htmlFor="title">عنوان المقالةة</Label>
+              <Label htmlFor="title">عنوان المقالة</Label>
               <Input
                 type={"text"}
                 name="title"
@@ -71,7 +81,7 @@ export const CreateNewArticleForm = () => {
               />
             </div>
             <div className="my-2">
-              <Label className="mb-2">محتويات المقالةة</Label>
+              <Label className="mb-2">محتويات المقالة</Label>
               <Editor content={body} onChange={setBody} />
             </div>
           </div>
@@ -144,7 +154,7 @@ export const UpdateArticleForm = ({ article }: { article: Article }) => {
       <Separator className="bg-foreground/50 my-4" />
 
       <div className="flex flex-col gap-2 my-2 md:flex-row justify-start items-start md:justify-between md:items-center">
-        <Label htmlFor="type">نوع المقالةة</Label>
+        <Label htmlFor="type">نوع المقالة</Label>
         <Select name="type" dir="rtl" defaultValue={article.type}>
           <SelectTrigger id="type" className="md:w-[180px] w-full">
             <SelectValue placeholder="حدد النوع" />
@@ -155,6 +165,17 @@ export const UpdateArticleForm = ({ article }: { article: Article }) => {
             <SelectItem value="conference">مؤتمر</SelectItem>
           </SelectContent>
         </Select>
+      </div>
+      <div className="flex flex-col gap-2 my-2 md:flex-row justify-start items-start md:justify-between md:items-center">
+        <Label htmlFor="readTime">مدة القراءة</Label>
+        <Input
+          className="md:w-1/2"
+          type="number"
+          name="readTime"
+          id="readTime"
+          defaultValue={article?.readTime ?? undefined}
+          placeholder="أدخل مدة قراءة المقالة"
+        />
       </div>
 
       <LanguageTabs

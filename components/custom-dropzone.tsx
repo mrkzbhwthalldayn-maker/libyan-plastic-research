@@ -11,7 +11,7 @@ import { Input } from "./ui/input";
 import { toast } from "@/hooks/use-toast";
 
 interface ImageProps {
-  defaultImage?: nullable;
+  defaultImage?: nullable | string;
   name?: string;
   title?: string;
   dropClassName?: string;

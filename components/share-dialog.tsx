@@ -34,7 +34,10 @@ function ShareDialog({ title, url }: { title: string; url: string }) {
 
   return (
     <div>
-      <Button onClick={openMobileShare} className="my-2">
+      <Button
+        onClick={openMobileShare}
+        className="my-2 text-white bg-yellow-600 hover:bg-yellow-500 hover:text-white/80"
+      >
         {lang === "en" ? "Share" : "مشاركة"}
         <FaShare />
       </Button>

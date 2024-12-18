@@ -27,12 +27,12 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = ({ content }) => {
     <Button
       variant={"default"}
       onClick={copyToClipboard}
-      className="flex items-center space-x-2 p-2 border rounded-lg"
+      className="flex items-center text-white space-x-2 p-2 border rounded-lg"
     >
       {isCopied ? (
         <FaCheck className="text-green-500" />
       ) : (
-        <FaCopy className="text-foreground" />
+        <FaCopy className="text-white" />
       )}
       <span>
         {isCopied

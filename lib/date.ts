@@ -92,3 +92,42 @@ export function formatToDate(
 
   return invalidInputMessage;
 }
+
+export const formatDate = (date: Date, language: "ar" | "en"): string => {
+  const months = {
+    en: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
+    ar: [
+      "يناير",
+      "فبراير",
+      "مارس",
+      "أبريل",
+      "مايو",
+      "يونيو",
+      "يوليو",
+      "أغسطس",
+      "سبتمبر",
+      "أكتوبر",
+      "نوفمبر",
+      "ديسمبر",
+    ],
+  };
+
+  const day = date.getDate();
+  const month = months[language][date.getMonth()];
+  const year = date.getFullYear();
+
+  return `${month} ${day}, ${year}`;
+};

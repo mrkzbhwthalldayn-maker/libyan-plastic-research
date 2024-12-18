@@ -29,6 +29,8 @@ import {
   FaShieldAlt,
   FaCheckCircle,
 } from "react-icons/fa";
+import { Card } from "@/components/cards";
+import { formatDate } from "@/lib/date";
 
 const fieldsOfActivity: FieldOfActivity[] = [
   {
@@ -208,8 +210,11 @@ export default async function Home({
 }) {
   const lang = (await params).lang;
   const dictionary = await getDictionary(lang);
-  const OPTIONS: EmblaOptionsType = { align: "start" };
-  const articles = await getArticles({});
+  const OPTIONS: EmblaOptionsType = {
+    align: "start",
+    direction: lang === "ar" ? "rtl" : "ltr",
+  };
+  const articles = await getArticles({ author: true });
 
   return (
     <main>
@@ -291,7 +296,7 @@ export default async function Home({
           </AnimatedCard>
         </div>
       </section>
-      <section dir="ltr" id="atricles" className="min-h-[50vh] py-10">
+      <section id="atricles" className="min-h-[50vh] py-10">
         <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
           <LangRenderer ar="احدث المقالات" en="Latest Articles" />
         </h3>
@@ -300,16 +305,17 @@ export default async function Home({
           options={OPTIONS}
         >
           {articles?.map((article, index) => (
-            <ArticleCard
-              createdAt={article.createdAt}
-              className="h-full"
-              key={index}
-              title={lang === "ar" ? article.title : article.enTitle}
-              body={lang === "ar" ? article.body : article.enBody}
-              src={article.poster!}
-              views={article.views}
+            <Card
+              type={article.type}
               lang={lang}
+              key={index}
               href={`/${lang}/articles/${article.slug}`}
+              imageUrl={article.poster!}
+              title={lang === "ar" ? article.title : article.enTitle}
+              description={lang === "ar" ? article.body : article.enBody}
+              authorName={article.author.fullName}
+              authorImageUrl={article.poster!}
+              date={formatDate(new Date(article.createdAt), lang)}
             />
           ))}
         </EmblaCarousel>

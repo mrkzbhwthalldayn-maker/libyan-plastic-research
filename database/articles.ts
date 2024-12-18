@@ -3,7 +3,7 @@
 import { getSession } from "@/lib/session";
 import { generateSlug } from "@/lib/slug";
 import prisma from "@/prisma/db";
-import { Article } from "@prisma/client";
+import { Article, ArticleType } from "@prisma/client";
 import { revalidateTag, unstable_cache } from "next/cache";
 
 const createArtcle = async ({
@@ -103,7 +103,17 @@ const updateArticle = async ({
 };
 
 const getArticles = unstable_cache(
-  async ({ content }: { content?: string }) => {
+  async ({
+    content,
+    author = false,
+    type,
+    take,
+  }: {
+    content?: string;
+    author?: boolean;
+    type?: ArticleType;
+    take?: number;
+  }) => {
     const filter: any = content
       ? {
           OR: [
@@ -132,11 +142,21 @@ const getArticles = unstable_cache(
               },
             },
           ],
+          type,
         }
       : {}; // No filter if title is undefined or empty
 
     try {
-      const articles = await prisma.article.findMany({ where: filter });
+      const articles = await prisma.article.findMany({
+        where: filter,
+        orderBy: {
+          createdAt: "desc",
+        },
+        take,
+        include: {
+          author,
+        },
+      });
       if (!articles) {
         return [];
       }

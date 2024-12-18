@@ -19,6 +19,9 @@ import { cn } from "@/lib/utils";
 import ShareDialog from "@/components/share-dialog";
 import uri from "@/lib/uri";
 import CopyToClipboard from "@/components/copy-to-clipboard";
+import { SideCard } from "@/components/cards";
+import { parseArticleType } from "@/lib/parse";
+import { extractText } from "@/lib/text";
 
 // **1. Generate Static Params**
 export async function generateStaticParams() {
@@ -102,22 +105,6 @@ export async function generateMetadata(props: {
   };
 }
 
-// Helper function to map ArticleType to Open Graph types
-function mapArticleTypeToOGType(
-  type: "news" | "conference" | "research"
-): string {
-  switch (type) {
-    case "news":
-      return "article"; // News is still considered an article
-    case "conference":
-      return "event"; // Open Graph 'event' for conferences
-    case "research":
-      return "article"; // Research can remain as 'article'
-    default:
-      return "article"; // Fallback to article
-  }
-}
-
 // **3. Article Page Component**
 const ArticlePage = async (props: {
   params: Promise<{ article: string; lang: string }>;
@@ -131,6 +118,10 @@ const ArticlePage = async (props: {
   if (!article) {
     return notFound();
   }
+  const articles = await getArticles({
+    type: article?.type,
+    take: 9,
+  });
 
   after(async () => {
     await prisma.article.update({
@@ -206,6 +197,27 @@ const ArticlePage = async (props: {
             </ul>
           </div>
         </article>
+      </div>
+      <div className="bg-background px-4">
+        <h2 className="my-2">
+          <LangRenderer ar="محتوى مشابه" en="Related Content" />
+        </h2>
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          {articles.map((content, index) => (
+            <SideCard
+              key={index}
+              imageUrl={`${content.poster}`}
+              tag={parseArticleType(content.type, lang as Locale)}
+              title={lang === "en" ? content.enTitle : content.title}
+              description={
+                lang === "en"
+                  ? extractText(content.enBody, 50)
+                  : extractText(content.body, 50)
+              }
+              link={`/articles/${content.slug}`}
+            />
+          ))}
+        </div>
       </div>
     </main>
   );

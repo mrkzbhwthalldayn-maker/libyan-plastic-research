@@ -5,13 +5,14 @@ import { ArticleType } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import LangRenderer from "./lang";
 
 interface SideCardProps {
   imageUrl: string;
-  tag: string;
   title: string;
   description: string;
   link: string;
+  readTime?: nullable | number;
 }
 
 interface CardProps {
@@ -28,28 +29,38 @@ interface CardProps {
 
 const SideCard: React.FC<SideCardProps> = ({
   imageUrl,
-  tag,
   title,
   description,
   link,
+  readTime,
 }) => {
   return (
     <Link
       href={link}
-      className="relative justify-between  hover:underline shadow-secondary flex flex-col md:flex-row items-start w-full mt-3 mb-1 shadow-md "
+      className="relative justify-between  hover:underline shadow-secondary flex flex-col-reverse md:flex-row items-start w-full mt-3"
     >
       <div className="px-2 flex flex-col h-full justify-between py-4">
-        <div className="">
+        <div>
           <h4 className="mb-2 text-foreground text-xl font-semibold">
             {title}
           </h4>
           <p className="mb-8 text-foreground leading-normal font-light">
             {description}
           </p>
+          {readTime && (
+            <span className="my-2 text-foreground/80 hover:no-underline no-underline">
+              <LangRenderer
+                ar={`${readTime} دقائق للمطالعة`}
+                en={`${readTime} minutes to read`}
+              />
+            </span>
+          )}
         </div>
       </div>
-      <div className="md:w-3/12 shrink-0 overflow-hidden h-36">
-        <img
+      <div className="md:w-3/12 phone-only:w-full phone-only:h-64 md:shrink-0 rounded-md overflow-hidden h-36">
+        <Image
+          width={500}
+          height={500}
           src={imageUrl}
           alt="card-image"
           className="h-full w-full object-cover"

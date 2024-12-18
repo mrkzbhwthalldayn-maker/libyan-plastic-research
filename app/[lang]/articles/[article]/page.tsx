@@ -23,6 +23,8 @@ import { SideCard } from "@/components/cards";
 import { parseArticleType } from "@/lib/parse";
 import { extractText } from "@/lib/text";
 import { Separator } from "@/components/ui/separator";
+import { Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // **1. Generate Static Params**
 export async function generateStaticParams() {
@@ -122,6 +124,7 @@ const ArticlePage = async (props: {
   const articles = await getArticles({
     type: article?.type,
     take: 9,
+    notIn: [article.id],
   });
 
   after(async () => {
@@ -136,9 +139,8 @@ const ArticlePage = async (props: {
   return (
     <main className="phone-only:px-4 relative py-2 bg-secondary min-h-[50vh]">
       <div className="my-2 px-2 md:px-16 xl:px-24">
-        <article className="relative">
-          <div></div>
-          <div className="md:w-1/2 mx-auto">
+        <article className="relative flex justify-between items-end phone-only:flex-col phone-only:items-center">
+          <div className="md:w-4/6">
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -165,37 +167,50 @@ const ArticlePage = async (props: {
               </BreadcrumbList>
             </Breadcrumb>
             <div className="mt-8">
-              <div className="flex items-center gap-2">
+              <div className="flex phone-only:flex-col justify-start text-start items-center md:gap-2">
                 {article.readTime && (
                   <>
-                    <span className="my-2">
+                    <span className="my-2 phone-only:block phone-only:w-full">
                       <LangRenderer
-                        ar={`${article.readTime} دقائق قرازةً`}
-                        en={`${article.readTime} min read`}
+                        ar={`${article.readTime} دقائق للمطالعة`}
+                        en={`${article.readTime} minutes to read`}
                       />
                     </span>
-                    {" | "}
+                    <span className="phone-only:hidden">{" | "}</span>
                   </>
                 )}
-                <span className="my-2">
+                <span className="phone-only:block phone-only:w-full">
                   <LangRenderer ar={"تاريخ التحميل: "} en={"Upload date: "} />
                   {formatDateInDetails(article.createdAt, lang as Locale)}
                 </span>
               </div>{" "}
-              <h1 className="my-4 font-bold md:text-6xl text-2xl">
+              <h1 className="my-4 font-bold md:text-[60px] text-2xl leading-[64px]">
                 {lang === "en" ? article.enTitle : article.title}
               </h1>
-              <RenderHtml
-                html={lang === "en" ? article.enBody : article.body}
-              />
+              <Suspense
+                fallback={
+                  <>
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                    <Skeleton className="w-full h-2 mb-1 " />
+                  </>
+                }
+              >
+                <RenderHtml
+                  html={lang === "en" ? article.enBody : article.body}
+                />
+              </Suspense>
             </div>
           </div>
-          <div
-            className={cn(
-              "grid mt-6 gap-2 md:absolute -bottom-2",
-              lang === "en" ? "right-0" : "left-0"
-            )}
-          >
+          <div className={cn("grid gap-2 h-full content-end")}>
             <ul>
               <li>
                 <LangRenderer ar={"تم الرفع بواسطة : "} en={"Uploaded by: "} />
@@ -218,28 +233,28 @@ const ArticlePage = async (props: {
             </ul>
           </div>
         </article>
-        <div className="py-20 md:w-4/6 mx-auto  px-4">
-          <h2 className="my-2">
-            <LangRenderer ar="محتوى مشابه" en="Related Content" />
-          </h2>
-          <div className="grid">
-            {articles.map((content, index) => (
-              <div key={index} className="">
-                <SideCard
-                  imageUrl={`${content.poster}`}
-                  tag={parseArticleType(content.type, lang as Locale)}
-                  title={lang === "en" ? content.enTitle : content.title}
-                  description={
-                    lang === "en"
-                      ? extractText(content.enBody, 35)
-                      : extractText(content.body, 35)
-                  }
-                  link={`/articles/${content.slug}`}
-                />
-                <Separator className="bg-foreground/50" />
-              </div>
-            ))}
-          </div>
+      </div>
+      <div className="py-20 md:w-4/6 mx-auto  px-4">
+        <h2 className="my-2 font-bold text-xl phone-only:text-center md:text-3xl">
+          <LangRenderer ar="مواضيع ذات صلة" en="Related Content" />{" "}
+        </h2>
+        <div className="grid">
+          {articles.map((content, index) => (
+            <div key={index} className="my-2">
+              <SideCard
+                readTime={content.readTime}
+                imageUrl={`${content.poster}`}
+                title={lang === "en" ? content.enTitle : content.title}
+                description={
+                  lang === "en"
+                    ? extractText(content.enBody, 150)
+                    : extractText(content.body, 150)
+                }
+                link={`/${lang}/articles/${content.slug}`}
+              />
+              <Separator className="bg-foreground/50" />
+            </div>
+          ))}
         </div>
       </div>
     </main>

@@ -126,11 +126,13 @@ const getArticles = unstable_cache(
     author = false,
     type,
     take,
+    notIn = [],
   }: {
     content?: string;
     author?: boolean;
     type?: ArticleType;
     take?: number;
+    notIn?: string[];
   }) => {
     const filter: any = content
       ? {
@@ -161,8 +163,16 @@ const getArticles = unstable_cache(
             },
           ],
           type,
+          id: {
+            notIn,
+          },
         }
-      : {}; // No filter if title is undefined or empty
+      : {
+          type,
+          id: {
+            notIn,
+          },
+        }; // No filter if title is undefined or empty
 
     try {
       const articles = await prisma.article.findMany({

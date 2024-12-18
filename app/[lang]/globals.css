@@ -46,9 +46,9 @@ body {
   @apply overflow-auto my-4;
 }
 
-.imageWrapper {
-  /* @apply flex justify-center my-4 w-3/4; */
-}
+/* .imageWrapper {
+  /* @apply flex justify-center my-4 w-3/4; 
+} */
 
 .customImage {
   @apply rounded-lg shadow-lg max-w-full object-cover;

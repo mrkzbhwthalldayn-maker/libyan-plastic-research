@@ -102,13 +102,13 @@ interface ArticleContent extends Article {
 // **3. Articles Page Component**
 const ArticlesPage = async (props: {
   params: Promise<{ lang: string }>;
-  searchParams?: {
+  searchParams?: Promise<{
     page?: string;
     query?: string;
     createdAt?: "asc" | "desc";
     take?: string;
     view?: string;
-  };
+  }>;
 }) => {
   const params = await props.params;
   const searchParams = await props?.searchParams;

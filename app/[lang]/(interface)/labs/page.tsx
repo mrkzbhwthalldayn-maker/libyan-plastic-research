@@ -85,7 +85,7 @@ const page = async (props: { params: Promise<{ lang: Locale }> }) => {
             <LangBreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbPage>
-                <LangRenderer ar={"المقالات"} en={"Articles"} />
+                {lang === "en" ? "Laboratories" : "المختبرات"}
               </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>

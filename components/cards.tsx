@@ -13,6 +13,7 @@ interface SideCardProps {
   description: string;
   link: string;
   readTime?: nullable | number;
+  views?: number;
 }
 
 interface CardProps {
@@ -25,6 +26,7 @@ interface CardProps {
   href: string;
   lang: "ar" | "en";
   type: ArticleType;
+  views?: number;
 }
 
 const SideCard: React.FC<SideCardProps> = ({
@@ -80,6 +82,7 @@ const Card: React.FC<CardProps> = ({
   href,
   lang,
   type,
+  views = 0,
 }) => {
   return (
     <Link

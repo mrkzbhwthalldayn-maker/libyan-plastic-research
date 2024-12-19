@@ -152,7 +152,6 @@ export function NavigationMenuDesktop() {
           >
             <NavigationMenuLink
               asChild // Render as a span instead of an anchor when inside <Link>
-              className={cn()}
             >
               <LangRenderer en="Home" ar="الرئيسية" />
             </NavigationMenuLink>
@@ -208,12 +207,13 @@ export function NavigationMenuDesktop() {
             className={cn(
               navigationMenuTriggerStyle(),
               pathname === `/${lang}/research-and-studies` &&
+                "bg-primary text-white",
+              pathname.startsWith(`/${lang}/research-and-studies`) &&
                 "bg-primary text-white"
             )}
           >
             <NavigationMenuLink
               asChild // Render as a span instead of an anchor when inside <Link>
-              className={cn()}
             >
               <LangRenderer en="Research and Studies" ar="البحوث و الدراسات" />
             </NavigationMenuLink>
@@ -226,14 +226,31 @@ export function NavigationMenuDesktop() {
             className={cn(
               navigationMenuTriggerStyle(),
               pathname === `/${lang}/news-and-activities` &&
+                "bg-primary text-white",
+              pathname.startsWith(`/${lang}/news-and-activities`) &&
                 "bg-primary text-white"
             )}
           >
             <NavigationMenuLink
               asChild // Render as a span instead of an anchor when inside <Link>
-              className={cn()}
             >
               <LangRenderer en="News and Activities" ar="الأخبار و الأنشطة" />
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link
+            href={`/${lang}/articles`}
+            passHref
+            className={cn(
+              navigationMenuTriggerStyle(),
+              pathname === `/${lang}/articles` && "bg-primary text-white",
+              pathname.startsWith(`/${lang}/articles`) &&
+                "bg-primary text-white"
+            )}
+          >
+            <NavigationMenuLink asChild>
+              <LangRenderer en="All Articles" ar="كل المقالات" />
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -340,7 +357,11 @@ export default function NavigationSheet() {
           <FaBars size={24} />
         </Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent
+        className="z-[10000]"
+        side={lang === "en" ? "left" : "right"}
+        dir={lang === "en" ? "ltr" : "rtl"}
+      >
         <SheetHeader>
           <SheetTitle>
             <VisuallyHidden>navigation bar</VisuallyHidden>
@@ -355,12 +376,16 @@ export default function NavigationSheet() {
           <CustomLink
             variant={pathname === `/${lang}` ? "default" : "ghost"}
             href={`/${lang}`}
-            className="text-right block px-2 shadow"
+            className="text-start block px-2 shadow"
             onClick={() => setOpen(!open)}
           >
             <LangRenderer en="Home" ar="الرئيسية" />
           </CustomLink>
-          <Accordion type="single" collapsible>
+          <Accordion
+            dir={lang === "en" ? "ltr" : "rtl"}
+            type="single"
+            collapsible
+          >
             {links.map((item) => (
               <AccordionItem
                 key={item.title}
@@ -394,10 +419,13 @@ export default function NavigationSheet() {
 
           <CustomLink
             variant={
-              pathname === `/${lang}/research-and-studies` ? "default" : "ghost"
+              pathname === `/${lang}/research-and-studies` ||
+              pathname.startsWith(`/${lang}/research-and-studies`)
+                ? "default"
+                : "ghost"
             }
             href={`/${lang}/research-and-studies`}
-            className="text-right block px-2 shadow"
+            className="text-start block px-2 shadow"
             onClick={() => setOpen(!open)}
           >
             <LangRenderer en="Research and Studies" ar="البحوث و الدراسات" />
@@ -405,17 +433,33 @@ export default function NavigationSheet() {
 
           <CustomLink
             variant={
-              pathname === `/${lang}/news-and-activities` ? "default" : "ghost"
+              pathname === `/${lang}/news-and-activities` ||
+              pathname.startsWith(`/${lang}/news-and-activities`)
+                ? "default"
+                : "ghost"
             }
             href={`/${lang}/news-and-activities`}
-            className="text-right block px-2 shadow"
+            className="text-start block px-2 shadow"
             onClick={() => setOpen(!open)}
           >
             <LangRenderer en="News and Activities" ar="الأخبار و الأنشطة" />
           </CustomLink>
+          <CustomLink
+            variant={
+              pathname === `/${lang}/articles` ||
+              pathname.startsWith(`/${lang}/articles`)
+                ? "default"
+                : "ghost"
+            }
+            href={`/${lang}/articles`}
+            className="text-start block px-2 shadow"
+            onClick={() => setOpen(!open)}
+          >
+            <LangRenderer en="All Articles" ar="كل المقالات" />
+          </CustomLink>
         </SheetHeader>
         <SheetFooter>
-          <ToggleTheme />
+          <ToggleTheme className="my-4 mx-auto" />
         </SheetFooter>
       </SheetContent>
     </Sheet>

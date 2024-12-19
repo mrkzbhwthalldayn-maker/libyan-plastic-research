@@ -1,3 +1,4 @@
+"use client";
 import React, { ReactNode } from "react";
 
 import { useMediaQuery } from "@/hooks/use-media-query";
@@ -6,7 +7,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -28,6 +28,7 @@ interface Props {
   title?: string;
   description?: string;
   footer?: boolean;
+  dir?: "rtl" | "ltr";
 }
 export default function ResponsiveDialog({
   children,
@@ -85,21 +86,22 @@ export function ResponsiveDialogWithCustomOpenFuncionality({
   title,
   open,
   setOpen,
+  dir,
 }: Props & {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   open: boolean;
 }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-
+  const { lang } = useParams();
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{trigger}</DialogTrigger>
-        <DialogContent className="sm:max-w-[425px] px-4 py-8">
+        <DialogContent dir={dir} className="sm:max-w-[425px] px-4 py-8">
           <DialogHeader>
-            {title && <DialogTitle>{title}</DialogTitle>}
+            {title && <DialogTitle dir={dir}>{title}</DialogTitle>}
             {description && (
-              <DialogDescription>{description}</DialogDescription>
+              <DialogDescription dir={dir}>{description}</DialogDescription>
             )}
           </DialogHeader>
           {children}
@@ -111,15 +113,19 @@ export function ResponsiveDialogWithCustomOpenFuncionality({
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{trigger}</DrawerTrigger>
-      <DrawerContent className="px-2 py-1">
+      <DrawerContent dir={dir} className="px-2 py-1">
         <DrawerHeader className="text-right">
-          {title && <DrawerTitle>{title}</DrawerTitle>}
-          {description && <DrawerDescription>{description}</DrawerDescription>}
+          {title && <DrawerTitle dir={dir}>{title}</DrawerTitle>}
+          {description && (
+            <DrawerDescription dir={dir}>{description}</DrawerDescription>
+          )}
         </DrawerHeader>
         {children}
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
-            <Button variant="outline">تجاهل</Button>
+            <Button variant="outline">
+              {lang && lang === "ar" ? "تجاهل" : "Discard"}
+            </Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>

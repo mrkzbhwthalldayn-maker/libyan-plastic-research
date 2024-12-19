@@ -20,7 +20,6 @@ import ShareDialog from "@/components/share-dialog";
 import uri from "@/lib/uri";
 import CopyToClipboard from "@/components/copy-to-clipboard";
 import { SideCard } from "@/components/cards";
-import { parseArticleType } from "@/lib/parse";
 import { extractText } from "@/lib/text";
 import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
@@ -137,7 +136,7 @@ const ArticlePage = async (props: {
   });
 
   return (
-    <main className="phone-only:px-4 relative py-2  min-h-[50vh]">
+    <main className="phone-only:px-4 relative py-2 min-h-[50vh]">
       <div className="my-2 px-2 md:px-16 xl:px-24">
         <article className="relative flex justify-between items-end phone-only:flex-col phone-only:items-center">
           <div className="md:w-4/6">
@@ -153,8 +152,11 @@ const ArticlePage = async (props: {
                 <LangBreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href={`/${lang}/articles`}>
-                      <LangRenderer ar={"المقالات"} en={"Articles"} />
+                    <Link href={`/${lang}/news-and-activities`}>
+                      <LangRenderer
+                        ar={"الأخبار و الأنشطة"}
+                        en={"News & Activities"}
+                      />{" "}
                     </Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>

@@ -124,16 +124,35 @@ const getArticles = unstable_cache(
   async ({
     content,
     author = false,
-    type,
+    type = undefined,
     take,
     notIn = [],
+    page,
+    select,
+    debug = false,
+    createdAt = "desc",
   }: {
     content?: string;
     author?: boolean;
-    type?: ArticleType;
+    type?: ArticleType[];
     take?: number;
     notIn?: string[];
+    page?: number;
+    select?: any;
+    debug?: boolean;
+    createdAt?: "asc" | "desc";
   }) => {
+    let skip = 0;
+    if (take && page) {
+      skip = (page - 1) * take;
+    }
+    if (debug) {
+      console.log("#".repeat(20));
+      console.log(`take: ${take}`);
+      console.log(`skip: ${skip}`);
+      console.log(`page: ${page}`);
+      console.log("#".repeat(20));
+    }
     const filter: any = content
       ? {
           OR: [
@@ -162,28 +181,40 @@ const getArticles = unstable_cache(
               },
             },
           ],
-          type,
+          type: {
+            in: type,
+          },
           id: {
             notIn,
           },
         }
       : {
-          type,
+          type: {
+            in: type,
+          },
           id: {
             notIn,
           },
         }; // No filter if title is undefined or empty
-
+    let includeAndSelect: any = {
+      include: {
+        author,
+      },
+    };
+    if (select) {
+      includeAndSelect = {
+        select,
+      };
+    }
     try {
       const articles = await prisma.article.findMany({
         where: filter,
         orderBy: {
-          createdAt: "desc",
+          createdAt,
         },
         take,
-        include: {
-          author,
-        },
+        skip,
+        ...includeAndSelect,
       });
       if (!articles) {
         return [];

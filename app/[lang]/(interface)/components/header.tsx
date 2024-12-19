@@ -8,9 +8,14 @@ import NavigationSheet, { NavigationMenuDesktop } from "./navigation";
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 
-const Header = ({ lang }: { lang: Locale }) => {
+const Header = ({ lang, className }: { lang: Locale; className?: string }) => {
   return (
-    <header className="fixed z-[1000] w-full bg-background top-0 left-0 ">
+    <header
+      className={cn(
+        "fixed z-[1000] w-full bg-background top-0 left-0",
+        className
+      )}
+    >
       <div className="bg-primary selection:bg-secondary selection:text-foreground text-white px-4 flex justify-between items-center">
         <div className="flex gap-2 items-center">
           <LangRenderer

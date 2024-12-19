@@ -20,7 +20,6 @@ import ShareDialog from "@/components/share-dialog";
 import uri from "@/lib/uri";
 import CopyToClipboard from "@/components/copy-to-clipboard";
 import { SideCard } from "@/components/cards";
-import { parseArticleType } from "@/lib/parse";
 import { extractText } from "@/lib/text";
 import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
@@ -153,8 +152,11 @@ const ArticlePage = async (props: {
                 <LangBreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href={`/${lang}/articles`}>
-                      <LangRenderer ar={"المقالات"} en={"Articles"} />
+                    <Link href={`/${lang}/research-and-studies`}>
+                      <LangRenderer
+                        ar={"البحوث و الدراسات"}
+                        en={"Research & Studies"}
+                      />{" "}
                     </Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>

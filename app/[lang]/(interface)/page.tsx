@@ -31,6 +31,7 @@ import {
 } from "react-icons/fa";
 import { Card } from "@/components/cards";
 import { formatDate } from "@/lib/date";
+import { Article, User } from "@prisma/client";
 
 const fieldsOfActivity: FieldOfActivity[] = [
   {
@@ -203,6 +204,10 @@ const trainingCourses: FieldOfActivity[] = [
   },
 ];
 
+interface ArticleContent extends Article {
+  author?: User;
+}
+
 export default async function Home({
   params,
 }: {
@@ -214,7 +219,7 @@ export default async function Home({
     align: "start",
     direction: lang === "ar" ? "rtl" : "ltr",
   };
-  const articles = await getArticles({ author: true });
+  const articles: ArticleContent[] = await getArticles({ author: true });
 
   return (
     <main>
@@ -313,7 +318,7 @@ export default async function Home({
               imageUrl={article.poster!}
               title={lang === "ar" ? article.title : article.enTitle}
               description={lang === "ar" ? article.body : article.enBody}
-              authorName={article.author.fullName}
+              authorName={article?.author?.fullName ?? "مشرف"}
               authorImageUrl={article.poster!}
               date={formatDate(new Date(article.createdAt), lang)}
             />

@@ -7,8 +7,16 @@ import { MdOutlinePermPhoneMsg } from "react-icons/md";
 import NavigationSheet, { NavigationMenuDesktop } from "./navigation";
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
+import { getDictionary } from "@/get-dictionary";
 
-const Header = ({ lang, className }: { lang: Locale; className?: string }) => {
+const Header = async ({
+  lang,
+  className,
+}: {
+  lang: Locale;
+  className?: string;
+}) => {
+  const dictionary = await getDictionary(lang);
   return (
     <header
       className={cn(
@@ -46,7 +54,7 @@ const Header = ({ lang, className }: { lang: Locale; className?: string }) => {
       <div dir="rtl" className="flex justify-between container items-center">
         <ToggleTheme className="phone-only:hidden" />
         <NavigationSheet />
-        <NavigationMenuDesktop />
+        <NavigationMenuDesktop labs={dictionary.labs} />
         <div className="md:w-24 w-16 overflow-hidden">
           <Image
             src={"/logo.png"}

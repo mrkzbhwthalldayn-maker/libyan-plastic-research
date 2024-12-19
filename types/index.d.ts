@@ -28,3 +28,10 @@ declare interface FieldOfActivity {
     ar: string;
   };
 }
+
+declare interface Lab {
+  title: string;
+  description: string;
+  image: string;
+  slug: string;
+}

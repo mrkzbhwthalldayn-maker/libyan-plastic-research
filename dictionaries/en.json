@@ -116,62 +116,55 @@
     "open_days": 38,
     "national_and_religious_activities": 6
   },
+
   "labs": [
     {
-      "title": "Thermal Analysis Laboratory",
-      "tools": [
-        {
-          "name": "Dynamic Mechanical Analyzer",
-          "description": "Analyzes thermal properties of materials."
-        },
-        {
-          "name": "Differential Scanning Calorimeter",
-          "description": "Measures thermal changes in materials."
-        }
-      ]
+      "title": "Polymer Chemistry Lab",
+      "slug": "polymer-chemistry-lab",
+      "description": "A specialized lab conducting classical chemical experiments for synthesizing and modifying polymers to suit various applications such as packaging, adhesives, and coatings.",
+      "image": "/images/lab/word_media_image1.jpeg"
     },
     {
-      "title": "Spectroscopy Laboratory",
-      "tools": [
-        {
-          "name": "Infrared Spectrometer",
-          "description": "Studies molecular structures of materials."
-        },
-        {
-          "name": "UV-Visible Spectrometer",
-          "description": "Analyzes light spectrum."
-        },
-        {
-          "name": "Atomic Absorption Spectrometer",
-          "description": "Measures the concentration of chemical elements."
-        }
-      ]
+      "title": "Thermal Analysis Lab",
+      "slug": "thermal-analysis-lab",
+      "description": "This lab focuses on studying the stability of polymers at different temperatures and measuring their thermal properties, such as glass transition and melting points, to ensure their quality in industrial applications.",
+      "image": "/images/lab/word_media_image2.jpeg"
     },
     {
-      "title": "Mechanical Properties Laboratory",
-      "tools": [
-        {
-          "name": "Impact Resistance Tester",
-          "description": "Analyzes material resistance to impacts."
-        },
-        {
-          "name": "Melt Flow Indexer",
-          "description": "Measures flow properties of melted materials."
-        }
-      ]
+      "title": "Molecular Analysis Lab",
+      "slug": "molecular-analysis-lab",
+      "description": "Analyzes the molecular properties of polymers by measuring viscosity, density, and water vapor permeability, determining the characteristics of materials used in packaging or insulation.",
+      "image": "/images/lab/word_media_image3.jpeg"
     },
     {
-      "title": "Microscopic and Surface Properties Laboratory",
-      "tools": [
-        {
-          "name": "Polarized Light Microscope",
-          "description": "Determines microscopic structures."
-        },
-        {
-          "name": "Contact Angle Meter",
-          "description": "Measures surface tension."
-        }
-      ]
+      "title": "Spectral Analysis Lab",
+      "slug": "spectral-analysis-lab",
+      "description": "Performs spectral tests using infrared, ultraviolet, and atomic absorption spectroscopy to analyze the composition of materials and determine their purity.",
+      "image": "/images/lab/word_media_image4.jpeg"
+    },
+    {
+      "title": "Microscopic Analysis Lab",
+      "slug": "microscopic-analysis-lab",
+      "description": "Provides detailed analysis of the microscopic structure of polymers and surface properties, such as grain distribution and texture, aiding in material development.",
+      "image": "/images/lab/word_media_image5.jpeg"
+    },
+    {
+      "title": "Polymer Technical Applications Lab",
+      "slug": "polymer-technical-applications-lab",
+      "description": "Focuses on applying advanced technologies such as 3D printing and electrospinning to produce fine fibers for medical and engineering applications.",
+      "image": "/images/lab/word_media_image6.jpeg"
+    },
+    {
+      "title": "Polymer Shaping Lab",
+      "slug": "polymer-shaping-lab",
+      "description": "Specializes in shaping polymers into specific forms like films or fibers and preparing precise samples for mechanical and physical testing.",
+      "image": "/images/lab/word_media_image7.jpeg"
+    },
+    {
+      "title": "Mechanical Properties Lab",
+      "slug": "mechanical-properties-lab",
+      "description": "Measures the resistance of polymers to mechanical forces such as tensile, compression, and bending to ensure their suitability for various engineering applications.",
+      "image": "/images/lab/word_media_image8.jpeg"
     }
   ],
   "partners": [

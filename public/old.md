@@ -144,3 +144,121 @@
 ]
 }
 }
+
+//// labs
+"labs": [
+{
+"title": "مختبر التحليل الحراري",
+"tools": [
+{
+"name": "جهاز التحليل الميكانيكي الديناميكي",
+"description": "لتحليل خصائص المواد الحرارية."
+},
+{
+"name": "جهاز المسح التفاضلي الحراري",
+"description": "لقياس التغيرات الحرارية في المواد."
+}
+]
+},
+{
+"title": "مختبر التحليل الطيفي",
+"tools": [
+{
+"name": "جهاز مطياف الأشعة تحت الحمراء",
+"description": "لدراسة التراكيب الجزيئية للمواد."
+},
+{
+"name": "جهاز مطياف الأشعة فوق البنفسجية والمرئية",
+"description": "لتحليل الطيف الضوئي."
+},
+{
+"name": "جهاز مطياف الامتصاص الذري",
+"description": "لقياس تركيز العناصر الكيميائية."
+}
+]
+},
+{
+"title": "مختبر قياس الخواص الميكانيكية",
+"tools": [
+{
+"name": "جهاز قياس مقاومة الصدم",
+"description": "لتحليل مقاومة المواد للصدمات."
+},
+{
+"name": "جهاز قياس إنسياب المصهور",
+"description": "لقياس تدفق المواد المنصهرة."
+}
+]
+},
+{
+"title": "مختبر التحليل المجهري والخواص السطحية",
+"tools": [
+{
+"name": "مجهر الضوء المستقطب",
+"description": "لتحديد الهياكل الميكروسكوبية."
+},
+{
+"name": "جهاز قياس زاوية التماس",
+"description": "لقياس التوتر السطحي."
+}
+]
+}
+],
+"labs": [
+{
+"title": "Thermal Analysis Laboratory",
+"tools": [
+{
+"name": "Dynamic Mechanical Analyzer",
+"description": "Analyzes thermal properties of materials."
+},
+{
+"name": "Differential Scanning Calorimeter",
+"description": "Measures thermal changes in materials."
+}
+]
+},
+{
+"title": "Spectroscopy Laboratory",
+"tools": [
+{
+"name": "Infrared Spectrometer",
+"description": "Studies molecular structures of materials."
+},
+{
+"name": "UV-Visible Spectrometer",
+"description": "Analyzes light spectrum."
+},
+{
+"name": "Atomic Absorption Spectrometer",
+"description": "Measures the concentration of chemical elements."
+}
+]
+},
+{
+"title": "Mechanical Properties Laboratory",
+"tools": [
+{
+"name": "Impact Resistance Tester",
+"description": "Analyzes material resistance to impacts."
+},
+{
+"name": "Melt Flow Indexer",
+"description": "Measures flow properties of melted materials."
+}
+]
+},
+{
+"title": "Microscopic and Surface Properties Laboratory",
+"tools": [
+{
+"name": "Polarized Light Microscope",
+"description": "Determines microscopic structures."
+},
+{
+"name": "Contact Angle Meter",
+"description": "Measures surface tension."
+}
+]
+}
+],

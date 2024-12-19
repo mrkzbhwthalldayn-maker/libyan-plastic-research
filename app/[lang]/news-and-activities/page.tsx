@@ -225,7 +225,7 @@ const ArticlesPage = async (props: {
                       ? extractText(article.enBody, 150)
                       : extractText(article.body, 150)
                   }
-                  link={`/${lang}/articles/${article.slug}`}
+                  link={`/${lang}/news-and-activities/${article.slug}`}
                 />
                 <Separator className="bg-foreground/50" />
               </div>
@@ -241,7 +241,7 @@ const ArticlesPage = async (props: {
                   title={lang === "en" ? article.enTitle : article.title}
                   date={article.createdAt.toString()}
                   imageUrl={article.poster!}
-                  href={`/${lang}/articles/${article.slug}`}
+                  href={`/${lang}/news-and-activities/${article.slug}`}
                   views={article.views}
                   authorName={article?.author?.fullName ?? "مشرف"}
                   authorImageUrl={article.poster!}

@@ -347,6 +347,7 @@ const links = [
   {
     title: "About",
     ar: "حول",
+    href: "about",
     subLinks: [
       {
         link: "/about#about",
@@ -368,6 +369,8 @@ const links = [
   {
     title: "Organizational Structure",
     ar: "الهيكل التنظيمي",
+    href: "organizational-structure",
+
     subLinks: [
       {
         link: "/organizational-structure#administration",
@@ -383,6 +386,53 @@ const links = [
         link: "/organizational-structure#labs",
         ar: "إدارة المعامل والتحاليل",
         en: "Laboratories and Analysis",
+      },
+    ],
+  },
+  {
+    title: "Labs",
+    ar: "المختبرات",
+    href: "labs",
+    subLinks: [
+      {
+        link: "/labs#polymer-chemistry-lab",
+        ar: "مختبر كيمياء البوليمر",
+        en: "Polymer Chemistry Lab",
+      },
+      {
+        link: "/labs#thermal-analysis-lab",
+        ar: "مختبر التحليل الحراري",
+        en: "Thermal Analysis Lab",
+      },
+      {
+        link: "/labs#molecular-analysis-lab",
+        ar: "مختبر التحليل الجزيئي",
+        en: "Molecular Analysis Lab",
+      },
+      {
+        link: "/labs#spectral-analysis-lab",
+        ar: "مختبر التحليل الطيفي",
+        en: "Spectral Analysis Lab",
+      },
+      {
+        link: "/labs#microscopic-analysis-lab",
+        ar: "مختبر التحليل المجهري",
+        en: "Microscopic Analysis Lab",
+      },
+      {
+        link: "/labs#polymer-technical-applications-lab",
+        ar: "مختبر التطبيقات التقنية للبوليمرات",
+        en: "Polymer Technical Applications Lab",
+      },
+      {
+        link: "/labs#polymer-shaping-lab",
+        ar: "مختبر تشكيل البوليمر",
+        en: "Polymer Shaping Lab",
+      },
+      {
+        link: "/labs#mechanical-properties-lab",
+        ar: "مختبر الخواص الميكانيكية",
+        en: "Mechanical Properties Lab",
       },
     ],
   },
@@ -435,13 +485,18 @@ export default function NavigationSheet() {
             {links.map((item) => (
               <AccordionItem
                 key={item.title}
-                className="border-none "
+                className="border-none"
                 value={item.title}
               >
-                <AccordionTrigger className="border-none my-1 hover:bg-accent px-2 rounded-md py-2 shadow">
+                <AccordionTrigger
+                  className={cn(
+                    "border-non my-1 hover:bg-accent px-2 rounded-md py-2 shadow",
+                    pathname.startsWith(`/${lang}/${item.href}`) && "bg-primary"
+                  )}
+                >
                   {lang === "ar" ? item.ar : item.title}
                 </AccordionTrigger>
-                <AccordionContent>
+                <AccordionContent dir={lang === "en" ? "ltr" : "rtl"}>
                   {item.subLinks ? (
                     <ul className="ml-4 flex flex-col items-start gap-1 space-y-2">
                       {item.subLinks.map((subLink, i) => (
@@ -527,7 +582,7 @@ const SheetLink = ({
     <li
       key={link}
       onClick={() => setOpen(!open)}
-      className="w-full text-right flex"
+      className="w-full text-start flex"
     >
       <CustomLink
         variant={"link"}

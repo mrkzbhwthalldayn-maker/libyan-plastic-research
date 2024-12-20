@@ -27,7 +27,7 @@ const Carousel = () => {
       },
       links: [
         {
-          href: `/${lang}/#our-vision`,
+          href: `/${lang}/about`,
           text: { ar: "اكتشف المزيد", en: "Discover More" },
         },
         // {
@@ -52,7 +52,7 @@ const Carousel = () => {
       },
       links: [
         {
-          href: `/${lang}/#labs`,
+          href: `/${lang}/labs`,
           text: { ar: "اكتشف مختبراتنا", en: "Explore Our Labs" },
         },
         // { href: `/${lang}/#goals`, text: { ar: "أهدافنا", en: "Our Goals" } },
@@ -74,7 +74,7 @@ const Carousel = () => {
       },
       links: [
         {
-          href: `/${lang}/#vision`,
+          href: `/${lang}/#our-vision`,
           text: { ar: "تعرف على رؤيتنا", en: "Learn About Our Vision" },
         },
         // {

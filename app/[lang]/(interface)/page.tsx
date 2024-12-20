@@ -126,17 +126,6 @@ const fieldsOfActivity: FieldOfActivity[] = [
 
 const trainingCourses: FieldOfActivity[] = [
   {
-    icon: FaChalkboardTeacher,
-    title: {
-      en: "Administrative, Financial, Quality, and Public Relations Training",
-      ar: "التدريب في المجالات الإدارية والمالية والجودة والعلاقات العامة",
-    },
-    description: {
-      en: "Training programs in administrative, financial, quality, and public relations fields, conducted in the Hashemite Kingdom of Jordan.",
-      ar: "برامج تدريبية في المجالات الإدارية والمالية والجودة والعلاقات العامة تُعقد في المملكة الأردنية الهاشمية.",
-    },
-  },
-  {
     icon: FaLaptopCode,
     title: {
       en: "ICDL Certification Course",
@@ -145,6 +134,29 @@ const trainingCourses: FieldOfActivity[] = [
     description: {
       en: "A course to obtain the International Computer Driving License (ICDL) certification.",
       ar: "دورة تدريبية لنيل شهادة الرخصة الدولية لقيادة الحاسب الآلي.",
+    },
+  },
+  {
+    icon: FaCheckCircle,
+    title: {
+      en: "ISO 17025 Quality Training for Engineers and Technicians",
+      ar: "تدريب على الجودة ISO 17025 للمهندسين والفنيين",
+    },
+    description: {
+      en: "A course on quality standards ISO 17025, tailored for engineers and technicians.",
+      ar: "دورة تدريبية على معايير الجودة ISO 17025 موجهة للمهندسين والفنيين.",
+    },
+  },
+
+  {
+    icon: FaMicroscope,
+    title: {
+      en: "Mechanical Properties of Polymers",
+      ar: "خواص البوليميرات الميكانيكية",
+    },
+    description: {
+      en: "A specialized course on the mechanical properties of polymers, conducted in collaboration with the University of Marrakesh and UNESCO.",
+      ar: "دورة متخصصة في الخواص الميكانيكية للبوليميرات بالتعاون مع جامعة مراكش ومنظمة اليونسكو.",
     },
   },
   {
@@ -159,17 +171,6 @@ const trainingCourses: FieldOfActivity[] = [
     },
   },
   {
-    icon: FaMicroscope,
-    title: {
-      en: "Mechanical Properties of Polymers",
-      ar: "خواص البوليميرات الميكانيكية",
-    },
-    description: {
-      en: "A specialized course on the mechanical properties of polymers, conducted in collaboration with the University of Marrakesh and UNESCO.",
-      ar: "دورة متخصصة في الخواص الميكانيكية للبوليميرات بالتعاون مع جامعة مراكش ومنظمة اليونسكو.",
-    },
-  },
-  {
     icon: FaShieldAlt,
     title: {
       en: "Safety and Security Training",
@@ -180,17 +181,7 @@ const trainingCourses: FieldOfActivity[] = [
       ar: "برامج تدريبية تركز على ممارسات الأمن والسلامة في مكان العمل.",
     },
   },
-  {
-    icon: FaCheckCircle,
-    title: {
-      en: "ISO 17025 Quality Training for Engineers and Technicians",
-      ar: "تدريب على الجودة ISO 17025 للمهندسين والفنيين",
-    },
-    description: {
-      en: "A course on quality standards ISO 17025, tailored for engineers and technicians.",
-      ar: "دورة تدريبية على معايير الجودة ISO 17025 موجهة للمهندسين والفنيين.",
-    },
-  },
+
   {
     icon: FaCheckCircle,
     title: {
@@ -200,6 +191,17 @@ const trainingCourses: FieldOfActivity[] = [
     description: {
       en: "A course on quality standards ISO 9001, designed for administrative and financial personnel.",
       ar: "دورة تدريبية على معايير الجودة ISO 9001 مصممة للإداريين والماليين.",
+    },
+  },
+  {
+    icon: FaChalkboardTeacher,
+    title: {
+      en: "Administrative, Financial, Quality, and Public Relations Training",
+      ar: "التدريب في المجالات الإدارية والمالية والجودة والعلاقات العامة",
+    },
+    description: {
+      en: "Training programs in administrative, financial, quality, and public relations fields, conducted in the Hashemite Kingdom of Jordan.",
+      ar: "برامج تدريبية في المجالات الإدارية والمالية والجودة والعلاقات العامة تُعقد في المملكة الأردنية الهاشمية.",
     },
   },
 ];
@@ -332,7 +334,7 @@ export default async function Home({
         <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
           <LangRenderer ar="مجالات العمل" en="Field Of Activity" />
         </h3>
-        <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="container grid items-center md:grid-cols-2 lg:grid-cols-3 gap-10">
           {fieldsOfActivity.map((field, index) => (
             <FieldOfActivityCard
               key={index}
@@ -350,13 +352,22 @@ export default async function Home({
             <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl phone-only:text-center">
               <LangRenderer ar="اهدافنا" en="Our Goals" />
             </h3>
-            <ul className="grid gap-2 phone-only:text-center">
+            <ol className="grid gap-4 md:gap-5 phone-only:text-start">
               {dictionary.goals.map((goal, i) => (
-                <AnimatedCard key={i} initialY={20 + i}>
-                  <li className="md:text-lg text-base">- {goal}</li>
+                <AnimatedCard key={i} XorY="x" initialX={i * 5 + 20}>
+                  <li
+                    className={cn(
+                      "md:text-lg text-base bg-primary/20 py-1 px-2 text-primary relative before:absolute before:bg-primary before:w-2 before:right-[-8px] before:top-0 before:h-full",
+                      lang === "en"
+                        ? "rounded-r-md before:rounded-l-md"
+                        : "rounded-l-md before:rounded-r-md"
+                    )}
+                  >
+                    {goal}
+                  </li>
                 </AnimatedCard>
               ))}
-            </ul>
+            </ol>
           </div>
           <AnimatedCard
             className={cn(
@@ -390,127 +401,52 @@ export default async function Home({
           </AnimatedCard>
         </div>
       </section>
-      <div className="sm:gap-4 gap-2 text-center grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-row bg-cardColor px-4 md:px-16 py-10 mb-2 text-foreground bg-secondary">
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter
-              to={dictionary.scientific_events.conferences}
-              duration={0.9}
-            />{" "}
-            +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="المؤتمرات العلمية التي نظمها المركز."
-              en="Scientific conferences organized by the center."
-            />
-          </p>
-        </div>
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter to={dictionary.scientific_events.workshops} /> +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="ورش العمل التي عقدها المركز."
-              en="Workshops conducted by the center."
-            />
-          </p>
-        </div>
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter
-              to={dictionary.scientific_events.scientific_seminars}
-            />{" "}
-            +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="الندوات العلمية التي نظمها المركز."
-              en="Scientific seminars held by the center."
-            />
-          </p>
-        </div>
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter
-              to={dictionary.scientific_events.scientific_meetings}
-            />{" "}
-            +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="الاجتماعات العلمية التي تمت في المركز."
-              en="Scientific meetings conducted at the center."
-            />
-          </p>
-        </div>
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter
-              to={dictionary.scientific_events.internal_training_courses}
-            />{" "}
-            +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="الدورات التدريبية الداخلية التي نظمها المركز."
-              en="Internal training courses organized by the center."
-            />
-          </p>
-        </div>
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter
-              to={dictionary.scientific_events.external_training_courses}
-            />{" "}
-            +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="الدورات التدريبية الخارجية التي حضرها أعضاء المركز."
-              en="External training courses attended by center members."
-            />
-          </p>
-        </div>
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter to={dictionary.scientific_events.lectures} /> +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="المحاضرات التي قدمها المركز."
-              en="Lectures delivered by the center."
-            />
-          </p>
-        </div>
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter to={dictionary.scientific_events.open_days} /> +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="الأيام المفتوحة التي نظمها المركز."
-              en="Open days organized by the center."
-            />
-          </p>
-        </div>
-        <div className="px-2 justify-center hover:bg-background/40 w-full flex flex-col items-center bg-background/60 shadow-md border py-3 rounded-md">
-          <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
-            <AnimatedCounter
-              to={
-                dictionary.scientific_events.national_and_religious_activities
-              }
-            />{" "}
-            +
-          </h4>
-          <p>
-            <LangRenderer
-              ar="الأنشطة الوطنية والدينية التي شارك فيها المركز."
-              en="National and religious activities participated by the center."
-            />
-          </p>
-        </div>
+      <div className="sm:gap-4 gap-10 text-center bg-secondary items-start grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-row  px-4 md:px-16 py-10 mb-2">
+        <StatiscCard
+          to={dictionary.scientific_events.conferences}
+          ar="المؤتمرات العلمية التي نظمها المركز."
+          en="Scientific conferences organized by the center."
+        />
+        <StatiscCard
+          to={dictionary.scientific_events.workshops}
+          ar="ورش العمل التي عقدها المركز."
+          en="Workshops conducted by the center."
+        />
+        <StatiscCard
+          to={dictionary.scientific_events.scientific_seminars}
+          ar="الندوات العلمية التي نظمها المركز."
+          en="Scientific seminars held by the center."
+        />
+        <StatiscCard
+          to={dictionary.scientific_events.scientific_meetings}
+          ar="الاجتماعات العلمية التي تمت في المركز."
+          en="Scientific meetings conducted at the center."
+        />
+        <StatiscCard
+          to={dictionary.scientific_events.internal_training_courses}
+          ar="الدورات التدريبية الداخلية التي نظمها المركز."
+          en="Internal training courses organized by the center."
+        />
+        <StatiscCard
+          to={dictionary.scientific_events.external_training_courses}
+          ar="الدورات التدريبية الخارجية التي حضرها أعضاء المركز."
+          en="External training courses attended by center members."
+        />
+        <StatiscCard
+          to={dictionary.scientific_events.lectures}
+          ar="المحاضرات التي قدمها المركز."
+          en="Lectures delivered by the center."
+        />
+        <StatiscCard
+          to={dictionary.scientific_events.open_days}
+          ar="الأيام المفتوحة التي نظمها المركز."
+          en="Open days organized by the center."
+        />
+        <StatiscCard
+          to={dictionary.scientific_events.national_and_religious_activities}
+          ar="الأنشطة الوطنية والدينية التي شارك فيها المركز."
+          en="National and religious activities participated by the center."
+        />
       </div>
       <section id="q&a" className="py-10">
         <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl text-center">
@@ -525,7 +461,7 @@ export default async function Home({
         <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
           <LangRenderer ar="الدورات التدريبية" en="Training Courses" />
         </h3>
-        <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="container content-start grid md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center items-start">
           {trainingCourses.map((field, index) => (
             <FieldOfActivityCard
               key={index}
@@ -540,3 +476,24 @@ export default async function Home({
     </main>
   );
 }
+
+const StatiscCard = ({
+  to,
+  ar,
+  en,
+}: {
+  to: number;
+  ar: string;
+  en: string;
+}) => {
+  return (
+    <div className="px-2 justify-center w-full flex flex-col items-center py-3 rounded-md">
+      <h4 className="font-bold text-3xl flex gap-1 sm:justify-start justify-center items-center">
+        <AnimatedCounter to={to} duration={0.9} /> +
+      </h4>
+      <p>
+        <LangRenderer ar={ar} en={en} />
+      </p>
+    </div>
+  );
+};

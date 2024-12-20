@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import Header from "./components/header";
-// import { redirection } from "@/lib/role-access-server";
-import "../[lang]/globals.css";
 import NavigationRail, { DashboardHeader } from "./components/naviagation-rail";
 export const metadata: Metadata = {
   title: {

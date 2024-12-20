@@ -138,11 +138,11 @@ export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
 
   return (
     <NavigationMenu
-      className="hidden md:flex"
+      className="hidden lg:flex"
       dir={lang === "ar" ? "rtl" : "ltr"}
       viewport={`${lang === "ar" && "right-0"}`}
     >
-      <NavigationMenuList dir={lang === "ar" ? "rtl" : "ltr"} className="gap-5">
+      <NavigationMenuList dir={lang === "ar" ? "rtl" : "ltr"} className="gap-3">
         <NavigationMenuItem>
           <Link
             href={`/${lang}`}
@@ -236,7 +236,7 @@ export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
             <NavigationMenuLink
               asChild // Render as a span instead of an anchor when inside <Link>
             >
-              <LangRenderer en="Research and Studies" ar="البحوث و الدراسات" />
+              <LangRenderer en="Researches" ar="البحوث" />
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -255,7 +255,7 @@ export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
             <NavigationMenuLink
               asChild // Render as a span instead of an anchor when inside <Link>
             >
-              <LangRenderer en="News and Activities" ar="الأخبار و الأنشطة" />
+              <LangRenderer en="News" ar="الأخبار" />
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -271,7 +271,7 @@ export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
             )}
           >
             <NavigationMenuLink asChild>
-              <LangRenderer en="All Articles" ar="كل المقالات" />
+              <LangRenderer en="Articles" ar="المقالات" />
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -445,11 +445,7 @@ export default function NavigationSheet() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button
-          variant={"ghost"}
-          className="hidden phone-only:flex"
-          size={"icon"}
-        >
+        <Button variant={"ghost"} className="lg:hidden flex" size={"icon"}>
           <FaBars size={24} />
         </Button>
       </SheetTrigger>

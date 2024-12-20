@@ -32,6 +32,7 @@ import { extractText } from "@/lib/text";
 import { Separator } from "@/components/ui/separator";
 import ArticleSettings from "@/components/ui/article-settings";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { formatDate } from "@/lib/date";
 
 // **2. Generate Metadata**
 export async function generateMetadata(props: {
@@ -239,7 +240,7 @@ const ArticlesPage = async (props: {
                   key={index}
                   description={lang === "en" ? article.enBody : article.body}
                   title={lang === "en" ? article.enTitle : article.title}
-                  date={article.createdAt.toString()}
+                  date={formatDate(new Date(article.createdAt), lang as Locale)}
                   imageUrl={article.poster!}
                   href={`/${lang}/news-and-activities/${article.slug}`}
                   views={article.views}

@@ -2,28 +2,16 @@
 import { Sidebar, Menu, sidebarClasses } from "react-pro-sidebar";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FaBars, FaMoneyCheckAlt, FaUsers } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { useParams, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import {
-  FaCodePullRequest,
-  FaRegNewspaper,
-  FaUserDoctor,
-} from "react-icons/fa6";
-import { TfiLayoutMediaCenterAlt } from "react-icons/tfi";
-import {
-  MdLocalOffer,
-  MdOutline6FtApart,
-  MdOutlineManageAccounts,
-} from "react-icons/md";
+import { FaRegNewspaper } from "react-icons/fa6";
+import { MdOutlineManageAccounts } from "react-icons/md";
 import { IconType } from "react-icons/lib";
 import { GoHome } from "react-icons/go";
 import Link from "next/link";
-import { GiMuscleFat, GiMuscleUp } from "react-icons/gi";
-import { TbInfoTriangle, TbReportSearch } from "react-icons/tb";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { HiMiniBars2 } from "react-icons/hi2";
-import { CgSearchFound } from "react-icons/cg";
 import ToggleTheme from "@/components/theme-toggle";
 
 const NavigationRailItem = ({
@@ -40,6 +28,8 @@ const NavigationRailItem = ({
   onClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined;
 }) => {
   const pathname = usePathname();
+  const { lang } = useParams();
+
   return (
     <Link
       aria-label={name}
@@ -49,7 +39,7 @@ const NavigationRailItem = ({
         "whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
         collapsed && "justify-center w-full rounded-none",
         pathname === href && "text-primary bg-primary/20",
-        pathname.startsWith(`${href}/`) && "text-primary bg-primary/20"
+        pathname.startsWith(`/${lang}${href}`) && "text-primary bg-primary/20"
       )}
       href={href}
     >
@@ -87,8 +77,7 @@ const NavigationRailHomeItem = ({
         "flex justify-between hover:bg-primary/10 px-4 py-2 w-[80%] mx-auto items-center  gap-1 sm:gap-2 ",
         "whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
         collapsed && "justify-center w-full rounded-none",
-
-        href === pathname && "text-primary bg-primary/20"
+        `/${lang}${href}` === pathname && "text-primary bg-primary/20"
       )}
       href={href}
     >

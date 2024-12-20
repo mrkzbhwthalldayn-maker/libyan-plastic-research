@@ -51,11 +51,14 @@ const Header = async ({
           varians={"link"}
         />
       </div>
-      <div dir="rtl" className="flex justify-between container items-center">
-        <ToggleTheme className="phone-only:hidden" />
+      <div
+        dir="rtl"
+        className="flex justify-between xl:container px-4 items-center"
+      >
+        <ToggleTheme className="hidden lg:flex" />
         <NavigationSheet />
         <NavigationMenuDesktop labs={dictionary.labs} />
-        <div className="md:w-24 w-16 overflow-hidden">
+        <div className="md:w-32 w-24 overflow-hidden">
           <Image
             src={"/logo.png"}
             alt="logo"

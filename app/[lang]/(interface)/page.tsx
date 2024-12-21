@@ -32,6 +32,7 @@ import {
 import { Card } from "@/components/cards";
 import { formatDate } from "@/lib/date";
 import { Article, User } from "@prisma/client";
+import { CustomLink } from "@/components/custom-link";
 
 const fieldsOfActivity: FieldOfActivity[] = [
   {
@@ -228,7 +229,13 @@ export default async function Home({
       <section>
         <Carousel />
       </section>
-      <section className="content-center relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl'">
+      <section className="content-center relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-10 md:shadow-xl">
+        <h3 className="font-bold text-foreground mb-10 text-2xl phone-only:text-xl">
+          <LangRenderer
+            ar="الاستشارات العلمية والفنية "
+            en="Scientific and Technical Consultations"
+          />
+        </h3>
         <Marquee
           pauseOnHover
           repeat={100}
@@ -349,9 +356,14 @@ export default async function Home({
       <section id="our-goals" className="min-h-[50vh] py-20">
         <div className="container phone-only:gap-10 grid md:grid-cols-2">
           <div className="content-center">
-            <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl phone-only:text-center">
-              <LangRenderer ar="اهدافنا" en="Our Goals" />
-            </h3>
+            <div className="flex justify-between items-end mb-5">
+              <h3 className="font-bold text-primary text-3xl phone-only:text-xl">
+                <LangRenderer ar="اهدافنا" en="Our Goals" />
+              </h3>
+              <CustomLink href={`/${lang}/goals`} variant={"link"}>
+                {lang === "en" ? "details" : "التفاصيل"}
+              </CustomLink>
+            </div>
             <ol className="grid gap-4 md:gap-5 phone-only:text-start">
               {dictionary.goals.map((goal, i) => (
                 <AnimatedCard key={i} XorY="x" initialX={i * 5 + 20}>

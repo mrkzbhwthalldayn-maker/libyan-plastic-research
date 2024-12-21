@@ -14,3 +14,8 @@ bun dev
 npx @next/codemod@canary next-async-request-api .
 
 ```
+
+add
+استشارات title
+search bar
+add goals page

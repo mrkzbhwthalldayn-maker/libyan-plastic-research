@@ -8,6 +8,9 @@ import NavigationSheet, { NavigationMenuDesktop } from "./navigation";
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
+import Link from "next/link";
+import { CustomLink } from "@/components/custom-link";
+import { IoSearchOutline } from "react-icons/io5";
 
 const Header = async ({
   lang,
@@ -55,10 +58,20 @@ const Header = async ({
         dir="rtl"
         className="flex justify-between xl:container px-4 items-center"
       >
-        <ToggleTheme className="hidden lg:flex" />
-        <NavigationSheet />
+        <div className="hidden lg:flex justify-center gap-2 items-center">
+          <CustomLink href={`/${lang}/search`} size={"icon"} variant={"ghost"}>
+            <IoSearchOutline className="w-4 h-4" />
+          </CustomLink>
+          <ToggleTheme />
+        </div>
+        <div className="md:hidden flex justify-center gap-2 items-center">
+          <CustomLink href={`/${lang}/search`} size={"icon"} variant={"ghost"}>
+            <IoSearchOutline className="w-4 h-4" />
+          </CustomLink>
+          <NavigationSheet />
+        </div>
         <NavigationMenuDesktop labs={dictionary.labs} />
-        <div className="md:w-32 w-24 overflow-hidden">
+        <Link href={`/${lang}`} className="md:w-32 w-24 overflow-hidden">
           <Image
             src={"/logo.png"}
             alt="logo"
@@ -67,7 +80,7 @@ const Header = async ({
             priority
             className="w-full h-full object-center object-cover"
           />
-        </div>
+        </Link>
       </div>
     </header>
   );

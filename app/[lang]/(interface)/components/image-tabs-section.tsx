@@ -37,8 +37,7 @@ const tabs: Tab[] = [
       ar: "البحث العلمي، التعليم، الاستشارات، التوعية.",
       en: "Scientific research, education, consultancy, and awareness.",
     },
-    imageUrl:
-      "https://images.unsplash.com/photo-1548192746-dd526f154ed9?q=80&w=1200&auto=format",
+    imageUrl: "/images/q_a/q_a1.jpg",
   },
   {
     question: {
@@ -49,8 +48,7 @@ const tabs: Tab[] = [
       ar: "لأنه يساهم في تطوير تقنيات اللدائن، ودعم الاقتصاد المحلي، وحماية البيئة.",
       en: "It contributes to advancing polymer technology, supporting the local economy, and protecting the environment.",
     },
-    imageUrl:
-      "https://images.unsplash.com/photo-1693581176773-a5f2362209e6?q=80&w=1200&auto=format",
+    imageUrl: "/images/q_a/q_a2.jpg",
   },
 ];
 

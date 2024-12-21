@@ -34,6 +34,14 @@ const Footer = async ({
       title: isArabic ? "الأخبار و الأنشطة" : "News & Activities",
       href: "/news-and-activities",
     },
+    {
+      title: isArabic ? "المختبرات" : "Labs",
+      href: "/labs",
+    },
+    {
+      title: isArabic ? "المقالات" : "Articles",
+      href: "/articles",
+    },
   ];
 
   const socialLinks = [
@@ -136,7 +144,7 @@ const SocailMediaLink = ({
       <CustomLink
         variant={"ghost"}
         className={cn("text-foreground/80 group")}
-        href={`/${lang}/${href}`}
+        href={`/${lang}${href}`}
       >
         {Icon && (
           <Icon className="ml-3 text-foreground/80 group-hover:text-foreground" />

@@ -62,9 +62,7 @@ export const generateMetadata = async ({
   };
 };
 
-export const GoalsPage = async (props: {
-  params: Promise<{ lang: Locale }>;
-}) => {
+const GoalsPage = async (props: { params: Promise<{ lang: Locale }> }) => {
   const params = await props.params;
   const lang = params.lang;
 

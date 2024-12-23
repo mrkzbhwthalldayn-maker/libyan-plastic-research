@@ -250,10 +250,73 @@ const getArticleById = async (slug: string, author = false) => {
   }
 };
 
+const searchArticles = unstable_cache(
+  async ({ content, start = false }: { content?: string; start?: boolean }) => {
+    if (!start) return [];
+    const filter: any = content
+      ? {
+          OR: [
+            {
+              title: {
+                contains: content,
+                mode: "insensitive", // Case-insensitive search
+              },
+            },
+            {
+              enTitle: {
+                contains: content,
+                mode: "insensitive", // Case-insensitive search
+              },
+            },
+            {
+              body: {
+                contains: content,
+                mode: "insensitive",
+              },
+            },
+            {
+              enBody: {
+                contains: content,
+                mode: "insensitive",
+              },
+            },
+          ],
+        }
+      : {}; // No filter if title is undefined or empty
+
+    try {
+      const articles = await prisma.article.findMany({
+        where: filter,
+        select: {
+          slug: true,
+          title: true,
+          enTitle: true,
+          body: true,
+          enBody: true,
+        },
+      });
+      if (!articles) {
+        return [];
+      }
+      if (!articles || articles.length === 0) {
+        console.log("لم يتم العثور على اي مقالة.");
+        return [];
+      }
+      return articles;
+    } catch (error) {
+      console.dir(error, { depth: null });
+      return [];
+    }
+  },
+  ["articles"],
+  { tags: ["articles"] }
+);
+
 export {
   createArtcle,
   getArticles,
   deleteArticle,
   getArticleById,
   updateArticle,
+  searchArticles,
 };

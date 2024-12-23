@@ -253,6 +253,13 @@ export default async function Home({
             )
           )}
         </Marquee>
+        <CustomLink
+          href={`/${lang}/scientific-and-technical-consultations`}
+          variant={"link"}
+          className="mt-5"
+        >
+          {lang === "en" ? "Details" : "التفاصيل"}
+        </CustomLink>
       </section>
       <section id="our-vision" className="min-h-[50vh] bg-secondary">
         <div className="container flex justify-between phone-only:flex-col phone-only:gap-5 py-20 items-center">
@@ -361,7 +368,7 @@ export default async function Home({
                 <LangRenderer ar="اهدافنا" en="Our Goals" />
               </h3>
               <CustomLink href={`/${lang}/goals`} variant={"link"}>
-                {lang === "en" ? "details" : "التفاصيل"}
+                {lang === "en" ? "Details" : "التفاصيل"}
               </CustomLink>
             </div>
             <ol className="grid gap-4 md:gap-5 phone-only:text-start">

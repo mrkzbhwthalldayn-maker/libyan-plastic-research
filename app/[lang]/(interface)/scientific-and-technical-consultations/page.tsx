@@ -68,7 +68,7 @@ const ConsultationsPage = async (props: {
   params: Promise<{ lang: Locale }>;
 }) => {
   const params = await props.params;
-  const lang = (await params).lang;
+  const lang = params.lang;
 
   const content = {
     ar: {

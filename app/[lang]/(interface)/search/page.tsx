@@ -477,8 +477,8 @@ const SearchPage = async ({
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <div className="flex justify-between items-center">
-          <h1 className="font-extrabold my-10 md:text-4xl text-2xl">
+        <div className="flex my-10 justify-between items-center phone-only:flex-col phone-only:justify-start phone-only:items-start">
+          <h1 className="font-extrabold md:text-4xl text-2xl">
             {lang === "en" ? "Search" : "البحث"}
           </h1>
 

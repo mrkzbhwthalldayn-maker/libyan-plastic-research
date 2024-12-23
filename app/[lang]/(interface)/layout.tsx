@@ -32,7 +32,7 @@ export default async function RootLayout({
         lang={lang as Locale}
         className="border-b border-b-foreground/20"
       />
-      <div className="md:mt-28 mt-20">{children}</div>
+      <div className="md:mt-28 mt-24">{children}</div>
       <Footer lang={lang} />
     </div>
   );

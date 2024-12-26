@@ -82,7 +82,6 @@ const info = {
         "أن نكون مركزاً بحثياً متميزاً في مجال البوليمرات (اللدائن) وشريكاً في التنمية وصمام الأمان للبيئة وصحة المواطن | نشر بحوث ودراسات علمية في مجال البوليمرات تهدف إلى الاستفادة من موارد الوطن الطبيعية وحماية البيئة وصحة المواطن وتعزيز الاقتصاد.",
       link: "/#our-vision",
     },
-
     organizational_structure: [
       {
         title: "مدير عام المركز | General Director",
@@ -184,6 +183,21 @@ const info = {
         link: "/scientific-and-technical-consultations",
       },
     ],
+    fields_of_activity: [
+      {
+        title: "مجالات النشاط",
+        link: "/#fields-of-activity",
+        description: [
+          "تنفيذ البحوث العلمية.",
+          "تنفيذ مشاريع التخرج لطلبة الجامعات والمعاهد.",
+          "تقديم الاستشارات العلمية والفنية.",
+          "حل المشاكل التي تواجة القطاع الصناعي (العام والخاص).",
+          "مطابقة جودة المنتجات البلاستيكية.",
+          "التوعية البيئية.",
+          "خدمة المجتمع المحلي.",
+        ].join(","),
+      },
+    ],
   },
   en: {
     about: {
@@ -233,7 +247,6 @@ const info = {
         "To be a distinguished research center in the field of polymers (plastics), a partner in development, and a safeguard for the environment and public health. | To publish scientific research and studies in the field of polymers aimed at utilizing natural resources, protecting the environment and public health, and enhancing the economy.",
       link: "/#our-vision",
     },
-
     organizational_structure: [
       {
         title: "مدير عام المركز | General Director",
@@ -333,6 +346,21 @@ const info = {
         link: "/scientific-and-technical-consultations",
       },
     ],
+    fields_of_activity: [
+      {
+        title: "fields of activity",
+        link: "/#fields-of-activity",
+        description: [
+          "Conducting scientific research.",
+          "Implementing graduation projects for university and institute students.",
+          "Providing scientific and technical consultations.",
+          "Solving problems facing the industrial sector (public and private).",
+          "Ensuring the quality conformity of plastic products.",
+          "Environmental awareness.",
+          "Serving the local community.",
+        ].join(","),
+      },
+    ],
   },
 };
 
@@ -398,6 +426,18 @@ function searchCenterData(query: string, lang: Locale): SearchResult[] {
       );
     }
   });
+  data.fields_of_activity.forEach((consultation) => {
+    if (
+      consultation.title.includes(query) ||
+      consultation.description.includes(query)
+    ) {
+      addResult(
+        consultation.title,
+        consultation.description,
+        consultation.link
+      );
+    }
+  });
 
   // Search "labs"
   data.labs.forEach((lab) => {
@@ -405,25 +445,10 @@ function searchCenterData(query: string, lang: Locale): SearchResult[] {
       addResult(lab.title, lab.description, lab.link);
     }
   });
-
-  // Search "partners"
-  // centerData.partners.forEach((partner) => {
-  //   if (partner.title.includes(query) || partner.description.includes(query)) {
-  //     addResult(partner.title, partner.description, partner.link);
-  //   }
-  // });
-
   return results;
 }
 
-// Example Usage
 let query = "                             "; // Search term in Arabic or English
-// try {
-//   const searchResults = searchCenterData(query);
-//   console.log(searchResults);
-// } catch (error) {
-//   console.error(error.message);
-// }
 
 const SearchPage = async ({
   searchParams,

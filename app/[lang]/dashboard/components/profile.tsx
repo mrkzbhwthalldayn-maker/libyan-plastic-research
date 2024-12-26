@@ -2,6 +2,8 @@ import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Info } from "lucide-react";
+import Logout from "@/components/logout";
+import { IoMdLogOut } from "react-icons/io";
 
 interface Props {
   fullName: string;
@@ -18,10 +20,15 @@ const Profile = ({ fullName, role }: Props) => {
         <h3 className=" font-semibold text-lg">{fullName}</h3>
         <div>{role}</div>
       </div>
-      <Avatar>
+      <Logout>
+        <Button variant={"destructive"} size={"icon"}>
+          <IoMdLogOut className="w-4 h-4" />
+        </Button>
+      </Logout>
+      {/* <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
+      </Avatar> */}
     </div>
   );
 };

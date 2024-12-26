@@ -174,5 +174,43 @@
     "Cengiz Turkish Construction Company",
     "Amitec Libya for GRP Manufacturing",
     "Elite Plastic Industries Company"
-  ]
+  ],
+  "projects": [
+    {
+      "slug": "albrnamj-aldryby-altqny-1lprc-t0-ttqnyt-wtshkyl-almwad-albolymryh",
+      "title": "Technical Training Program 1LPRC-T0: Polymer Material Techniques and Molding",
+      "period": "6~8",
+      "goals": "This program provides theoretical knowledge and practical training on the techniques used in the molding and manufacturing of plastic products.",
+      "description": "Introduction to Polymer Materials\n\nHistorical Overview - Key Terms - Polymer Structure - Molecular Forces in Polymers - Classification of Polymers.\n\nPolymerization\n\nLinear Growth Polymerization (Condensation Polymerization) - Chain Growth Polymerization (Addition Polymerization) - Coordination Polymerization - Copolymerization - Polymerization Conditions.\n\nMolecular Weight and Methods of Determination\n\nIntroduction - Types of Molecular Weight - Methods of Determining Molecular Weight - Polymer Fractionation and Molecular Weight Distribution.\n\nPhysical Properties of Polymers\n\nIntroduction - Crystallization and Crystalline Polymers - Glass Transition and Amorphous Polymers.\n\nMechanical Properties of Polymers\n\nIntroduction - Stress and Strain - Creep Properties - Impact Resistance - Hardness - Dynamic Mechanical Properties.\n\nChemical Properties of Polymers\n\nIntroduction - Polymer Identification - Chemical Structure and its Relation to Polymer Properties."
+    },
+    {
+      "slug": "albrnamj-aldryby-altarssy-2lprc-t0-elm-albolymrat",
+      "title": "Specialized Training Program 2LPRC-T0: Polymer Science",
+      "period": "10~12",
+      "goals": "This program focuses on polymer science. We offer specialized theoretical knowledge and practical aspects that support it. Through this program, we aim to create specialized cadres in the field of polymers and plastic industries.",
+      "description": "Introduction to Polymer Materials\n\nHistorical Overview - Key Terms - Polymer Structure - Molecular Forces in Polymers - Classification of Polymers.\n\nPolymerization\n\nLinear Growth Polymerization (Condensation Polymerization) - Chain Growth Polymerization (Addition Polymerization) - Coordination Polymerization - Copolymerization - Polymerization Conditions.\n\nMolecular Weight and Methods of Determination\n\nIntroduction - Types of Molecular Weight - Methods of Determining Molecular Weight - Polymer Fractionation and Molecular Weight Distribution.\n\nPhysical Properties of Polymers\n\nIntroduction - Crystallization and Crystalline Polymers - Glass Transition and Amorphous Polymers.\n\nMechanical Properties of Polymers\n\nIntroduction - Stress and Strain - Creep Properties - Impact Resistance - Hardness - Dynamic Mechanical Properties.\n\nChemical Properties of Polymers\n\nIntroduction - Polymer Identification - Chemical Structure and its Relation to Polymer Properties.\n\nPolymer Molding Techniques\n\nMelt Flow Index - Additives - Compression Molding - Practical Training on Compression Molding - Injection Molding - Practical Training on Injection Molding - Rotational Molding - Thermoforming Under Vacuum Pressure - Calendering Manufacturing.\n\nChemistry and Technology of Elastomeric Polymers\n\nIntroduction - Natural Rubber - Styrene-Butadiene Rubber - Polybutadiene Rubber - Neoprene Rubber - Butyl Rubber - Synthetic Isoprene Rubber - Silicone Rubber - Polyurethane Elastomers - Vulcanization of Rubber.\n\nChemistry and Technology of Synthetic Fibers\n\nIntroduction - Basic Properties of Polymer Fibers - Manufacturing Synthetic Fibers - Rayon Chemistry and Technology - Cellulose Acetate Chemistry and Technology - Polyester Chemistry and Technology - Nylon Fiber Chemistry and Technology.\n\nIndustrially Important Polymers\n\nPolyethylene - Polypropylene - Polyvinyl Chloride - Polystyrene - Polycarbonate.\n\nPolymers and the Environment\n\nPolymers in Our Daily Lives - Environmental Issues of Plastic Waste - Numbers and Marks on Plastic Products - Recycling Plastic Waste - Biodegradable Polymers."
+    },
+    {
+      "slug": "albrnamj-aldryby-altarssy-3lprc-t0-albolymr-olymfnt",
+      "title": "Specialized Training Program 3LPRC-T0: Polyolefins",
+      "period": "6~8",
+      "goals": "This program focuses on polyolefins, as they dominate global plastic production due to their variety and wide range of uses. Polyolefins are derived from petroleum and natural gas. Through this program, we aim to create national cadres capable of working in this promising field, which is an available option for Libya to increase national income.",
+      "description": "Introduction to Polymer Materials\n\nHistorical Overview - Key Terms - Classification of Polymers.\n\nPetrochemical Materials\n\nIntroduction - Raw Material Sources in Petrochemical Industries - Petroleum Distillates and the Products Derived from Them - Manufacturing of Intermediate Petrochemical Materials.\n\nPolyolefins\n\nIntroduction - Importance and Uses of Polyolefins - General Properties of Polyolefins - Polyolefin Molding Techniques - Most Common Polyolefins - Polyolefin Testing.\n\nPolyethylene\n\nOverview - Types and Properties - Production - Recycling.\n\nPolypropylene\n\nOverview - Types and Properties - Production - Recycling.\n\nPolyolefin-Based Materials\n\nBlended Olefins - Composite Olefins - Olefin Films and Fibers - Olefins Reinforced with Elastomers.\n\nPolyolefins and the Environment\n\nEnvironmental Factors and Their Impact on Polyolefin Properties - Degradation of Polyolefins."
+    },
+    {
+      "slug": "albrnamj-aldryby-altqny-4lprc-t0-aljhd-albyyy-fi-alanabib-alblstykh",
+      "title": "Technical Training Program 4LPRC-T0: Environmental Stress Cracking in Plastic Pipes",
+      "period": "6",
+      "goals": "This program provides theoretical knowledge and practical training on the phenomenon of environmental stress cracking in plastic pipes, as it is one of the main causes of plastic pipe failure. This program helps individuals working with plastic pipes understand this phenomenon in-depth and ultimately assist in solving the problem.",
+      "description": "Introduction to Polymer Materials\n\nGeneral Overview - Key Terms - Polymer Classification - Plastics.\n\nCracking in Plastics\n\nUnderstanding Environmental Stress Cracking - Occurrence of Environmental Stress Cracking - Mechanism of Environmental Stress Cracking - Factors Affecting Environmental Stress Cracking - Methods for Measuring Environmental Stress Cracking.\n\nPlastic Pipes\n\nCommon Plastics Used in Pipes - Polyvinyl Chloride Pipes - High-Density Polyethylene Pipes - Reducing Environmental Stress Cracking in Pipes - Practical Training."
+    },
+    {
+      "slug": "albrnamj-aldryby-altwoyy-5lprc-t0-aedat-tdwyr-alblstykh",
+      "title": "Awareness Training Program 5LPRC-T0: Plastic Recycling",
+      "period": "3",
+      "goals": "This program focuses on environmental awareness and the issue of unsafe disposal of plastic waste, highlighting the most important solutions to mitigate the environmental pollution caused by plastic waste, which is plastic recycling.",
+      "description": "Plastics\n\nGeneral Introduction - Technological Classification of Polymer Materials - Importance of Environmental Awareness.\n\nPlastic Recycling\n\nDefinition of Plastic Recycling - Various Facts about Plastic Recycling - Plastic Recycling Codes - Importance of the Recycling Process - Types of Plastics that Can Be Recycled - Steps in Plastic Recycling - Plastic Recycling Machines and Equipment - Properties of Products Made from Recycled Plastics. Challenges Faced in Plastic Recycling.\n\nCase Study\n\nStudy of a Profitable Production Project for Plastic Recycling - Field Visit (Subject to Availability)."
+    }
+  ],
+  "other_projects": "Other Training Programs That Can Be Implemented at the Center\n\n1- Training Course on Mechanical Properties of Materials.\n\n2- Training Course on Basics and Principles of Infrared Spectroscopy.\n\n3- Training Course on Basics and Principles of Ultraviolet-Visible Spectroscopy."
 }

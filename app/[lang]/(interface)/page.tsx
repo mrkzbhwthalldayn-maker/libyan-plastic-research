@@ -10,36 +10,34 @@ import { cn } from "@/lib/utils";
 import { EmblaOptionsType } from "embla-carousel";
 import Image from "next/image";
 import {
-  FaFlask,
   FaBalanceScale,
-  FaChalkboardTeacher,
-  FaLightbulb,
-  FaHandshake,
   FaUsers,
-  FaProjectDiagram,
-  FaServicestack,
+  FaGraduationCap,
+  FaWrench,
+  FaLeaf,
 } from "react-icons/fa";
 import FieldOfActivityCard from "./components/field-of-activity-card";
 import { AnimatedCard, AnimatedCounter } from "@/components/animations";
 import ImageTabSection from "./components/image-tabs-section";
-import {
-  FaLaptopCode,
-  FaLanguage,
-  FaMicroscope,
-  FaShieldAlt,
-  FaCheckCircle,
-} from "react-icons/fa";
+
 import { Card } from "@/components/cards";
 import { formatDate } from "@/lib/date";
 import { Article, User } from "@prisma/client";
 import { CustomLink } from "@/components/custom-link";
+import {
+  FaCogs,
+  FaFlask,
+  FaRecycle,
+  FaIndustry,
+  FaClipboard,
+} from "react-icons/fa";
 
-const fieldsOfActivity: FieldOfActivity[] = [
+const fieldsOfActivity = [
   {
     icon: FaFlask,
     title: {
       en: "Scientific Research",
-      ar: "مجال البحث العلمي",
+      ar: "تنفيذ البحوث العلمية",
     },
     description: {
       en: "Conducting and supporting research to advance knowledge and innovation.",
@@ -47,76 +45,65 @@ const fieldsOfActivity: FieldOfActivity[] = [
     },
   },
   {
+    icon: FaGraduationCap,
+    title: {
+      en: "Graduation Projects",
+      ar: "تنفيذ مشاريع التخرج",
+    },
+    description: {
+      en: "Implementing graduation projects for university and institute students.",
+      ar: "تنفيذ مشاريع التخرج لطلبة الجامعات والمعاهد.",
+    },
+  },
+  {
     icon: FaBalanceScale,
     title: {
-      en: "Standards and Specifications",
-      ar: "مجال المواصفات والمقاييس",
-    },
-    description: {
-      en: "Developing and implementing quality standards and specifications.",
-      ar: "تطوير وتنفيذ معايير ومواصفات الجودة.",
-    },
-  },
-  {
-    icon: FaChalkboardTeacher,
-    title: {
-      en: "Education (to be activated in the future)",
-      ar: "مجال التعليم (سيتم تفعيله مستقبلا)",
-    },
-    description: {
-      en: "Providing educational programs and opportunities in the future.",
-      ar: "تقديم برامج وفرص تعليمية مستقبلاً.",
-    },
-  },
-  {
-    icon: FaHandshake,
-    title: {
       en: "Consultations",
-      ar: "مجال الاستشارات",
+      ar: "تقديم الاستشارات",
     },
     description: {
-      en: "Offering expert advice and solutions to various challenges.",
-      ar: "تقديم النصائح والخبرات لحل التحديات المختلفة.",
+      en: "Providing scientific and technical consultations.",
+      ar: "تقديم الاستشارات العلمية والفنية.",
     },
   },
   {
-    icon: FaLightbulb,
+    icon: FaWrench,
     title: {
-      en: "Awareness and Guidance",
-      ar: "مجال التوعية والترشيد",
+      en: "Industrial Problem Solving",
+      ar: "حل مشاكل القطاع الصناعي",
     },
     description: {
-      en: "Promoting awareness and providing guidance on key issues.",
-      ar: "تعزيز الوعي وتقديم الإرشادات حول القضايا المهمة.",
+      en: "Solving problems facing the industrial sector (public and private).",
+      ar: "حل المشاكل التي تواجة القطاع الصناعي (العام والخاص).",
+    },
+  },
+  {
+    icon: FaCogs,
+    title: {
+      en: "Quality Control",
+      ar: "مطابقة جودة المنتجات",
+    },
+    description: {
+      en: "Ensuring the quality conformity of plastic products.",
+      ar: "مطابقة جودة المنتجات البلاستيكية.",
+    },
+  },
+  {
+    icon: FaLeaf,
+    title: {
+      en: "Environmental Awareness",
+      ar: "التوعية البيئية",
+    },
+    description: {
+      en: "Promoting awareness and providing guidance on environmental issues.",
+      ar: "تعزيز الوعي البيئي وتقديم الإرشادات.",
     },
   },
   {
     icon: FaUsers,
     title: {
-      en: "Lectures and Training Courses for Center Employees",
-      ar: "مجال المحاضرات والدورات التدريبية للعاملين بالمركز",
-    },
-    description: {
-      en: "Organizing lectures and training programs for staff development.",
-      ar: "تنظيم محاضرات وبرامج تدريبية لتطوير الموظفين.",
-    },
-  },
-  {
-    icon: FaProjectDiagram,
-    title: {
-      en: "Small Projects (to be activated in the future)",
-      ar: "جانب المشاريع الصغيرة (سيتم تفعيله مستقبلا)",
-    },
-    description: {
-      en: "Fostering small-scale projects to support innovation and growth.",
-      ar: "تعزيز المشاريع الصغيرة لدعم الابتكار والنمو.",
-    },
-  },
-  {
-    icon: FaServicestack,
-    title: {
       en: "Community Service",
-      ar: "جانب خدمة المجتمع المحلي",
+      ar: "خدمة المجتمع المحلي",
     },
     description: {
       en: "Engaging in activities that benefit and support the local community.",
@@ -127,82 +114,69 @@ const fieldsOfActivity: FieldOfActivity[] = [
 
 const trainingCourses: FieldOfActivity[] = [
   {
-    icon: FaLaptopCode,
+    icon: FaCogs, // Gear icon for technical training
     title: {
-      en: "ICDL Certification Course",
-      ar: "دورة للحصول على شهادة الرخصة الدولية لقيادة الحاسب الآلي",
+      en: "Technical Training Program: Polymer Processing Techniques (LPRC-T01)",
+      ar: "البرنامج التدريبي التقني 1LPRC-T0: تقنيات وتشكيل المواد البوليمرية",
     },
     description: {
-      en: "A course to obtain the International Computer Driving License (ICDL) certification.",
-      ar: "دورة تدريبية لنيل شهادة الرخصة الدولية لقيادة الحاسب الآلي.",
+      en: "A technical training program on polymer processing techniques.",
+      ar: "برنامج تدريبي تقني حول تقنيات وتشكيل المواد البوليمرية.",
     },
   },
   {
-    icon: FaCheckCircle,
+    icon: FaFlask, // Flask icon for science-focused training
     title: {
-      en: "ISO 17025 Quality Training for Engineers and Technicians",
-      ar: "تدريب على الجودة ISO 17025 للمهندسين والفنيين",
+      en: "Specialized Training Program: Polymer Science (LPRC-T02)",
+      ar: "البرنامج التدريبي التخصصي 2LPRC-T0: علم البوليمرات",
     },
     description: {
-      en: "A course on quality standards ISO 17025, tailored for engineers and technicians.",
-      ar: "دورة تدريبية على معايير الجودة ISO 17025 موجهة للمهندسين والفنيين.",
-    },
-  },
-
-  {
-    icon: FaMicroscope,
-    title: {
-      en: "Mechanical Properties of Polymers",
-      ar: "خواص البوليميرات الميكانيكية",
-    },
-    description: {
-      en: "A specialized course on the mechanical properties of polymers, conducted in collaboration with the University of Marrakesh and UNESCO.",
-      ar: "دورة متخصصة في الخواص الميكانيكية للبوليميرات بالتعاون مع جامعة مراكش ومنظمة اليونسكو.",
+      en: "A specialized training program focusing on polymer science.",
+      ar: "برنامج تدريبي تخصصي يركز على علم البوليمرات.",
     },
   },
   {
-    icon: FaLanguage,
+    icon: FaIndustry, // Factory/Industry icon for polyolefins-related training
     title: {
-      en: "English Language Courses",
-      ar: "دورات في اللغة الإنجليزية",
+      en: "Specialized Training Program: Polyolefins (LPRC-T03)",
+      ar: "البرنامج التدريبي التخصصي 3LPRC-T0: البولي اوليفنات",
     },
     description: {
-      en: "Comprehensive courses to enhance English language proficiency.",
-      ar: "دورات شاملة لتحسين مستوى اللغة الإنجليزية.",
+      en: "A specialized training program on polyolefins.",
+      ar: "برنامج تدريبي تخصصي حول البولي أوليفنات.",
     },
   },
   {
-    icon: FaShieldAlt,
+    icon: FaClipboard, // Clipboard icon for environmental stress cracking program
     title: {
-      en: "Safety and Security Training",
-      ar: "دورة في مجال الأمن والسلامة",
+      en: "Technical Training Program: Environmental Stress Cracking in Plastic Pipes (LPRC-T04)",
+      ar: "البرنامج التدريبي التقني 4LPRC-T0: الإجهاد البيئي في الأنابيب البلاستيكية",
     },
     description: {
-      en: "Training programs focused on safety and security practices in the workplace.",
-      ar: "برامج تدريبية تركز على ممارسات الأمن والسلامة في مكان العمل.",
-    },
-  },
-
-  {
-    icon: FaCheckCircle,
-    title: {
-      en: "ISO 9001 Quality Training for Administrators and Financial Staff",
-      ar: "تدريب على الجودة ISO 9001 للإداريين والماليين",
-    },
-    description: {
-      en: "A course on quality standards ISO 9001, designed for administrative and financial personnel.",
-      ar: "دورة تدريبية على معايير الجودة ISO 9001 مصممة للإداريين والماليين.",
+      en: "A technical training program on environmental stress cracking in plastic pipes.",
+      ar: "برنامج تدريبي تقني حول الإجهاد البيئي في الأنابيب البلاستيكية.",
     },
   },
   {
-    icon: FaChalkboardTeacher,
+    icon: FaRecycle, // Recycling icon for awareness of plastic recycling
     title: {
-      en: "Administrative, Financial, Quality, and Public Relations Training",
-      ar: "التدريب في المجالات الإدارية والمالية والجودة والعلاقات العامة",
+      en: "Awareness Training Program: Plastic Recycling (LPRC-T05)",
+      ar: "البرنامج التدريبي التوعوي 5LPRC-T0: إعادة تدوير البلاستيك",
     },
     description: {
-      en: "Training programs in administrative, financial, quality, and public relations fields, conducted in the Hashemite Kingdom of Jordan.",
-      ar: "برامج تدريبية في المجالات الإدارية والمالية والجودة والعلاقات العامة تُعقد في المملكة الأردنية الهاشمية.",
+      en: "An awareness training program on plastic recycling.",
+      ar: "برنامج تدريبي توعوي حول إعادة تدوير البلاستيك.",
+    },
+  },
+  {
+    icon: FaClipboard, // Clipboard icon for other training titles
+    title: {
+      en: "Other Training Program Titles",
+      ar: "عناوين برامج تدريبية أخرى",
+    },
+    description: {
+      en: "Additional potential training programs to be implemented.",
+      ar: "برامج تدريبية إضافية يمكن تنفيذها.",
     },
   },
 ];
@@ -230,12 +204,6 @@ export default async function Home({
         <Carousel />
       </section>
       <section className="content-center relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-10 md:shadow-xl">
-        <h3 className="font-bold text-foreground mb-10 text-2xl phone-only:text-xl">
-          <LangRenderer
-            ar="الاستشارات العلمية والفنية "
-            en="Scientific and Technical Consultations"
-          />
-        </h3>
         <Marquee
           pauseOnHover
           repeat={100}
@@ -253,13 +221,6 @@ export default async function Home({
             )
           )}
         </Marquee>
-        <CustomLink
-          href={`/${lang}/scientific-and-technical-consultations`}
-          variant={"link"}
-          className="mt-5"
-        >
-          {lang === "en" ? "Details" : "التفاصيل"}
-        </CustomLink>
       </section>
       <section id="our-vision" className="min-h-[50vh] bg-secondary">
         <div className="container flex justify-between phone-only:flex-col phone-only:gap-5 py-20 items-center">
@@ -348,7 +309,7 @@ export default async function Home({
         <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
           <LangRenderer ar="مجالات العمل" en="Field Of Activity" />
         </h3>
-        <div className="container grid items-center md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="container grid justify-center items-start md:grid-cols-2 lg:grid-cols-3 gap-10">
           {fieldsOfActivity.map((field, index) => (
             <FieldOfActivityCard
               key={index}
@@ -376,10 +337,10 @@ export default async function Home({
                 <AnimatedCard key={i} XorY="x" initialX={i * 5 + 20}>
                   <li
                     className={cn(
-                      "md:text-lg text-base bg-primary/20 py-1 px-2 text-primary relative before:absolute before:bg-primary before:w-2 before:right-[-8px] before:top-0 before:h-full",
+                      "md:text-lg text-base bg-primary/20 py-1 px-2 text-primary relative before:absolute before:bg-primary before:w-2  before:top-0 before:h-full",
                       lang === "en"
-                        ? "rounded-r-md before:rounded-l-md"
-                        : "rounded-l-md before:rounded-r-md"
+                        ? "rounded-r-md before:rounded-l-md before:left-[-8px]"
+                        : "rounded-l-md before:rounded-r-md before:right-[-8px]"
                     )}
                   >
                     {goal}
@@ -473,6 +434,29 @@ export default async function Home({
         </h3>
         <ImageTabSection />
       </section>
+      <div className="py-10 bg-secondary/50">
+        <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl text-center">
+          <LangRenderer
+            ar="الاستشارات العلمية والفنية "
+            en="Scientific and Technical Consultations"
+          />
+        </h3>
+        <p className="text-center mx-auto container">
+          <LangRenderer
+            ar="مركز بحوث اللدائن يقدم استشارات فنية حول المواد البلاستيكية وخواصها
+          لجهات محلية وأجنبية، بما في ذلك شركات، جامعات، ومؤسسات رقابية، مع
+          التركيز على تحديد الهوية الكيميائية والمخاطر البيئية."
+            en="The Plastics Research Center provides technical consultations on plastic materials and their properties to local and foreign entities, including companies, universities, and regulatory institutions, with a focus on identifying chemical identity and environmental risks."
+          />
+        </p>
+        <CustomLink
+          href={`/${lang}/scientific-and-technical-consultations`}
+          variant={"link"}
+          className="mt-5 block mx-auto w-fit"
+        >
+          {lang === "en" ? "Details" : "التفاصيل"}
+        </CustomLink>
+      </div>
       <section
         id="training-courses"
         className="min-h-[50vh] py-20 bg-secondary"
@@ -491,6 +475,13 @@ export default async function Home({
             />
           ))}
         </div>
+        <CustomLink
+          href={`/${lang}/train-courses`}
+          variant={"link"}
+          className="mt-5 block mx-auto w-fit"
+        >
+          {lang === "en" ? "Details" : "التفاصيل"}
+        </CustomLink>
       </section>
     </main>
   );

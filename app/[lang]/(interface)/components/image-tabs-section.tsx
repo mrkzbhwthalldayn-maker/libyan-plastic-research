@@ -15,38 +15,38 @@ interface Tab {
   imageUrl: string;
 }
 
-const tabs: Tab[] = [
+const tabs = [
   {
     question: {
       ar: "ما هي أهداف المركز؟",
       en: "What are the goals of the center?",
     },
     answer: {
-      ar: "إعداد الكوادر الوطنية وإجراء البحوث التقنية.",
-      en: "To prepare national cadres and conduct technical research.",
+      ar: "إعداد الكوادر - نقل التقنية - مطابقة المنتجات البلاستيكية للمواصفات المعمول بها - إجراء وتنفيذ البحوث العلمية - تقديم الاستشارات العلمية الفنية.",
+      en: "Preparing cadres, transferring technology, ensuring conformity of plastic products to applicable standards, conducting and implementing scientific research, and providing scientific and technical consultations.",
     },
     imageUrl:
       "https://images.unsplash.com/photo-1709949908058-a08659bfa922?q=80&w=1200&auto=format",
   },
   {
     question: {
-      ar: "ما هي مجالات نشاطات المركز؟",
+      ar: "ما هي مجالات عمل المركز؟",
       en: "What are the center's fields of activity?",
     },
     answer: {
-      ar: "البحث العلمي، التعليم، الاستشارات، التوعية.",
-      en: "Scientific research, education, consultancy, and awareness.",
+      ar: "البحوث العلمية - الاستشارات العلمية والفنية - التوعية – خدمة المجتمع المحلي.",
+      en: "Scientific research, scientific and technical consultations, awareness, and serving the local community.",
     },
     imageUrl: "/images/q_a/q_a1.jpg",
   },
   {
     question: {
-      ar: "لماذا يعتبر مركز بحوث اللدائن مهماً؟",
-      en: "Why is the Polymer Research Center important?",
+      ar: "لماذا المركز الليبي لبحوث اللدائن؟",
+      en: "Why is the Libyan Center for Polymer Research important?",
     },
     answer: {
-      ar: "لأنه يساهم في تطوير تقنيات اللدائن، ودعم الاقتصاد المحلي، وحماية البيئة.",
-      en: "It contributes to advancing polymer technology, supporting the local economy, and protecting the environment.",
+      ar: "الاستفادة من الموارد المحلية – دعم المصنعيين والموردين – تطوير المنتج المحلي - تقييم المنتجات الموجودة بالسوق المحلي – التوعية البيئية.",
+      en: "Utilizing local resources, supporting manufacturers and suppliers, developing local products, evaluating products in the local market, and promoting environmental awareness.",
     },
     imageUrl: "/images/q_a/q_a2.jpg",
   },

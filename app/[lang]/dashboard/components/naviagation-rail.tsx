@@ -13,6 +13,7 @@ import Link from "next/link";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { HiMiniBars2 } from "react-icons/hi2";
 import ToggleTheme from "@/components/theme-toggle";
+import { GiTeacher } from "react-icons/gi";
 
 const NavigationRailItem = ({
   href,
@@ -131,7 +132,6 @@ const NavigationRail = () => {
             name="لوحة التحكم"
           />
         </li>
-
         <li className="my-2">
           <NavigationRailItem
             collapsed={collapsed}
@@ -140,12 +140,20 @@ const NavigationRail = () => {
             name="الموظفين"
           />
         </li>
-        <li className="w-full">
+        <li className="my-2">
           <NavigationRailItem
             collapsed={collapsed}
             href="/dashboard/articles"
             Icon={FaRegNewspaper}
             name="المقالات"
+          />
+        </li>
+        <li className="my-2">
+          <NavigationRailItem
+            collapsed={collapsed}
+            href="/dashboard/faculty"
+            Icon={GiTeacher}
+            name="هيئة التدريس"
           />
         </li>
       </Menu>
@@ -189,6 +197,14 @@ export const DashboardNavigation = () => {
                 href="/dashboard/articles"
                 Icon={MdOutlineManageAccounts}
                 name="المقالات"
+                onClick={toggleOpen}
+              />
+            </li>
+            <li className="w-full">
+              <NavigationRailItem
+                href="/dashboard/faculty"
+                Icon={GiTeacher}
+                name="هيئة التدريس"
                 onClick={toggleOpen}
               />
             </li>

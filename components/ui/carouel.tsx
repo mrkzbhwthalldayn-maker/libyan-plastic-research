@@ -30,10 +30,6 @@ const Carousel = () => {
           href: `/${lang}/about`,
           text: { ar: "اكتشف المزيد", en: "Discover More" },
         },
-        // {
-        //   href: `/${lang}/#researches`,
-        //   text: { ar: "اخر البحوث", en: "Latest Researches" },
-        // },
       ],
     },
     {

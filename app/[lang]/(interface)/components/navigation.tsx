@@ -64,7 +64,7 @@ const about: {
   },
   {
     title: "السيرة الذاتية لأعضاء هيئة التدريس",
-    href: "/about/faculty-cvs",
+    href: "/faculty-cvs",
     description:
       "عرض معلومات عن السيرة الذاتية والخبرة العلمية لأعضاء هيئة التدريس بالمركز.",
     enTitle: "Faculty Members' CVs",
@@ -367,7 +367,7 @@ const links = [
         en: "Why Us",
       },
       {
-        link: "/about/faculty-cvs",
+        link: "/faculty-cvs",
         ar: "السيرة الذاتية لأعضاء هيئة التدريس",
         en: "Faculty Members' CVs",
       },

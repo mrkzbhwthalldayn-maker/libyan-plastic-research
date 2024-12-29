@@ -8,13 +8,17 @@ const createFacultyMember = async ({
   email,
   fullName,
   phoneNumber,
-}: Omit<FacultyMember, "id" | "createdAt" | "updatedAt">) => {
+  picture,
+}: Omit<FacultyMember, "id" | "createdAt" | "updatedAt" | "picture"> & {
+  picture?: string | null;
+}) => {
   try {
     const facultyMember = await prisma.facultyMember.create({
       data: {
         email,
         fullName,
         phoneNumber,
+        picture,
       },
     });
     if (!facultyMember) {
@@ -33,7 +37,10 @@ const updateFacultyMember = async ({
   email,
   fullName,
   phoneNumber,
-}: Omit<FacultyMember, "createdAt" | "updatedAt">) => {
+  picture,
+}: Omit<FacultyMember, "createdAt" | "updatedAt" | "picture"> & {
+  picture?: string | null;
+}) => {
   try {
     let facultyMember = await prisma.facultyMember.update({
       where: { id },
@@ -41,6 +48,7 @@ const updateFacultyMember = async ({
         email,
         fullName,
         phoneNumber,
+        picture,
       },
     });
 

@@ -11,6 +11,7 @@ import {
   deleteFacultyMemberAction,
   updateFacultyMemberAction,
 } from "../actions";
+import { CustomDropzoneUploadImage } from "@/components/custom-dropzone";
 
 export const CreateFacultyMemberForm = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -26,6 +27,11 @@ export const CreateFacultyMemberForm = () => {
       title="إضافة مستخدم جديد"
     >
       <div className="grid gap-4">
+        <CustomDropzoneUploadImage
+          name="picture"
+          title="صورة العضو"
+          dropClassName="border-forground/50"
+        />
         <div>
           <Label htmlFor="fullName">الاسم الكامل</Label>
           <Input
@@ -77,6 +83,12 @@ export const UpdateFacultyMemberForm = ({ user }: { user: FacultyMember }) => {
     >
       <Input type="hidden" name="id" id="id" defaultValue={user.id} readOnly />
       <div className="grid gap-4">
+        <CustomDropzoneUploadImage
+          defaultImage={user?.picture}
+          name="picture"
+          title="صورة العضو"
+          dropClassName="border-forground/50"
+        />
         <div>
           <Label htmlFor="fullName">الاسم الكامل</Label>
           <Input

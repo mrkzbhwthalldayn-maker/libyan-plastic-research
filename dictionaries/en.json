@@ -212,5 +212,22 @@
       "description": "Plastics\n\nGeneral Introduction - Technological Classification of Polymer Materials - Importance of Environmental Awareness.\n\nPlastic Recycling\n\nDefinition of Plastic Recycling - Various Facts about Plastic Recycling - Plastic Recycling Codes - Importance of the Recycling Process - Types of Plastics that Can Be Recycled - Steps in Plastic Recycling - Plastic Recycling Machines and Equipment - Properties of Products Made from Recycled Plastics. Challenges Faced in Plastic Recycling.\n\nCase Study\n\nStudy of a Profitable Production Project for Plastic Recycling - Field Visit (Subject to Availability)."
     }
   ],
-  "other_projects": "Other Training Programs That Can Be Implemented at the Center\n\n1- Training Course on Mechanical Properties of Materials.\n\n2- Training Course on Basics and Principles of Infrared Spectroscopy.\n\n3- Training Course on Basics and Principles of Ultraviolet-Visible Spectroscopy."
+  "other_projects": "Other Training Programs That Can Be Implemented at the Center\n\n1- Training Course on Mechanical Properties of Materials.\n\n2- Training Course on Basics and Principles of Infrared Spectroscopy.\n\n3- Training Course on Basics and Principles of Ultraviolet-Visible Spectroscopy.",
+  "organizational_structure_pages": [
+    {
+      "slug": "administrative-and-financial-affairs",
+      "title": "Administrative and Financial Affairs Department",
+      "description": "The Administrative and Financial Affairs Department at the Libyan Center for Polymer Research is responsible for general administrative aspects, including the financial section, administrative affairs section, and services and public relations section. It organizes and executes administrative and financial affairs in accordance with applicable legislation and proposes policies related to administrative and financial systems, ensuring compliance with laws and regulations.",
+      "tasks": [
+        "Preparing the center's estimated budget.",
+        "Preparing the financial and fiscal position of the center periodically.",
+        "Preparing the final account at the end of each fiscal year.",
+        "Carrying out procedures related to personnel affairs and tracking changes.",
+        "Participating in the preparation of the staffing structure.",
+        "Preparing annual efficiency reports for employees and identifying candidates for promotions and annual bonuses.",
+        "Carrying out maintenance services for the building and its facilities.",
+        "Handling any other emerging tasks."
+      ]
+    }
+  ]
 }

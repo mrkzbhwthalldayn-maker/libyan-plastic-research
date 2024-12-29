@@ -14,12 +14,14 @@ export async function createFacultyMemberAction(
       email: z.string().email("البريد الإلكتروني غير صالح"),
       fullName: z.string().min(4, "الاسم الكامل مطلوب"),
       phoneNumber: z.string().min(9, "رقم الهاتف مطلوب"),
+      picture: z.string().optional().nullable(),
     });
 
     const data = schema.safeParse({
       fullName: formData.get("fullName") || "",
       phoneNumber: formData.get("phoneNumber") || "",
       email: formData.get("email") || "",
+      picture: formData.get("picture") || "",
     });
 
     if (!data.success) {
@@ -29,12 +31,13 @@ export async function createFacultyMemberAction(
       };
     }
 
-    const { email, fullName, phoneNumber } = data.data;
+    const { email, fullName, phoneNumber, picture } = data.data;
 
     const res = await createFacultyMember({
       fullName,
       phoneNumber: Number(phoneNumber),
       email,
+      picture,
     });
 
     console.log("User created successfully:", res);
@@ -56,6 +59,7 @@ export async function updateFacultyMemberAction(
       email: z.string().email("البريد الإلكتروني غير صالح"),
       fullName: z.string().min(4, "الاسم الكامل مطلوب"),
       phoneNumber: z.string().min(9, "رقم الهاتف مطلوب"),
+      picture: z.string().optional().nullable(),
     });
 
     const data = schema.safeParse({
@@ -63,6 +67,7 @@ export async function updateFacultyMemberAction(
       fullName: formData.get("fullName") || "",
       phoneNumber: formData.get("phoneNumber") || "",
       email: formData.get("email") || "",
+      picture: formData.get("picture") || "",
     });
 
     if (!data.success) {
@@ -72,13 +77,14 @@ export async function updateFacultyMemberAction(
       };
     }
 
-    const { id, email, fullName, phoneNumber } = data.data;
+    const { id, email, fullName, phoneNumber, picture } = data.data;
 
     const res = await updateFacultyMember({
       id,
       fullName,
       phoneNumber: Number(phoneNumber),
       email,
+      picture,
     });
 
     console.log("User updated successfully:", res);

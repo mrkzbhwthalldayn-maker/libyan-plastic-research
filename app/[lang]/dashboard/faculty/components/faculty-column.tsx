@@ -15,8 +15,31 @@ import {
 import { toast } from "@/hooks/use-toast";
 import { FacultyMember } from "@prisma/client";
 import { DeleteFacultyMemberForm, UpdateFacultyMemberForm } from "./forms";
+import NotFoundTable from "@/components/not-found-table";
+import Image from "next/image";
 
 export const facultyTable: ColumnDef<FacultyMember>[] = [
+  {
+    accessorKey: "صورة العضو",
+    header: "صورة العضو",
+    cell: ({ row }) => {
+      const picture = row.original?.picture;
+      if (!picture) {
+        return <NotFoundTable />;
+      }
+      return (
+        <div className="overflow-hidden rounded-md h-12 w-12 aspect-square">
+          <Image
+            src={picture}
+            alt={`${row.original.fullName}-image`}
+            width={100}
+            height={100}
+            className=" w-full h-full object-cover"
+          />
+        </div>
+      );
+    },
+  },
   {
     accessorKey: "الاسم",
     header: "الاسم",

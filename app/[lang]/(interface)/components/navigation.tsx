@@ -46,7 +46,7 @@ const about: {
 }[] = [
   {
     title: "حول المركز",
-    href: `/about#about`,
+    href: `/about#overview`,
     description:
       "تعريف شامل بالمركز الليبي لبحوث اللدائن ودوره في البحث العلمي وتطوير الصناعات.",
     enTitle: "About the Center",
@@ -54,17 +54,17 @@ const about: {
       "A comprehensive overview of the Libyan Center for Plastic Research, its role in scientific research, and industrial development.",
   },
   {
-    title: "كلمة مدير المركز",
-    href: "/about#director-message",
+    title: "لماذا نحن",
+    href: "/about#why",
     description:
       "رسالة ترحيبية من مدير المركز تبرز رؤية المركز وأهدافه الاستراتيجية.",
-    enTitle: "Director's Message",
+    enTitle: "Why Us",
     enDesc:
       "A welcoming message from the director highlighting the center's vision and strategic goals.",
   },
   {
     title: "السيرة الذاتية لأعضاء هيئة التدريس",
-    href: "/about#faculty-cv",
+    href: "/about/faculty-cvs",
     description:
       "عرض معلومات عن السيرة الذاتية والخبرة العلمية لأعضاء هيئة التدريس بالمركز.",
     enTitle: "Faculty Members' CVs",
@@ -82,7 +82,7 @@ const structure: {
 }[] = [
   {
     title: "إدارة الشؤون الإدارية",
-    href: `/organizational-structure#administration`,
+    href: `/organizational-structure/administrative-and-financial-affairs`,
     description:
       "القسم المسؤول عن تنظيم الشؤون الإدارية وضمان سير العمل بسلاسة.",
     enTitle: "Administrative Affairs",
@@ -91,31 +91,31 @@ const structure: {
   },
   {
     title: "إدارة الشؤون البحثية",
-    href: "/organizational-structure#research",
+    href: "/organizational-structure/research-affairs-department",
     description: "الإشراف على الأنشطة البحثية والتطويرية داخل المركز.",
     enTitle: "Research Affairs",
     enDesc: "Overseeing research and development activities within the center.",
   },
   {
     title: "إدارة المعامل والتحاليل",
-    href: "/organizational-structure#labs",
+    href: "/organizational-structure/laboratory-and-testing-department",
     description:
       "إدارة المختبرات وتقديم خدمات التحاليل اللازمة لدعم البحث العلمي.",
     enTitle: "Laboratories and Analysis",
     enDesc:
       "Managing laboratories and providing analytical services to support scientific research.",
   },
-  {
-    title: "إدارة الموارد البشرية",
-    href: "/organizational-structure#hr",
-    description: "مسؤولية إدارة القوى العاملة وتعزيز الكفاءات البشرية بالمركز.",
-    enTitle: "Human Resources",
-    enDesc:
-      "Responsible for workforce management and enhancing the center's human capital.",
-  },
+  // {
+  //   title: "إدارة الموارد البشرية",
+  //   href: "/organizational-structure#hr",
+  //   description: "مسؤولية إدارة القوى العاملة وتعزيز الكفاءات البشرية بالمركز.",
+  //   enTitle: "Human Resources",
+  //   enDesc:
+  //     "Responsible for workforce management and enhancing the center's human capital.",
+  // },
   {
     title: "مطابقة المواصفات",
-    href: "/organizational-structure#compliance",
+    href: "/organizational-structure/specifications-office",
     description:
       "ضمان توافق المنتجات والخدمات مع المعايير والمواصفات المعتمدة.",
     enTitle: "Compliance with Standards",
@@ -123,8 +123,15 @@ const structure: {
       "Ensuring products and services comply with approved standards and specifications.",
   },
   {
+    title: "التخطيط والمتابعة",
+    href: "/organizational-structure/planning-and-follow-up-office",
+    description: "مراقبة الأداء وتقييم النتائج.",
+    enTitle: "Planning and Follow-Up Office",
+    enDesc: "monitoring performance and evaluating results.",
+  },
+  {
     title: "متابعة نظام الجودة",
-    href: "/organizational-structure#quality",
+    href: "/organizational-structure/quality-management-systems-office",
     description: "الإشراف على تطبيق نظام الجودة ومراقبة الأداء داخل المركز.",
     enTitle: "Quality Assurance",
     enDesc:
@@ -350,17 +357,17 @@ const links = [
     href: "about",
     subLinks: [
       {
-        link: "/about#about",
+        link: "/about#overview",
         ar: "حول المركز",
         en: "About the Center",
       },
       {
-        link: "/about#director-message",
-        ar: "كلمة مدير المركز",
-        en: "Director's Message",
+        link: "/about#why",
+        ar: "لماذا نحن",
+        en: "Why Us",
       },
       {
-        link: "/about#faculty-cv",
+        link: "/about/faculty-cvs",
         ar: "السيرة الذاتية لأعضاء هيئة التدريس",
         en: "Faculty Members' CVs",
       },
@@ -373,19 +380,34 @@ const links = [
 
     subLinks: [
       {
-        link: "/organizational-structure#administration",
+        link: "/organizational-structure/administrative-and-financial-affairs",
         ar: "إدارة الشؤون الإدارية",
         en: "Administrative Affairs",
       },
       {
-        link: "/organizational-structure#research",
+        link: "/organizational-structure/research-affairs-department",
         ar: "إدارة الشؤون البحثية",
         en: "Research Affairs",
       },
       {
-        link: "/organizational-structure#labs",
+        link: "/organizational-structure/laboratory-and-testing-department",
         ar: "إدارة المعامل والتحاليل",
         en: "Laboratories and Analysis",
+      },
+      {
+        link: "/organizational-structure/specifications-office",
+        ar: "مطابقة المواصفات",
+        en: "Compliance with Standards",
+      },
+      {
+        link: "/organizational-structure/planning-and-follow-up-office",
+        ar: "التخطيط والمتابعة",
+        en: "Planning and Follow-Up Office",
+      },
+      {
+        link: "/organizational-structure/quality-management-systems-office",
+        ar: "متابعة نظام الجودة",
+        en: "Quality Assurance",
       },
     ],
   },

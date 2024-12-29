@@ -7,10 +7,10 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
+import Link from "next/link";
 import { Metadata } from "next";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
-import Link from "next/link";
 import { CustomLink } from "@/components/custom-link";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -152,18 +152,26 @@ const GoalsPage = async (props: { params: Promise<{ lang: Locale }> }) => {
               </div>
             )}
           </section>
-          <section className="md:flex-1">
+          <section className="md:flex-1 ">
             <ol>
               {projects.map((project, i) => (
-                <li key={i}>
-                  <CustomLink variant={"link"} href={`#${project.slug}`}>
+                <li key={i} className="w-full block">
+                  <CustomLink
+                    variant={"link"}
+                    className="phone-only:whitespace-normal phone-only:my-2"
+                    href={`#${project.slug}`}
+                  >
                     {i + 1} {" - "}
                     {project.title}
                   </CustomLink>
                 </li>
               ))}
               <li>
-                <CustomLink variant={"link"} href={`#other-projects`}>
+                <CustomLink
+                  className=""
+                  variant={"link"}
+                  href={`#other-projects`}
+                >
                   {projects.length + 1} {" - "}
                   {lang === "en" ? "Other Projects" : "مشاريع أخرى"}
                 </CustomLink>

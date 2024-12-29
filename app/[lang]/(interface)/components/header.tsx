@@ -71,7 +71,10 @@ const Header = async ({
           <NavigationSheet />
         </div>
         <NavigationMenuDesktop labs={dictionary.labs} />
-        <Link href={`/${lang}`} className="md:w-32 w-24 overflow-hidden">
+        <Link
+          href={`/${lang}`}
+          className="md:w-[138px] my-1.5 phone-only:my-2 w-20 overflow-hidden"
+        >
           <Image
             src={"/logo.png"}
             alt="logo"

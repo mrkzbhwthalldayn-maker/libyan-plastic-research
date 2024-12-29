@@ -3,6 +3,7 @@ import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -57,11 +58,14 @@ const Footer = async ({
       className={cn("bg-background", className)}
       dir={isArabic ? "rtl" : "ltr"}
     >
-      <div className="container grid sm:grid-cols-2 md:grid-cols-3 py-20 gap-10">
+      <div className="container grid md:grid-cols-2 lg:grid-cols-3 py-20 gap-10">
         {/* Logo and Description */}
         <div className="text-center sm:text-right">
           <div className="w-fit mx-auto sm:w-full">
-            <div className="w-[200px] h-[100px]">
+            <Link
+              href={`/${lang}`}
+              className="md:w-[340px] mx-auto max-w-full md:h-[200px]"
+            >
               <Image
                 src={"/logo.png"}
                 priority
@@ -70,7 +74,7 @@ const Footer = async ({
                 height={1000}
                 className="w-full h-full object-cover aspect-auto"
               />
-            </div>
+            </Link>
           </div>
           <p className="my-2 text-sm text-foreground/80">
             {dictionary.about.description}{" "}

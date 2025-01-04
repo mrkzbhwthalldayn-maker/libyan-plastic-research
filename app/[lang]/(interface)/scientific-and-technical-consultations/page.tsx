@@ -11,6 +11,7 @@ import { Metadata } from "next";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
 import Link from "next/link";
+import Image from "next/image";
 
 export const generateMetadata = async ({
   params,
@@ -181,6 +182,19 @@ const ConsultationsPage = async (props: {
             </li>
           ))}
         </ul>
+        <div className="my-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <div key={index}>
+              <Image
+                src={`/images/consultations/${index + 1}.jpg`}
+                alt={`Consultation-image ${index + 1}`}
+                width={400}
+                height={400}
+                className="rounded-lg phone-only:w-full"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );

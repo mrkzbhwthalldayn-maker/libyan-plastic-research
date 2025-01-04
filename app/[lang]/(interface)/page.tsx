@@ -31,6 +31,45 @@ import {
   FaIndustry,
   FaClipboard,
 } from "react-icons/fa";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>;
+}): Promise<Metadata> {
+  const lang = (await params).lang;
+  const dictionary = await getDictionary(lang);
+  const data = {
+    ar: {
+      title: "المركز الليبي لبحوث اللدائن",
+      description:
+        "المركز الليبي لبحوث اللدائن هو مركز بحثي يعمل على تطوير المعرفة والابتكار في مجال اللدائن والبوليمرات.",
+    },
+    en: {
+      title: "Libyan Polymer Research Center",
+      description:
+        "The Libyan Polymer Research Center is a research center that works to advance knowledge and innovation in the field of polymers.",
+    },
+  };
+  const currentData = data[lang];
+  return {
+    title: currentData.title,
+    description: currentData.description,
+    openGraph: {
+      title: currentData.title,
+      description: currentData.description,
+      siteName: currentData.title,
+      locale: lang === "ar" ? "ar_LY" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: currentData.title,
+      description: currentData.description,
+    },
+  };
+}
 
 const fieldsOfActivity = [
   {

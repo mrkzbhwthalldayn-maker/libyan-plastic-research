@@ -140,10 +140,17 @@ const structure: {
   },
 ];
 
-export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
+export function NavigationMenuDesktop({
+  labs = [],
+  href,
+  title,
+}: {
+  labs?: Lab[];
+  href: string;
+  title: string;
+}) {
   const { lang } = useParams();
   const pathname = usePathname();
-
   return (
     <NavigationMenu
       className="hidden lg:flex"
@@ -248,6 +255,7 @@ export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+
         <NavigationMenuItem>
           <Link
             href={`/${lang}/news-and-activities`}
@@ -267,6 +275,7 @@ export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+
         <NavigationMenuItem>
           <Link
             href={`/${lang}/articles`}
@@ -283,6 +292,41 @@ export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        {href === "dashboard" ? (
+          <NavigationMenuItem>
+            <Link
+              href={`/${lang}/${href}`}
+              passHref
+              className={cn(
+                navigationMenuTriggerStyle(),
+                pathname === `/${lang}/${href}` && "bg-primary text-white",
+                pathname.startsWith(`/${lang}/${href}`) &&
+                  "bg-primary text-white"
+              )}
+            >
+              <NavigationMenuLink asChild>
+                <LangRenderer en="Dashboard" ar="لوحة التحكم" />
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        ) : (
+          <NavigationMenuItem>
+            <Link
+              href={`/${lang}/${href}`}
+              passHref
+              className={cn(
+                navigationMenuTriggerStyle(),
+                pathname === `/${lang}/${href}` && "bg-primary text-white",
+                pathname.startsWith(`/${lang}/${href}`) &&
+                  "bg-primary text-white"
+              )}
+            >
+              <NavigationMenuLink asChild>
+                <LangRenderer ar="تسجيل الدخول" en="Sign In" />
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        )}
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -462,7 +506,13 @@ const links = [
   },
 ];
 
-export default function NavigationSheet() {
+export default function NavigationSheet({
+  href,
+  title,
+}: {
+  href: string;
+  title: string;
+}) {
   const { lang } = useParams();
   const [open, setOpen] = React.useState<boolean>(false);
   const pathname = usePathname();
@@ -577,6 +627,19 @@ export default function NavigationSheet() {
             onClick={() => setOpen(!open)}
           >
             <LangRenderer en="All Articles" ar="كل المقالات" />
+          </CustomLink>
+          <CustomLink
+            variant={
+              pathname === `/${lang}/${href}` ||
+              pathname.startsWith(`/${lang}/${href}`)
+                ? "default"
+                : "ghost"
+            }
+            href={`/${lang}/${href}`}
+            className="text-start block px-2 shadow"
+            onClick={() => setOpen(!open)}
+          >
+            {title}{" "}
           </CustomLink>
         </SheetHeader>
         <SheetFooter>

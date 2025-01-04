@@ -11,6 +11,7 @@ import { getDictionary } from "@/get-dictionary";
 import Link from "next/link";
 import { CustomLink } from "@/components/custom-link";
 import { IoSearchOutline } from "react-icons/io5";
+import { getSession } from "@/lib/session";
 
 const Header = async ({
   lang,
@@ -20,6 +21,19 @@ const Header = async ({
   className?: string;
 }) => {
   const dictionary = await getDictionary(lang);
+  const user = await getSession();
+  const data = {
+    title:
+      user !== null
+        ? lang === "en"
+          ? "Dashboard"
+          : "لوحة التحكم"
+        : lang === "en"
+        ? "Sign In"
+        : "تسجيل الدخول",
+
+    href: user !== null ? `dashboard` : `sign-in`,
+  };
   return (
     <header
       className={cn(
@@ -76,9 +90,13 @@ const Header = async ({
           <CustomLink href={`/${lang}/search`} size={"icon"} variant={"ghost"}>
             <IoSearchOutline className="w-4 h-4" />
           </CustomLink>
-          <NavigationSheet />
+          <NavigationSheet href={data.href} title={data.title} />
         </div>
-        <NavigationMenuDesktop labs={dictionary.labs} />
+        <NavigationMenuDesktop
+          href={data.href}
+          title={data.title}
+          labs={dictionary.labs}
+        />
         <Link
           href={`/${lang}`}
           className="md:w-[138px] my-1.5 phone-only:my-2 w-20 overflow-hidden"

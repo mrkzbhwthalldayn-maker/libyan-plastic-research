@@ -24,10 +24,6 @@ const Profile = ({ fullName, role }: Props) => {
           <IoMdLogOut className="w-4 h-4" />
         </Button>
       </Logout>
-      {/* <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar> */}
     </div>
   );
 };

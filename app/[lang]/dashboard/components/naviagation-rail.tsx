@@ -14,6 +14,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { HiMiniBars2 } from "react-icons/hi2";
 import ToggleTheme from "@/components/theme-toggle";
 import { GiTeacher } from "react-icons/gi";
+import Logout from "@/components/logout";
+import { IoMdLogOut } from "react-icons/io";
 
 const NavigationRailItem = ({
   href,
@@ -218,9 +220,16 @@ export const DashboardNavigation = () => {
 
 export const DashboardHeader = () => {
   return (
-    <header className="w-full phone-only:flex justify-between items-center hidden bg-background px-4 py-2">
+    <header className="w-full phone-only:flex justify-between items-center hidden bg-secondary px-4 py-2">
       <DashboardNavigation />
-      <ToggleTheme />
+      <div className="flex items-center gap-2">
+        <ToggleTheme />
+        <Logout>
+          <Button variant={"destructive"} className="md:hidden" size={"icon"}>
+            <IoMdLogOut className="w-4 h-4" />
+          </Button>
+        </Logout>
+      </div>
     </header>
   );
 };

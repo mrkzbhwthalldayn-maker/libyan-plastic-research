@@ -75,6 +75,8 @@ const FacultyMembersCvs = async ({
     id: member.id,
     title: member.fullName,
     url: member.picture,
+    cv: member.cv,
+    email: member.email,
   }));
   return (
     <main className="min-h-screen">

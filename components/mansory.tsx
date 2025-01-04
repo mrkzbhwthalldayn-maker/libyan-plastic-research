@@ -2,18 +2,22 @@
 // inspired by tom is loading
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
+import { CustomLink } from "./custom-link";
 interface Item {
   id: string;
   url?: string | null;
   title: string;
+  email?: string | null;
+  cv?: string | null;
 }
 function MansoryGrid({ items }: { items: Item[] }) {
   const [_, setSelected] = useState(null);
 
   return (
     <>
-      <div className="container mx-auto p-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="container mx-auto p-1">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <>
             {items.map((item, index) => (
               <ImageItem
@@ -36,7 +40,7 @@ interface ImageItemProps {
   setSelected: any;
 }
 
-function ImageItem({ item, index, setSelected }: ImageItemProps) {
+function ImageItem({ item, setSelected }: ImageItemProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -64,8 +68,24 @@ function ImageItem({ item, index, setSelected }: ImageItemProps) {
           className="w-full bg-base-100 shadow-xl image-full cursor-pointer"
         />
       )}
-      <div className="flex flex-wrap mt-2 absolute bottom-0 left-0 p-2 group-hover:opacity-100 opacity-0 font-semibold ">
+      <div className="flex flex-col w-full mt-0 absolute bottom-0 left-0 p-2 group-hover:opacity-100 opacity-0 font-semibold ">
         <h1>{item.title}</h1>
+        <div className="flex justify-between w-full">
+          <Link
+            href={`mailto:${item.email}`}
+            className="text-primary-500 hover:text-primary-700"
+          >
+            {item.email}
+          </Link>
+          <CustomLink
+            href={item.cv ?? "#"}
+            download={item.cv}
+            target="_blank"
+            className="text-primary hover:text-primary/80 p-0 m-0"
+          >
+            cv
+          </CustomLink>
+        </div>
       </div>
     </motion.figure>
   );

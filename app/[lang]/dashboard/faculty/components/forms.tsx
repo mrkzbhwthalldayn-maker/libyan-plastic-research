@@ -11,7 +11,10 @@ import {
   deleteFacultyMemberAction,
   updateFacultyMemberAction,
 } from "../actions";
-import { CustomDropzoneUploadImage } from "@/components/custom-dropzone";
+import {
+  CustomDropzoneUploadImage,
+  CustomDropzoneUploadPdf,
+} from "@/components/custom-dropzone";
 
 export const CreateFacultyMemberForm = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -25,43 +28,60 @@ export const CreateFacultyMemberForm = () => {
       trigger={<Button>إضافة مستخدم جديد</Button>}
       action={createFacultyMemberAction}
       title="إضافة مستخدم جديد"
+      wide={true}
+      className="w-full"
     >
-      <div className="grid gap-4">
-        <CustomDropzoneUploadImage
-          name="picture"
-          title="صورة العضو"
-          dropClassName="border-forground/50"
-        />
-        <div>
-          <Label htmlFor="fullName">الاسم الكامل</Label>
-          <Input
-            type="text"
-            name="fullName"
-            id="fullName"
-            placeholder="أدخل الاسم الكامل"
-            required
-          />
+      <div className="flex gap-4 phone-only:flex-col justify-between">
+        <div className="w-full flex flex-col gap-4 justify-center">
+          <div>
+            <Label htmlFor="fullName">الاسم الكامل</Label>
+            <Input
+              type="text"
+              name="fullName"
+              id="fullName"
+              placeholder="أدخل الاسم الكامل"
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="phoneNumber">رقم الهاتف</Label>
+            <Input
+              type="tel"
+              name="phoneNumber"
+              id="phoneNumber"
+              placeholder="أدخل رقم الهاتف"
+              required
+              dir="rtl"
+            />
+          </div>
+          <div>
+            <Label htmlFor="email">البريد الإلكتروني</Label>
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="أدخل البريد الإلكتروني"
+              required
+            />
+          </div>
         </div>
-        <div>
-          <Label htmlFor="phoneNumber">رقم الهاتف</Label>
-          <Input
-            type="tel"
-            name="phoneNumber"
-            id="phoneNumber"
-            placeholder="أدخل رقم الهاتف"
-            required
-            dir="rtl"
-          />
-        </div>
-        <div>
-          <Label htmlFor="email">البريد الإلكتروني</Label>
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="أدخل البريد الإلكتروني"
-            required
-          />
+        <div className="flex flex-col gap-2">
+          <div className="my-2">
+            <CustomDropzoneUploadImage
+              name="picture"
+              title="صورة العضو"
+              dropClassName="border-forground/50"
+              responsive
+            />
+          </div>
+          <div className="my-2">
+            <CustomDropzoneUploadPdf
+              name="cv"
+              title="cv العضو"
+              dropClassName="border-forground/50"
+              responsive
+            />
+          </div>
         </div>
       </div>
     </AccessibleDialogForm>
@@ -82,43 +102,59 @@ export const UpdateFacultyMemberForm = ({ user }: { user: FacultyMember }) => {
       title="تحديث معلومات المستخدم"
     >
       <Input type="hidden" name="id" id="id" defaultValue={user.id} readOnly />
-      <div className="grid gap-4">
-        <CustomDropzoneUploadImage
-          defaultImage={user?.picture}
-          name="picture"
-          title="صورة العضو"
-          dropClassName="border-forground/50"
-        />
-        <div>
-          <Label htmlFor="fullName">الاسم الكامل</Label>
-          <Input
-            type="text"
-            name="fullName"
-            id="fullName"
-            defaultValue={user.fullName}
-            placeholder="أدخل الاسم الكامل"
-          />
+      <div className="flex gap-4 phone-only:flex-col justify-between">
+        <div className="w-full flex flex-col gap-4 justify-center">
+          <div>
+            <Label htmlFor="fullName">الاسم الكامل</Label>
+            <Input
+              type="text"
+              name="fullName"
+              id="fullName"
+              defaultValue={user.fullName}
+              placeholder="أدخل الاسم الكامل"
+            />
+          </div>
+          <div>
+            <Label htmlFor="phoneNumber">رقم الهاتف</Label>
+            <Input
+              type="tel"
+              name="phoneNumber"
+              id="phoneNumber"
+              defaultValue={user.phoneNumber}
+              placeholder="أدخل رقم الهاتف"
+              dir="rtl"
+            />
+          </div>
+          <div>
+            <Label htmlFor="email">البريد الإلكتروني</Label>
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              defaultValue={user.email}
+              placeholder="أدخل البريد الإلكتروني"
+            />
+          </div>
         </div>
-        <div>
-          <Label htmlFor="phoneNumber">رقم الهاتف</Label>
-          <Input
-            type="tel"
-            name="phoneNumber"
-            id="phoneNumber"
-            defaultValue={user.phoneNumber}
-            placeholder="أدخل رقم الهاتف"
-            dir="rtl"
-          />
-        </div>
-        <div>
-          <Label htmlFor="email">البريد الإلكتروني</Label>
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            defaultValue={user.email}
-            placeholder="أدخل البريد الإلكتروني"
-          />
+        <div className="flex flex-col gap-2">
+          <div className="my-2">
+            <CustomDropzoneUploadImage
+              defaultImage={user?.picture}
+              name="picture"
+              title="صورة العضو"
+              dropClassName="border-forground/50"
+              responsive
+            />
+          </div>
+          <div className="my-2">
+            <CustomDropzoneUploadPdf
+              defaultPdf={user?.cv}
+              name="cv"
+              title="cv العضو"
+              dropClassName="border-forground/50"
+              responsive
+            />
+          </div>
         </div>
       </div>
     </AccessibleDialogForm>

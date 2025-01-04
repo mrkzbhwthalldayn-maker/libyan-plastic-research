@@ -22,6 +22,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useParams } from "next/navigation";
+import { cn } from "@/lib/utils";
 interface Props {
   children?: ReactNode;
   trigger: ReactNode;
@@ -87,9 +88,11 @@ export function ResponsiveDialogWithCustomOpenFuncionality({
   open,
   setOpen,
   dir,
+  wide = false,
 }: Props & {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   open: boolean;
+  wide?: boolean;
 }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const { lang } = useParams();
@@ -97,7 +100,13 @@ export function ResponsiveDialogWithCustomOpenFuncionality({
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{trigger}</DialogTrigger>
-        <DialogContent dir={dir} className="sm:max-w-[425px] px-4 py-8">
+        <DialogContent
+          dir={dir}
+          className={cn(
+            "sm:max-w-[425px] px-4 py-8",
+            wide && "lg:w-1/2 lg:max-w-[50%]"
+          )}
+        >
           <DialogHeader>
             {title && <DialogTitle dir={dir}>{title}</DialogTitle>}
             {description && (

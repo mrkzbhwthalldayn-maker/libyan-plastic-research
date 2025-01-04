@@ -15,6 +15,7 @@ export async function createFacultyMemberAction(
       fullName: z.string().min(4, "الاسم الكامل مطلوب"),
       phoneNumber: z.string().min(9, "رقم الهاتف مطلوب"),
       picture: z.string().optional().nullable(),
+      cv: z.string().optional().nullable(),
     });
 
     const data = schema.safeParse({
@@ -22,6 +23,7 @@ export async function createFacultyMemberAction(
       phoneNumber: formData.get("phoneNumber") || "",
       email: formData.get("email") || "",
       picture: formData.get("picture") || "",
+      cv: formData.get("cv") || "",
     });
 
     if (!data.success) {
@@ -31,13 +33,14 @@ export async function createFacultyMemberAction(
       };
     }
 
-    const { email, fullName, phoneNumber, picture } = data.data;
+    const { email, fullName, phoneNumber, picture, cv } = data.data;
 
     const res = await createFacultyMember({
       fullName,
       phoneNumber: Number(phoneNumber),
       email,
       picture,
+      cv: cv ?? null,
     });
 
     console.log("User created successfully:", res);
@@ -60,6 +63,7 @@ export async function updateFacultyMemberAction(
       fullName: z.string().min(4, "الاسم الكامل مطلوب"),
       phoneNumber: z.string().min(9, "رقم الهاتف مطلوب"),
       picture: z.string().optional().nullable(),
+      cv: z.string().optional().nullable(),
     });
 
     const data = schema.safeParse({
@@ -68,6 +72,7 @@ export async function updateFacultyMemberAction(
       phoneNumber: formData.get("phoneNumber") || "",
       email: formData.get("email") || "",
       picture: formData.get("picture") || "",
+      cv: formData.get("cv") || "",
     });
 
     if (!data.success) {
@@ -77,7 +82,7 @@ export async function updateFacultyMemberAction(
       };
     }
 
-    const { id, email, fullName, phoneNumber, picture } = data.data;
+    const { id, email, fullName, phoneNumber, picture, cv } = data.data;
 
     const res = await updateFacultyMember({
       id,
@@ -85,6 +90,7 @@ export async function updateFacultyMemberAction(
       phoneNumber: Number(phoneNumber),
       email,
       picture,
+      cv: cv ?? null,
     });
 
     console.log("User updated successfully:", res);

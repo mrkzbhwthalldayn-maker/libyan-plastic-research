@@ -70,7 +70,8 @@ const AccessibleDialogForm = ({
   submitClass,
   discardVariant = "destructive",
   submitVariant = "default",
-}: Props) => {
+  wide = false,
+}: Props & { wide?: boolean }) => {
   const router = useRouter();
   const [msg, dispatch, isPending] = useActionState(action, { message: "" });
 
@@ -99,6 +100,7 @@ const AccessibleDialogForm = ({
       setOpen={setOpen}
       title={title}
       description={description}
+      wide={wide}
     >
       <form action={dispatch} className={cn(className)}>
         {children}

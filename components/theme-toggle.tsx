@@ -21,7 +21,7 @@ const ToggleTheme = ({ className }: { className?: string }) => {
 
   return (
     <Tabs className={cn(className)} defaultValue={theme ?? "system"}>
-      <TabsList className="rounded-xl border text-foreground m-0 p-0">
+      <TabsList className="rounded-xl border border-foreground/10 text-foreground m-0 p-0">
         <TabsTrigger
           aria-label="light mode on"
           className={cn("rounded-xl w-9 h-9 p-0")}

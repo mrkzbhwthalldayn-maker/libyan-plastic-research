@@ -9,6 +9,7 @@ const createFacultyMember = async ({
   fullName,
   phoneNumber,
   picture,
+  cv,
 }: Omit<FacultyMember, "id" | "createdAt" | "updatedAt" | "picture"> & {
   picture?: string | null;
 }) => {
@@ -19,6 +20,7 @@ const createFacultyMember = async ({
         fullName,
         phoneNumber,
         picture,
+        cv,
       },
     });
     if (!facultyMember) {
@@ -38,6 +40,7 @@ const updateFacultyMember = async ({
   fullName,
   phoneNumber,
   picture,
+  cv,
 }: Omit<FacultyMember, "createdAt" | "updatedAt" | "picture"> & {
   picture?: string | null;
 }) => {
@@ -49,6 +52,7 @@ const updateFacultyMember = async ({
         fullName,
         phoneNumber,
         picture,
+        cv,
       },
     });
 

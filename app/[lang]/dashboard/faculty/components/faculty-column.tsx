@@ -16,6 +16,7 @@ import { FacultyMember } from "@prisma/client";
 import { DeleteFacultyMemberForm, UpdateFacultyMemberForm } from "./forms";
 import NotFoundTable from "@/components/not-found-table";
 import Image from "next/image";
+import { CustomLink } from "@/components/custom-link";
 
 export const facultyTable: ColumnDef<FacultyMember>[] = [
   {
@@ -47,7 +48,7 @@ export const facultyTable: ColumnDef<FacultyMember>[] = [
         const fullName = row.original?.fullName;
         return <div>{fullName ?? "لايوجد"}</div>;
       } else {
-        <div>لايوجد</div>;
+        return <div>لايوجد</div>;
       }
     },
   },
@@ -59,7 +60,7 @@ export const facultyTable: ColumnDef<FacultyMember>[] = [
         const phone = row.original?.phoneNumber;
         return <div>{phone}</div>;
       } else {
-        <div>لايوجد</div>;
+        return <div>لايوجد</div>;
       }
     },
   },
@@ -72,7 +73,23 @@ export const facultyTable: ColumnDef<FacultyMember>[] = [
         const email = row.original?.email;
         return <div>{email}</div>;
       } else {
-        <div>لايوجد</div>;
+        return <div>لايوجد</div>;
+      }
+    },
+  },
+  {
+    accessorKey: "cv",
+    header: "cv",
+    cell: ({ row }) => {
+      const cv = row.original?.cv;
+      if (row && cv) {
+        return (
+          <CustomLink variant={"link"} target="_blank" href={cv}>
+            تحميل
+          </CustomLink>
+        );
+      } else {
+        return <div>لايوجد</div>;
       }
     },
   },

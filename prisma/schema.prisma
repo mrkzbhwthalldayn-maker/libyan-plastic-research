@@ -44,6 +44,7 @@ model FacultyMember {
   email       String   @unique
   phoneNumber Int
   picture     String?
+  cv          String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

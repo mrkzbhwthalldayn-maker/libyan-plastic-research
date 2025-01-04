@@ -5,7 +5,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaInstagram } from "react-icons/fa";
+import { CiMail } from "react-icons/ci";
+import { FaInstagram, FaMapMarkerAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
 import { IconType } from "react-icons/lib";
@@ -23,10 +24,6 @@ const Footer = async ({
   const quickLinks = [
     { title: isArabic ? "الرئيسية" : "Home", href: "" },
     { title: isArabic ? "حولنا" : "About Us", href: "/about" },
-    {
-      title: isArabic ? "الهيكل التنظيمي" : "Organizational Structure",
-      href: "/organizational-structure",
-    },
     {
       title: isArabic ? "البحوث و الدراسات" : "Research & Studies",
       href: "/research-and-studies",
@@ -46,10 +43,24 @@ const Footer = async ({
   ];
 
   const socialLinks = [
-    { Icon: FiFacebook, title: isArabic ? "فيسبوك" : "Facebook" },
+    {
+      Icon: FiFacebook,
+      title: isArabic ? "فيسبوك" : "Facebook",
+      href: "https://www.facebook.com/LibyanPolymerResearchCenter",
+    },
     { Icon: FaInstagram, title: isArabic ? "انستا" : "Instagram" },
     { Icon: FaXTwitter, title: isArabic ? "اكس" : "X" },
     { Icon: PiTiktokLogo, title: isArabic ? "تيك توك" : "TikTok" },
+    {
+      Icon: CiMail,
+      title: isArabic ? "البريد" : "Mail",
+      href: "mailto:info@prc.ly",
+    },
+    {
+      Icon: FaMapMarkerAlt,
+      title: isArabic ? "الخريطة" : "Map",
+      href: "https://maps.app.goo.gl/nqkMA42Z8zLwmdRC9",
+    },
   ];
   const dictionary = await getDictionary(lang as Locale);
 
@@ -101,8 +112,8 @@ const Footer = async ({
         </div>
 
         {/* Social Media */}
-        <div className="w-fit mx-auto text-center sm:mr-auto">
-          <h3 className="text-right font-semibold">
+        <div className="w-fit mx-auto text-center">
+          <h3 className="text-center font-semibold">
             {isArabic ? "وسائل التواصل الإجتماعي" : "Social Media"}
           </h3>
           <nav>
@@ -113,6 +124,7 @@ const Footer = async ({
                   key={index}
                   Icon={link.Icon}
                   title={link.title}
+                  href={link.href}
                 />
               ))}
             </ul>
@@ -137,18 +149,23 @@ const SocailMediaLink = ({
   title,
   href = "#",
   lang,
+  target = "_blank",
 }: {
   Icon?: IconType;
   title: string;
   href?: string;
   lang: string;
+  target?: "_self" | "_blank" | "_parent" | "_top" | undefined;
 }) => {
+  const dir: "ltr" | "rtl" = lang === "ar" ? "rtl" : "ltr";
   return (
     <li className="w-full">
       <CustomLink
+        target={target}
+        dir="rtl"
         variant={"ghost"}
         className={cn("text-foreground/80 group")}
-        href={`/${lang}${href}`}
+        href={href}
       >
         {Icon && (
           <Icon className="ml-3 text-foreground/80 group-hover:text-foreground" />

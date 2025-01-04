@@ -31,16 +31,24 @@ const Header = async ({
         <div className="flex gap-2 items-center">
           <LangRenderer
             ar={
-              <>
+              <Link
+                href={`tel:+218928666458`}
+                target="_blank"
+                className="flex items-center"
+              >
                 <span>218928666458+</span>
                 <MdOutlinePermPhoneMsg size={24} />
-              </>
+              </Link>
             }
             en={
-              <>
+              <Link
+                href={`tel:+218928666458`}
+                target="_blank"
+                className="flex items-center"
+              >
                 <MdOutlinePermPhoneMsg size={24} />
                 <span>+218928666458</span>
-              </>
+              </Link>
             }
           />
         </div>

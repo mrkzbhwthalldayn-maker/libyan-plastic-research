@@ -1,10 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { useFormStatus } from "react-dom";
 import Loading from "./loading";
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes, useEffect } from "react";
+import { ButtonHTMLAttributes } from "react";
 
 interface SubmitButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;

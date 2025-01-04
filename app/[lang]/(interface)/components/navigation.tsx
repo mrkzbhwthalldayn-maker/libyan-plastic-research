@@ -81,11 +81,11 @@ const structure: {
   enDesc: string;
 }[] = [
   {
-    title: "إدارة الشؤون الإدارية",
+    title: "إدارة الشؤون الإدارية والمالية",
     href: `/organizational-structure/administrative-and-financial-affairs`,
     description:
       "القسم المسؤول عن تنظيم الشؤون الإدارية وضمان سير العمل بسلاسة.",
-    enTitle: "Administrative Affairs",
+    enTitle: "Administrative and Financial Affairs Department",
     enDesc:
       "The department responsible for organizing administrative matters and ensuring smooth operations.",
   },
@@ -105,14 +105,6 @@ const structure: {
     enDesc:
       "Managing laboratories and providing analytical services to support scientific research.",
   },
-  // {
-  //   title: "إدارة الموارد البشرية",
-  //   href: "/organizational-structure#hr",
-  //   description: "مسؤولية إدارة القوى العاملة وتعزيز الكفاءات البشرية بالمركز.",
-  //   enTitle: "Human Resources",
-  //   enDesc:
-  //     "Responsible for workforce management and enhancing the center's human capital.",
-  // },
   {
     title: "مطابقة المواصفات",
     href: "/organizational-structure/specifications-office",
@@ -127,7 +119,7 @@ const structure: {
     href: "/organizational-structure/planning-and-follow-up-office",
     description: "مراقبة الأداء وتقييم النتائج.",
     enTitle: "Planning and Follow-Up Office",
-    enDesc: "monitoring performance and evaluating results.",
+    enDesc: "Monitoring performance and evaluating results.",
   },
   {
     title: "متابعة نظام الجودة",
@@ -136,6 +128,15 @@ const structure: {
     enTitle: "Quality Assurance",
     enDesc:
       "Supervising the implementation of quality systems and performance monitoring within the center.",
+  },
+  {
+    title: "التدريب",
+    href: "/organizational-structure/training",
+    description:
+      "تعزيز كفاءة الموظفين من خلال برامج تدريبية متنوعة داخلية وخارجية.",
+    enTitle: "Training",
+    enDesc:
+      "Enhancing employee efficiency through diverse training programs locally and internationally.",
   },
 ];
 
@@ -193,7 +194,7 @@ export function NavigationMenuDesktop({ labs = [] }: { labs?: Lab[] }) {
             <LangRenderer en="organizational structure" ar="الهيكل التنظيمي" />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] ">
+            <ul className="grid w-[400px] grid-cols-2 gap-3 p-4 md:w-[600px] ">
               {structure.map((component) => (
                 <LangListItem
                   key={component.title}
@@ -381,8 +382,8 @@ const links = [
     subLinks: [
       {
         link: "/organizational-structure/administrative-and-financial-affairs",
-        ar: "إدارة الشؤون الإدارية",
-        en: "Administrative Affairs",
+        ar: "إدارة الشؤون الإدارية والمالية",
+        en: "Administrative and Financial Affairs Department",
       },
       {
         link: "/organizational-structure/research-affairs-department",
@@ -409,6 +410,7 @@ const links = [
         ar: "متابعة نظام الجودة",
         en: "Quality Assurance",
       },
+      { link: "/training", ar: "التدريب", en: "Training" },
     ],
   },
   {

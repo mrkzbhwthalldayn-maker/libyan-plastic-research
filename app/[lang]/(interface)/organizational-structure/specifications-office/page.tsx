@@ -224,10 +224,10 @@ const SpecificationsOfficePage = async ({
           <h3 className="font-bold text-xl text-start mb-2">
             <LangRenderer
               ar={
-                "العمل بالمركز يعتمد على اختبار وتحليل المنتجات البلاستيكية المختلفة مثل:"
+                "وقد اعتمد العمل بالمركز على مهندسين وفنيين وطنيين متخصصين لاختبار وتحاليل المنتجات البلاستيكية المختلفة مثل: "
               }
               en={
-                "The center's work relies on testing and analyzing various plastic products such as:"
+                "The work at the center has relied on national engineers and technicians specialized in testing and analyzing various plastic products, such as: "
               }
             />
           </h3>
@@ -238,6 +238,25 @@ const SpecificationsOfficePage = async ({
               </li>
             ))}
           </ul>
+          <div className="my-2">
+            <h2 className="font-bold text-xl text-start mb-2">
+              <LangRenderer
+                ar={"الاستشارات العلمية والفنية لمكتب المواصفات "}
+                en={
+                  "Scientific and technical consultations for the Standards Office."
+                }
+              />
+            </h2>
+            <LangRenderer
+              ar={
+                "كما هو معلوم بأن المركز الليبي لبحوث اللدائن متخصص في دراسة واختبار وتحليل عينات مُصنّعة من مواد لدائنيه (بلاستكية) ومطاطية، سواءً كانت على صورة مادة خام أو منتج شبه مُصنع أو مُنتج نهائي، فعلى سبيل الذكر وليس الحصر نذكر بعض من المُنتجات والعينات التي تم اختبارها في المركز حسب مجال تطبيقها واستخدامها كما يلي: "
+              }
+              en={
+                "As is well known, the Libyan Center for Polymer Research specializes in studying, testing, and analyzing samples made of polymeric (plastic) and rubber materials, whether in the form of raw materials, semi-manufactured products, or final products. For example, and not limited to, we mention some of the products and samples that have been tested at the center according to their application and usage field as follows: "
+              }
+            />
+            <p></p>
+          </div>
           <SpecificationsOfficeDetails />
         </section>
       </div>
@@ -263,8 +282,8 @@ const SpecificationsOfficeDetails: React.FC = () => {
   const sections: Section[] = [
     {
       title: {
-        ar: "الاستشارات العلمية والفنية لمكتب المواصفات:",
-        en: "Scientific and technical consultations of the Specifications Office:",
+        ar: "أولاً: المواد الخام المصنعة للمواد البلاستيكية.",
+        en: "First: Raw materials used for manufacturing plastic materials.",
       },
       items: [
         {
@@ -312,7 +331,7 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Resins used in coatings, adhesives, and insulations.",
         },
       ],
-      images: ["1.jpg", "2.jpg"],
+      images: ["1.jpg", "3.jpg", "4.webp", "9.jpg"],
     },
     {
       title: {
@@ -357,7 +376,7 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Plastic parts for household electrical appliances made from Polypropylene (PP).",
         },
       ],
-      images: ["4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"],
+      images: ["5.jpg", "6.jpeg", "7.jpg", "8.webp"],
     },
     {
       title: {
@@ -378,7 +397,7 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Stationery items.",
         },
       ],
-      images: ["3.jpg"],
+      images: ["10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg"],
     },
     {
       title: {
@@ -411,7 +430,7 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Plastic parts for seals.",
         },
       ],
-      images: [],
+      images: ["15.png", "16.jpg"],
     },
     {
       title: {
@@ -452,7 +471,17 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Drinking water tanks made from (PE).",
         },
       ],
-      images: [],
+      images: [
+        "17.jpg",
+        "18.jpg",
+        "19.jpg",
+        "20.jpg",
+        "21.jpg",
+        "22.jpg",
+        "23.jpg",
+        "24.jpg",
+        "25.jpg",
+      ],
     },
   ];
 
@@ -470,7 +499,7 @@ const SpecificationsOfficeDetails: React.FC = () => {
       </ul>
 
       {section.images.length > 0 && (
-        <div className="lg:columns-3 md:columns-2  overflow-hidden  px-5 pb-5 my-4">
+        <div className="lg:columns-3 sm:columns-2  overflow-hidden  px-5 pb-5 my-4">
           {section.images.map((image, index) => (
             <div key={index} className={`relative pb-4`}>
               <div className="max-w-sm h-64 max-h-96">

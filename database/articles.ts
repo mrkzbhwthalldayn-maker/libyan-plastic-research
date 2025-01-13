@@ -233,7 +233,7 @@ const getArticles = unstable_cache(
   { tags: ["articles"] }
 );
 
-const getArticleById = async (slug: string, author = false) => {
+const getArticleBySlug = async (slug: string, author = false) => {
   try {
     const article = await prisma.article.findUnique({
       where: { slug },
@@ -316,7 +316,7 @@ export {
   createArtcle,
   getArticles,
   deleteArticle,
-  getArticleById,
+  getArticleBySlug,
   updateArticle,
   searchArticles,
 };

@@ -6,7 +6,7 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
-import { getArticleById, getArticles } from "@/database/articles";
+import { getArticleBySlug, getArticles } from "@/database/articles";
 import { notFound } from "next/navigation";
 import RenderHtml from "@/components/render-html";
 import LangBreadcrumbSeparator from "@/components/breadcrumb-separator";
@@ -29,7 +29,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export async function generateStaticParams() {
   const articles = await getArticles({});
   return articles.map((article) => ({
-    article: article.id,
+    article: article.slug,
   }));
 }
 
@@ -39,7 +39,7 @@ export async function generateMetadata(props: {
 }) {
   const params = await props.params;
   const { article: articleId, lang } = params;
-  const article = await getArticleById(articleId, true);
+  const article = await getArticleBySlug(articleId, true);
 
   if (!article) {
     return { title: "Article Not Found" };
@@ -115,7 +115,7 @@ const ArticlePage = async (props: {
   const slug = params.article;
   const lang = params.lang;
 
-  const article = await getArticleById(slug, true);
+  const article = await getArticleBySlug(slug, true);
 
   if (!article) {
     return notFound();

@@ -11,12 +11,12 @@ import Link from "next/link";
 export async function generateStaticParams() {
   const articles = await getArticles({});
   return articles.map((article) => ({
-    article: article.id,
+    article: article.slug,
   }));
 }
 
 import { UpdateArticleForm } from "../components/forms";
-import { getArticleById, getArticles } from "@/database/articles";
+import { getArticleBySlug, getArticles } from "@/database/articles";
 import { notFound } from "next/navigation";
 const EditArticlePage = async ({
   params,
@@ -24,7 +24,7 @@ const EditArticlePage = async ({
   params: Promise<{ article: string }>;
 }) => {
   const slug = (await params).article;
-  const article = await getArticleById(slug);
+  const article = await getArticleBySlug(slug);
   if (!article) {
     return notFound();
   }

@@ -175,25 +175,27 @@ const ConsultationsPage = async (props: {
         <h2 className="font-bold mt-10 mb-5 text-lg md:text-xl">
           {clientsTitle}
         </h2>
-        <ul className="grid gap-4">
-          {clients.map((client, index) => (
-            <li key={index} className="mb-2">
-              {`${index + 1} - `} {client}
-            </li>
-          ))}
-        </ul>
-        <div className="my-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div key={index}>
-              <Image
-                src={`/images/consultations/${index + 1}.jpg`}
-                alt={`Consultation-image ${index + 1}`}
-                width={400}
-                height={400}
-                className="rounded-lg phone-only:w-full"
-              />
-            </div>
-          ))}
+        <div className="md:flex justify-between">
+          <ul className="grid gap-4">
+            {clients.map((client, index) => (
+              <li key={index} className="mb-2">
+                {`${index + 1} - `} {client}
+              </li>
+            ))}
+          </ul>
+          <div className="my-2 grid grid-cols-1 md:grid-cols-2 h-fit lg:grid-cols-2 phone-only:gap-4 gap-2">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="overflow-hidden rounded-lg max-h-60">
+                <Image
+                  src={`/images/consultations/${index + 1}.jpg`}
+                  alt={`Consultation-image ${index + 1}`}
+                  width={400}
+                  height={400}
+                  className="rounded-lg object-cover w-full h-full phone-only:w-full"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </main>

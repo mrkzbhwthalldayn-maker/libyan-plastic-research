@@ -46,11 +46,17 @@ function ImageItem({ item, setSelected }: ImageItemProps) {
 
   return (
     <motion.figure
-      whileTap={{ scale: 0.9 }}
+      whileTap={{ scale: 1 }}
       initial="hidden"
       animate={isInView && "visible"}
       ref={ref}
-      className="inline-block group w-full rounded-md  relative dark:bg-black bg-white overflow-hidden before:absolute before:top-0 before:content-[''] before:h-full before:w-full hover:before:bg-gradient-to-t dark:before:from-gray-900  before:from-gray-200/90 before:from-5% before:to-transparent before:to-90% cursor-pointer"
+      className="inline-block  w-full rounded-md  relative dark:bg-black
+       bg-white 
+       overflow-hidden
+        before:absolute
+       before:top-0 before:content-['']
+       before:h-full 
+    cursor-pointer"
       onClick={() => setSelected(item)}
     >
       {item.url ? (
@@ -68,7 +74,7 @@ function ImageItem({ item, setSelected }: ImageItemProps) {
           className="w-full bg-base-100 shadow-xl image-full cursor-pointer"
         />
       )}
-      <div className="flex flex-col w-full mt-0 absolute bottom-0 left-0 p-2 group-hover:opacity-100 opacity-0 font-semibold ">
+      <div className="flex flex-col z-50 w-full mt-0 bottom-0 left-0 p-2 font-semibold">
         <h1>{item.title}</h1>
         <div className="flex justify-between w-full">
           <Link

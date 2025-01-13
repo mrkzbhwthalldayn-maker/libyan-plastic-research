@@ -238,11 +238,11 @@ const SpecificationsOfficePage = async ({
               </li>
             ))}
           </ul>
-          <div className="lg:columns-2 sm:columns-2  overflow-hidden px-5 pb-5 my-4">
-            <div className="relative pb-4">
+          <div className="my-4 md:grid-cols-2 content-start justify-center items-center grid gap-10">
+            <div className="relative my-5">
               <figure className="max-w-sm h-64 max-h-96">
                 <Image
-                  src={`/images/spec/a1.jpg`}
+                  src={`https://ramq565spz.ufs.sh/f/8ltt1D7oX96ntytXKFMCsEWBur3fidn8K25xwcSAbLyqHUQZ`}
                   alt={"image"}
                   height={600}
                   width={1200}
@@ -257,10 +257,10 @@ const SpecificationsOfficePage = async ({
               </figure>
             </div>
 
-            <div className="relative pb-4">
+            <div className="relative my-10">
               <figure className="max-w-sm h-64 max-h-96">
                 <Image
-                  src={`/images/spec/a2.jpg`}
+                  src={`https://ramq565spz.ufs.sh/f/8ltt1D7oX96nnc88RmAkc2DQUJRaEZFtxM3BNhfpSrCz68G0`}
                   alt={"image"}
                   height={600}
                   width={1200}
@@ -276,7 +276,7 @@ const SpecificationsOfficePage = async ({
             </div>
           </div>
 
-          <div className="my-2">
+          <div className="my-5">
             <h2 className="font-bold text-xl text-start mb-2">
               <LangRenderer
                 ar={"الاستشارات العلمية والفنية لمكتب المواصفات "}
@@ -369,7 +369,13 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Resins used in coatings, adhesives, and insulations.",
         },
       ],
-      images: ["1.jpg", "3.jpg", "4.webp", "9.jpg"],
+      images: [
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nR6hIDK40Tgbdwn8kBcPYNs9HQ57xq3KmVpGI",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nHeMlF8lXLDrXlPiAS8ImaFK9sqc1OdQbuECn",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96noMmUAyCj8dS7zLX9sQw1nu0vYeyZmTDMWIaP",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nanCFqzbwLoquVF1K2tgpODY8jifU6ex7rysB",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nJB75n7KImu54aE9swWJdlKXNODbQjB1vVcqU",
+      ],
     },
     {
       title: {
@@ -414,7 +420,12 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Plastic parts for household electrical appliances made from Polypropylene (PP).",
         },
       ],
-      images: ["5.jpg", "6.jpeg", "7.jpg", "8.webp"],
+      images: [
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nlPgBQYo7RcTW2ZOS8mhG9Q6yDraIsJL1kHxB",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nSEVr8CGjHs6W0pJuxhCUak8e7w4MKGPmZiQf",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96n8q4Q8q7oX96n1vwydfVzS4BImejlAxDqCp7U",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96n7w2rH2Z0IwatpoXUCy650AbxFVfNq3Rj2eDQ",
+      ],
     },
     {
       title: {
@@ -435,7 +446,13 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Stationery items.",
         },
       ],
-      images: ["10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg"],
+      images: [
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nRqgRPr40Tgbdwn8kBcPYNs9HQ57xq3KmVpGI",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96npgzOV6YoTmGieYAFZcX04CMtuzJPhHIS5W7K",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nDhWuoT6scoLtA5UPhbJDqX238axmkupZ0YTI",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nxAzrt13vsIC7lHMaBkFm8O5d6pz3eoUtTrKA",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96n3cHVAYL85N06XMCIldLQ79gSaZYDhnteVBio",
+      ],
     },
     {
       title: {
@@ -468,7 +485,10 @@ const SpecificationsOfficeDetails: React.FC = () => {
           en: "Plastic parts for seals.",
         },
       ],
-      images: ["15.png", "16.jpg"],
+      images: [
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96ncPVRR8a8VEs7m6pMn2b45ySrwxgiRvtkJP3O",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nC7xny9ekoQrjiSZ8caXvMBsA2uWIPRHf0l1g",
+      ],
     },
     {
       title: {
@@ -510,15 +530,15 @@ const SpecificationsOfficeDetails: React.FC = () => {
         },
       ],
       images: [
-        "17.jpg",
-        "18.jpg",
-        "19.jpg",
-        "20.jpg",
-        "21.jpg",
-        "22.jpg",
-        "23.jpg",
-        "24.jpg",
-        "25.jpg",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nokZ2GAj8dS7zLX9sQw1nu0vYeyZmTDMWIaPN",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nDjBKRp6scoLtA5UPhbJDqX238axmkupZ0YTI",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nCUyiMkekoQrjiSZ8caXvMBsA2uWIPRHf0l1g",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nbYud6rxidJtfwAyBEkHvYrs2eGN9zoQUglXP",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96njDJYrrAtROocPAiYhMnBegXpuQqEH7s5kWUw",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nebYtYShmsUVBrl938Zo6AnjLcEPgzSvFDaNH",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nO1tthE8QdEhgLj5GqDeoJtYrXzf1WUpTIRyA",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96n4tkVyKcLmDR2MY1VwdoXscSOiZQjPzytT8HN",
+        "https://ramq565spz.ufs.sh/f/8ltt1D7oX96nRFgOgz40Tgbdwn8kBcPYNs9HQ57xq3KmVpGI",
       ],
     },
   ];
@@ -537,12 +557,12 @@ const SpecificationsOfficeDetails: React.FC = () => {
       </ul>
 
       {section.images.length > 0 && (
-        <div className="lg:columns-3 sm:columns-2  overflow-hidden  px-5 pb-5 my-4">
+        <div className="lg:columns-4 md:columns-3 sm:columns-2  overflow-hidden  px-5 pb-5 my-4">
           {section.images.map((image, index) => (
             <div key={index} className={`relative pb-4`}>
               <div className="max-w-sm h-64 max-h-96">
                 <Image
-                  src={`/images/spec/${image}`}
+                  src={image}
                   alt={`image-${index}`}
                   height={600}
                   width={1200}

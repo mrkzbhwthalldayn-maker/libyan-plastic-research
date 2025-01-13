@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "ramq565spz.ufs.sh",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   webpack: (config) => {

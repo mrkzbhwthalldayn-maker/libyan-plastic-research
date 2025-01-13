@@ -238,6 +238,44 @@ const SpecificationsOfficePage = async ({
               </li>
             ))}
           </ul>
+          <div className="lg:columns-2 sm:columns-2  overflow-hidden px-5 pb-5 my-4">
+            <div className="relative pb-4">
+              <figure className="max-w-sm h-64 max-h-96">
+                <Image
+                  src={`/images/spec/a1.jpg`}
+                  alt={"image"}
+                  height={600}
+                  width={1200}
+                  className="h-full w-full object-cover rounded-xl"
+                />
+                <figcaption className="text-center text-gray-500 mt-2">
+                  <LangRenderer
+                    en="The number of transactions flowing monthly to the center over two consecutive years."
+                    ar="عدد المعاملات المتدفقة شهرياً إلى المركز خلال سنتين متتاليتين"
+                  />
+                </figcaption>
+              </figure>
+            </div>
+
+            <div className="relative pb-4">
+              <figure className="max-w-sm h-64 max-h-96">
+                <Image
+                  src={`/images/spec/a2.jpg`}
+                  alt={"image"}
+                  height={600}
+                  width={1200}
+                  className="h-full w-full object-cover rounded-xl"
+                />
+                <figcaption className="text-center text-gray-500 mt-2">
+                  <LangRenderer
+                    en="The ratio of customs transactions to company transactions over a year."
+                    ar="نسبة المعاملات الجمركية إلى نسبة معاملات الشركات خلال سنة."
+                  />
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
           <div className="my-2">
             <h2 className="font-bold text-xl text-start mb-2">
               <LangRenderer
@@ -505,7 +543,7 @@ const SpecificationsOfficeDetails: React.FC = () => {
               <div className="max-w-sm h-64 max-h-96">
                 <Image
                   src={`/images/spec/${image}`}
-                  alt={"image"}
+                  alt={`image-${index}`}
                   height={600}
                   width={1200}
                   className="h-full w-full object-cover rounded-xl"

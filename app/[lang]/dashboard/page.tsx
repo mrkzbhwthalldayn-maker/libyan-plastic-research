@@ -12,6 +12,9 @@ import InfoCard from "./components/info-card";
 import { getUsers } from "@/database/users";
 import { FaUsersCog } from "react-icons/fa";
 import { getArticles } from "@/database/articles";
+import { FaUserGroup } from "react-icons/fa6";
+import { TbMessage } from "react-icons/tb";
+import { getMsgs } from "@/database/contact";
 
 const dashboardPage = async ({
   params,
@@ -20,6 +23,8 @@ const dashboardPage = async ({
 }) => {
   const employees = await getUsers({});
   const articles = await getArticles({});
+  const users = await getUsers({});
+  const messages = await getMsgs();
   const lang = (await params).lang;
   return (
     <main className="container mt-4">
@@ -56,8 +61,25 @@ const dashboardPage = async ({
         >
           كل المقالات
         </InfoCard>
+        <InfoCard
+          href={`/${lang}/dashboard/faculty`}
+          className=" bg-orange-500"
+          title="اعضاء هئية التدريس"
+          icon={<FaUserGroup size={24} />}
+          content={`${users.length}`}
+        >
+          كل اعضاء هئية التدريس
+        </InfoCard>
+        <InfoCard
+          href={`/${lang}/dashboard/contact`}
+          className=" bg-green-500"
+          title="طلبات المراسلة"
+          icon={<TbMessage size={24} />}
+          content={`${messages.length}`}
+        >
+          كل طلبات المراسلة
+        </InfoCard>
       </div>
-      <div></div>
     </main>
   );
 };

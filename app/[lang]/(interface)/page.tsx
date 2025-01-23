@@ -33,6 +33,7 @@ import {
 } from "react-icons/fa";
 import { Metadata } from "next";
 import ContactUsForm from "./components/contact-form";
+import Link from "next/link";
 
 export async function generateMetadata({
   params,
@@ -508,28 +509,27 @@ export default async function Home({
               en="Any inquiries? Go ahead!"
             />
           </p>
-          <div className="flex justify-between items-center">
-            <div className="w-full md:w-1/2">
+          <div className="flex justify-between phone-only:flex-col gap-10 items-start">
+            <div className="w-full md:w-3/4">
               <ContactUsForm />
             </div>
             <AnimatedCard
               XorY="x"
               initialX={-20}
-              className="max-w-sm hidden md:block"
+              className="bg-accent block py-10 px-4 rounded-md mx-auto"
             >
-              <h3></h3>
-              <p></p>
-              <h3></h3>
-              <p></p>
-              <h3></h3>
-              <p></p>
-              {/* <Image
-                src={"/contact-us.png"}
-                alt="contact-us"
-                width={500}
-                height={500}
-                className="w-full h-full object-cover"
-              /> */}
+              <h3 className="font-semibold mt-4">عنوان المركز:</h3>
+              <p>طريق الشط، تاجوراء، ليبيا</p>
+              <h3 className="font-semibold mt-4">إتصل بنا:</h3>
+              <p>
+                الهاتف: <Link href={"tel:+218928666458"}>928666458</Link> (218+)
+              </p>
+              <p>
+                البريد الإلكتروني:{" "}
+                <Link href={"mailto:info@prc.ly"}>info@prc.ly</Link>
+              </p>
+              <h3 className="font-semibold mt-4">ساعات العمل:</h3>
+              <p>الأحد - الخميس: 8.00 صباحاً إلى 3.00 مساءاً</p>
             </AnimatedCard>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { createMsg } from "@/database/contact";
 import { z } from "zod";
 
 export async function newContactAction(
-  prevState: {
+  _: {
     message: string;
   },
   formData: FormData

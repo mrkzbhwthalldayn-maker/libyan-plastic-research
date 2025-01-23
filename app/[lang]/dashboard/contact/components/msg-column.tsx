@@ -2,7 +2,11 @@
 import * as React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -59,7 +63,21 @@ export const msgsColumn: ColumnDef<Contact>[] = [
     cell: ({ row }) => {
       if (row) {
         const content = row.original?.content;
-        return <div>{content.substring(0, 200)}</div>;
+        return (
+          <div>
+            {content.substring(0, 45)}
+            {content.length > 45 && (
+              <Popover>
+                <PopoverTrigger className="mx-4 hover:text-primary text-primary/70 underline">
+                  اكثر
+                </PopoverTrigger>
+                <PopoverContent className="font-normal">
+                  {content}
+                </PopoverContent>
+              </Popover>
+            )}
+          </div>
+        );
       } else {
         <div>لايوجد</div>;
       }
@@ -93,20 +111,16 @@ export const msgsColumn: ColumnDef<Contact>[] = [
             >
               نسح رقم الهاتف
             </DropdownMenuItem>
+            <DropdownMenuSeparator />
+
             <DropdownMenuItem>
               <Link
-                // variant={"ghost"}
                 className="w-full justify-around"
-                // size={"sm"}
-                href={`/dashboard/products/${msg.id}/update`}
+                href={`mailto:${msg.email}`}
               >
-                تحديث المنتج
+                رد من هنا
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-              {/* <DeleteProductForm product={product} /> */}
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
           </DropdownMenuContent>
         </DropdownMenu>
       );

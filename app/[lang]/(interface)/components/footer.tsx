@@ -48,9 +48,6 @@ const Footer = async ({
       title: isArabic ? "فيسبوك" : "Facebook",
       href: "https://www.facebook.com/LibyanPolymerResearchCenter",
     },
-    // { Icon: FaInstagram, title: isArabic ? "انستا" : "Instagram" },
-    // { Icon: FaXTwitter, title: isArabic ? "اكس" : "X" },
-    // { Icon: PiTiktokLogo, title: isArabic ? "تيك توك" : "TikTok" },
     {
       Icon: CiMail,
       title: isArabic ? "البريد" : "Mail",

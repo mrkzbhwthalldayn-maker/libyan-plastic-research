@@ -11,7 +11,7 @@ const ContactUsForm = () => {
   const { lang } = useParams();
   return (
     <Form action={newContactAction} dontReplace submit="ارسال">
-      <div className="grid gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         <div>
           <Label htmlFor="fullName">
             <LangRenderer ar="الاسم" en="Full Name" />

@@ -33,7 +33,7 @@ const ContactUsForm = () => {
             <LangRenderer ar="رقم الهاتف" en="Phone Number" />
           </Label>
           <Input
-            dir="rtl"
+            dir={lang === "ar" ? "rtl" : "ltr"}
             required
             placeholder={lang === "ar" ? "رقم هاتفك" : "Your Phone Number"}
             type="tel"

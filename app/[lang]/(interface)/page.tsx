@@ -498,7 +498,7 @@ export default async function Home({
           {lang === "en" ? "Details" : "التفاصيل"}
         </CustomLink>
       </div>
-      <section id="contacting" className="h-full  py-20">
+      <section id="contact-us" className="h-full  py-20">
         <div className="container">
           <h3 className="font-semibold text-2xl md:text-3xl w-fit">
             <LangRenderer ar="تواصل معنا" en="Contact Us" />
@@ -509,27 +509,44 @@ export default async function Home({
               en="Any inquiries? Go ahead!"
             />
           </p>
-          <div className="flex justify-between phone-only:flex-col gap-10 items-start">
+          <div className="flex justify-between phone-only:flex-col-reverse gap-10 items-start">
             <div className="w-full md:w-3/4">
               <ContactUsForm />
             </div>
             <AnimatedCard
               XorY="x"
               initialX={-20}
-              className="bg-accent block py-10 px-4 rounded-md mx-auto"
+              className="bg-accent block py-10 px-4 phone-only:w-full rounded-md mx-auto"
             >
-              <h3 className="font-semibold mt-4">عنوان المركز:</h3>
-              <p>طريق الشط، تاجوراء، ليبيا</p>
-              <h3 className="font-semibold mt-4">إتصل بنا:</h3>
+              <h3 className="font-semibold mt-4">
+                <LangRenderer ar="عنوان المركز:" en="Center Address:" />
+              </h3>
               <p>
-                الهاتف: <Link href={"tel:+218928666458"}>928666458</Link> (218+)
+                <LangRenderer
+                  ar="طريق الشط، تاجوراء، ليبيا"
+                  en="Shat Road, Tajoura, Libya"
+                />
+              </p>
+              <h3 className="font-semibold mt-4">
+                <LangRenderer ar="إتصل بنا:" en="Contact Us:" />
+              </h3>
+              <p>
+                <LangRenderer ar="الهاتف:" en="Phone:" />{" "}
+                <Link href={"tel:+218928666458"}>928666458</Link> (218+)
               </p>
               <p>
-                البريد الإلكتروني:{" "}
+                <LangRenderer ar="البريد الإلكتروني:" en="Email:" />{" "}
                 <Link href={"mailto:info@prc.ly"}>info@prc.ly</Link>
               </p>
-              <h3 className="font-semibold mt-4">ساعات العمل:</h3>
-              <p>الأحد - الخميس: 8.00 صباحاً إلى 3.00 مساءاً</p>
+              <h3 className="font-semibold mt-4">
+                <LangRenderer ar="ساعات العمل:" en="Working Hours:" />
+              </h3>
+              <p>
+                <LangRenderer
+                  ar="الأحد - الخميس: 8.00 صباحاً إلى 3.00 مساءاً"
+                  en="Sunday - Thursday: 8.00 AM to 3.00 PM"
+                />
+              </p>
             </AnimatedCard>
           </div>
         </div>

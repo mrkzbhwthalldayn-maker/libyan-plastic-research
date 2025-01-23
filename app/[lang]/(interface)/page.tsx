@@ -32,6 +32,7 @@ import {
   FaClipboard,
 } from "react-icons/fa";
 import { Metadata } from "next";
+import ContactUsForm from "./components/contact-form";
 
 export async function generateMetadata({
   params,
@@ -496,9 +497,46 @@ export default async function Home({
           {lang === "en" ? "Details" : "التفاصيل"}
         </CustomLink>
       </div>
+      <section id="contacting" className="h-full  py-20">
+        <div className="container">
+          <h3 className="font-semibold text-2xl md:text-3xl w-fit">
+            <LangRenderer ar="تواصل معنا" en="Contact Us" />
+          </h3>
+          <p className="mb-2 mt-4 leading-6 text-foreground/80 text-sm">
+            <LangRenderer
+              ar="أي استفسارات؟ تفضل!"
+              en="Any inquiries? Go ahead!"
+            />
+          </p>
+          <div className="flex justify-between items-center">
+            <div className="w-full md:w-1/2">
+              <ContactUsForm />
+            </div>
+            <AnimatedCard
+              XorY="x"
+              initialX={-20}
+              className="max-w-sm hidden md:block"
+            >
+              <h3></h3>
+              <p></p>
+              <h3></h3>
+              <p></p>
+              <h3></h3>
+              <p></p>
+              {/* <Image
+                src={"/contact-us.png"}
+                alt="contact-us"
+                width={500}
+                height={500}
+                className="w-full h-full object-cover"
+              /> */}
+            </AnimatedCard>
+          </div>
+        </div>
+      </section>
       <section
         id="training-courses"
-        className="min-h-[50vh] py-20 bg-secondary"
+        className="min-h-[50vh] bg-secondary py-20"
       >
         <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
           <LangRenderer ar="الدورات التدريبية" en="Training Courses" />

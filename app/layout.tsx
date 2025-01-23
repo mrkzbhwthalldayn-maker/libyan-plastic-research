@@ -34,7 +34,6 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          {/* <CanvasCursor /> */}
           <Toaster />
         </ThemeProvider>{" "}
       </body>

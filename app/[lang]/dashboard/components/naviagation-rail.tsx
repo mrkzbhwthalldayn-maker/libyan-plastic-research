@@ -16,6 +16,7 @@ import ToggleTheme from "@/components/theme-toggle";
 import { GiTeacher } from "react-icons/gi";
 import Logout from "@/components/logout";
 import { IoMdLogOut } from "react-icons/io";
+import { TbMessageSearch } from "react-icons/tb";
 
 const NavigationRailItem = ({
   href,
@@ -158,6 +159,14 @@ const NavigationRail = () => {
             name="هيئة التدريس"
           />
         </li>
+        <li className="my-2">
+          <NavigationRailItem
+            collapsed={collapsed}
+            href="/dashboard/contact"
+            Icon={TbMessageSearch}
+            name="الرسائل"
+          />
+        </li>
       </Menu>
     </Sidebar>
   );
@@ -208,6 +217,14 @@ export const DashboardNavigation = () => {
                 Icon={GiTeacher}
                 name="هيئة التدريس"
                 onClick={toggleOpen}
+              />
+            </li>
+            <li className="my-2">
+              <NavigationRailItem
+                href="/dashboard/contact"
+                Icon={TbMessageSearch}
+                onClick={toggleOpen}
+                name="طلبات المراسلة"
               />
             </li>
           </ul>

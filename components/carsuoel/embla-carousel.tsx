@@ -24,8 +24,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options, children } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi);
+  const { selectedIndex, onDotButtonClick } = useDotButton(emblaApi);
 
   const {
     prevBtnDisabled,

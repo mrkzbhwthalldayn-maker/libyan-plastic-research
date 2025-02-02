@@ -169,6 +169,7 @@ const ReusableSwiperSlide = ({
               <div className="w-fit mx-auto flex justify-center items-center gap-5 phone-only:gap-1 phone-only:flex-col  ">
                 {links.map((link, index) => (
                   <CustomLink
+                    variant={"default"}
                     scroll
                     key={index}
                     href={link.href}

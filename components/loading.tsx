@@ -5,7 +5,6 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Dispatch, SetStateAction } from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Props {

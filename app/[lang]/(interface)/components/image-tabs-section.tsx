@@ -25,8 +25,7 @@ const tabs = [
       ar: "إعداد الكوادر - نقل التقنية - مطابقة المنتجات البلاستيكية للمواصفات المعمول بها - إجراء وتنفيذ البحوث العلمية - تقديم الاستشارات العلمية الفنية.",
       en: "Preparing cadres, transferring technology, ensuring conformity of plastic products to applicable standards, conducting and implementing scientific research, and providing scientific and technical consultations.",
     },
-    imageUrl:
-      "https://images.unsplash.com/photo-1709949908058-a08659bfa922?q=80&w=1200&auto=format",
+    imageUrl: "/images/q_a/q_a3.jpg",
   },
   {
     question: {

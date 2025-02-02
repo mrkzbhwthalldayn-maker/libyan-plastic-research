@@ -63,7 +63,7 @@ const Footer = async ({
 
   return (
     <footer
-      className={cn("bg-background", className)}
+      className={cn("bg-background border-t border-secondary/30", className)}
       dir={isArabic ? "rtl" : "ltr"}
     >
       <div className="container grid md:grid-cols-2 lg:grid-cols-3 py-20 gap-10">

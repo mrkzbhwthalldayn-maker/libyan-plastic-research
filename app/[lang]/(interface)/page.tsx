@@ -1,4 +1,3 @@
-import ArticleCard from "@/components/article-card";
 import EmblaCarousel from "@/components/carsuoel/embla-carousel";
 import LangRenderer from "@/components/lang";
 import Marquee from "@/components/marquee";
@@ -15,6 +14,7 @@ import {
   FaGraduationCap,
   FaWrench,
   FaLeaf,
+  FaPhone,
 } from "react-icons/fa";
 import FieldOfActivityCard from "./components/field-of-activity-card";
 import { AnimatedCard, AnimatedCounter } from "@/components/animations";
@@ -32,8 +32,8 @@ import {
   FaClipboard,
 } from "react-icons/fa";
 import { Metadata } from "next";
-import ContactUsForm from "./components/contact-form";
-import Link from "next/link";
+import { BiMessageSquareDetail } from "react-icons/bi";
+import { MdOutlineAttachEmail } from "react-icons/md";
 
 export async function generateMetadata({
   params,
@@ -41,7 +41,6 @@ export async function generateMetadata({
   params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> {
   const lang = (await params).lang;
-  const dictionary = await getDictionary(lang);
   const data = {
     ar: {
       title: "المركز الليبي لبحوث اللدائن",
@@ -475,7 +474,7 @@ export default async function Home({
         </h3>
         <ImageTabSection />
       </section>
-      <div className="py-10 bg-secondary/50">
+      <div className="py-10 bg-secondary">
         <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl text-center">
           <LangRenderer
             ar="الاستشارات العلمية والفنية "
@@ -498,63 +497,8 @@ export default async function Home({
           {lang === "en" ? "Details" : "التفاصيل"}
         </CustomLink>
       </div>
-      <section id="contact-us" className="h-full  py-20">
-        <div className="container">
-          <h3 className="font-semibold text-2xl md:text-3xl w-fit">
-            <LangRenderer ar="تواصل معنا" en="Contact Us" />
-          </h3>
-          <p className="mb-2 mt-4 leading-6 text-foreground/80 text-sm">
-            <LangRenderer
-              ar="أي استفسارات؟ تفضل!"
-              en="Any inquiries? Go ahead!"
-            />
-          </p>
-          <div className="flex justify-between phone-only:flex-col-reverse gap-10 items-start">
-            <div className="w-full md:w-3/4">
-              <ContactUsForm />
-            </div>
-            <AnimatedCard
-              XorY="x"
-              initialX={-20}
-              className="bg-accent block py-10 px-4 phone-only:w-full rounded-md mx-auto"
-            >
-              <h3 className="font-semibold mt-4">
-                <LangRenderer ar="عنوان المركز:" en="Center Address:" />
-              </h3>
-              <p>
-                <LangRenderer
-                  ar="طريق الشط، تاجوراء، ليبيا"
-                  en="Shat Road, Tajoura, Libya"
-                />
-              </p>
-              <h3 className="font-semibold mt-4">
-                <LangRenderer ar="إتصل بنا:" en="Contact Us:" />
-              </h3>
-              <p>
-                <LangRenderer ar="الهاتف:" en="Phone:" />{" "}
-                <Link href={"tel:+218928666458"}>928666458</Link> (218+)
-              </p>
-              <p>
-                <LangRenderer ar="البريد الإلكتروني:" en="Email:" />{" "}
-                <Link href={"mailto:info@prc.ly"}>info@prc.ly</Link>
-              </p>
-              <h3 className="font-semibold mt-4">
-                <LangRenderer ar="ساعات العمل:" en="Working Hours:" />
-              </h3>
-              <p>
-                <LangRenderer
-                  ar="الأحد - الخميس: 8.00 صباحاً إلى 3.00 مساءاً"
-                  en="Sunday - Thursday: 8.00 AM to 3.00 PM"
-                />
-              </p>
-            </AnimatedCard>
-          </div>
-        </div>
-      </section>
-      <section
-        id="training-courses"
-        className="min-h-[50vh] bg-secondary py-20"
-      >
+
+      <section id="training-courses" className="min-h-[50vh] py-20">
         <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
           <LangRenderer ar="الدورات التدريبية" en="Training Courses" />
         </h3>
@@ -566,6 +510,7 @@ export default async function Home({
               description={field.description}
               lang={lang}
               icon={field.icon}
+              className="bg-background"
             />
           ))}
         </div>
@@ -577,6 +522,43 @@ export default async function Home({
           {lang === "en" ? "Details" : "التفاصيل"}
         </CustomLink>
       </section>
+      <div className="py-10 bg-primary">
+        <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl text-white text-center">
+          <LangRenderer ar="تواصل معنا" en="Contact Us" />
+        </h3>
+        <div className="flex justify-center phone-only:flex-col items-center container  gap-10 phone-only:gap-3 py-10">
+          <CustomLink
+            href={`/${lang}/contact-us`}
+            variant={"default"}
+            className="bg-background md:text-lg phone-only:w-full hover:bg-background/80 text-foreground"
+          >
+            <BiMessageSquareDetail
+              className={cn(lang === "en" ? "mr-2" : "ml-2", "w-4 h-4")}
+            />
+            {lang === "en" ? "send a message" : "أرسل رسالة"}
+          </CustomLink>
+          <CustomLink
+            variant={"default"}
+            className="phone-only:w-full md:text-lg bg-background hover:bg-background/80 text-foreground"
+            href={"tel:+218928666458"}
+          >
+            <FaPhone
+              className={cn(lang === "en" ? "mr-2" : "ml-2", "w-4 h-4")}
+            />
+            {lang === "ar" ? "218-92-866-64-58+" : "+218-92-866-64-58"}{" "}
+          </CustomLink>{" "}
+          <CustomLink
+            variant={"default"}
+            className="phone-only:w-full md:text-lg bg-background hover:bg-background/80 text-foreground"
+            href={"mailto:info@prc.ly"}
+          >
+            <MdOutlineAttachEmail
+              className={cn(lang === "en" ? "mr-2" : "ml-2", "w-4 h-4")}
+            />
+            info@prc.ly{" "}
+          </CustomLink>{" "}
+        </div>
+      </div>
     </main>
   );
 }

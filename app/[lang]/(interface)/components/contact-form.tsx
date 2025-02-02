@@ -10,7 +10,12 @@ import { useParams } from "next/navigation";
 const ContactUsForm = () => {
   const { lang } = useParams();
   return (
-    <Form action={newContactAction} dontReplace submit="ارسال">
+    <Form
+      action={newContactAction}
+      dontReplace
+      submit={lang === "ar" ? "إرسال" : "Submit"}
+      className="mt-4"
+    >
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <Label htmlFor="fullName">

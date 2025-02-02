@@ -69,7 +69,7 @@ const deleteArticle = async ({ id }: { id: string }) => {
     return { message: "تم حذف المقالة بنجاح" }; // "User deleted successfully"
   } catch (error: any) {
     console.dir(error, { depth: null });
-    return { message: "فشل حذف القالة" }; // "Failed to delete account"
+    return { message: "فشل حذف المقالة" }; // "Failed to delete account"
   }
 };
 

@@ -27,7 +27,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 // **1. Generate Static Params**
 export async function generateStaticParams() {
-  const articles = await getArticles({});
+  const articles = await getArticles({ type: ["news"] });
   return articles.map((article) => ({
     article: article.slug,
   }));

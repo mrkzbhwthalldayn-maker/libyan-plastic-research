@@ -522,7 +522,7 @@ export default async function Home({
           {lang === "en" ? "Details" : "التفاصيل"}
         </CustomLink>
       </section>
-      <div className="py-10 bg-primary">
+      <div id="#contact-us" className="py-10 bg-primary">
         <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl text-white text-center">
           <LangRenderer ar="تواصل معنا" en="Contact Us" />
         </h3>

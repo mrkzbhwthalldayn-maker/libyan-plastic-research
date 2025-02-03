@@ -27,7 +27,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 // **1. Generate Static Params**
 export async function generateStaticParams() {
-  const articles = await getArticles({});
+  const articles = await getArticles({ type: ["research", "conference"] });
   return articles.map((article) => ({
     article: article.slug,
   }));
@@ -38,8 +38,8 @@ export async function generateMetadata(props: {
   params: Promise<{ article: string; lang: string }>;
 }) {
   const params = await props.params;
-  const { article: articleId, lang } = params;
-  const article = await getArticleBySlug(articleId, true);
+  const { article: slug, lang } = params;
+  const article = await getArticleBySlug(slug, true);
 
   if (!article) {
     return { title: "Article Not Found" };

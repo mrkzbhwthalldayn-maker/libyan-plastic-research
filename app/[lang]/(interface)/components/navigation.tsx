@@ -63,11 +63,11 @@ const about: {
       "A welcoming message from the director highlighting the center's vision and strategic goals.",
   },
   {
-    title: "السيرة الذاتية لأعضاء هيئة التدريس",
+    title: "أعضاء هيئة التدريس",
     href: "/faculty-cvs",
     description:
       "عرض معلومات عن السيرة الذاتية والخبرة العلمية لأعضاء هيئة التدريس بالمركز.",
-    enTitle: "Faculty Members' CVs",
+    enTitle: "Faculty Members",
     enDesc:
       "Details about the academic and professional experience of the center's faculty members.",
   },
@@ -97,11 +97,11 @@ const structure: {
     enDesc: "Overseeing research and development activities within the center.",
   },
   {
-    title: "إدارة المعامل والتحاليل",
+    title: "إدارة المعامل والمختبرات",
     href: "/organizational-structure/laboratory-and-testing-department",
     description:
       "إدارة المختبرات وتقديم خدمات التحاليل اللازمة لدعم البحث العلمي.",
-    enTitle: "Laboratories and Analysis",
+    enTitle: "Laboratory and Facilities Management",
     enDesc:
       "Managing laboratories and providing analytical services to support scientific research.",
   },
@@ -204,6 +204,7 @@ export function NavigationMenuDesktop({
             <ul className="grid w-[400px] grid-cols-2 gap-3 p-4 md:w-[600px] ">
               {structure.map((component) => (
                 <LangListItem
+                  showDescription={false}
                   key={component.title}
                   title={component.title}
                   href={`/${lang}/${component.href}`}
@@ -337,31 +338,47 @@ const LangListItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Link> & {
     enTitle: string;
     enDescription: string;
+    showDescription?: boolean;
   }
->(({ className, title, children, enDescription, enTitle, ...props }, ref) => {
-  const { lang } = useParams();
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">
-            {lang === "ar" ? title : enTitle}
-          </div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {lang === "ar" ? children : enDescription}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  );
-});
+>(
+  (
+    {
+      className,
+      showDescription = true,
+      title,
+      children,
+      enDescription,
+      enTitle,
+      ...props
+    },
+    ref
+  ) => {
+    const { lang } = useParams();
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <Link
+            ref={ref}
+            className={cn(
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              className
+            )}
+            {...props}
+          >
+            <div className="text-sm font-medium leading-none">
+              {lang === "ar" ? title : enTitle}
+            </div>
+            {showDescription && (
+              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                {lang === "ar" ? children : enDescription}
+              </p>
+            )}
+          </Link>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
 LangListItem.displayName = "LangListItem";
 const ListItem = React.forwardRef<
   React.ComponentRef<"a">,
@@ -413,8 +430,8 @@ const links = [
       },
       {
         link: "/faculty-cvs",
-        ar: "السيرة الذاتية لأعضاء هيئة التدريس",
-        en: "Faculty Members' CVs",
+        ar: "أعضاء هيئة التدريس",
+        en: "Faculty Members",
       },
     ],
   },
@@ -436,8 +453,8 @@ const links = [
       },
       {
         link: "/organizational-structure/laboratory-and-testing-department",
-        ar: "إدارة المعامل والتحاليل",
-        en: "Laboratories and Analysis",
+        ar: "إدارة المعامل والمختبرات",
+        en: "Laboratory and Facilities Management",
       },
       {
         link: "/organizational-structure/specifications-office",

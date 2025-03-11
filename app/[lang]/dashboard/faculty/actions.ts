@@ -11,17 +11,15 @@ export async function createFacultyMemberAction(
 ) {
   try {
     const schema = z.object({
-      email: z.string().email("البريد الإلكتروني غير صالح"),
       fullName: z.string().min(4, "الاسم الكامل مطلوب"),
-      phoneNumber: z.string().min(9, "رقم الهاتف مطلوب"),
+      specialization: z.string().optional().nullable(),
       picture: z.string().optional().nullable(),
       cv: z.string().optional().nullable(),
     });
 
     const data = schema.safeParse({
       fullName: formData.get("fullName") || "",
-      phoneNumber: formData.get("phoneNumber") || "",
-      email: formData.get("email") || "",
+      specialization: formData.get("specialization") || "",
       picture: formData.get("picture") || "",
       cv: formData.get("cv") || "",
     });
@@ -33,14 +31,13 @@ export async function createFacultyMemberAction(
       };
     }
 
-    const { email, fullName, phoneNumber, picture, cv } = data.data;
+    const { fullName, specialization, picture, cv } = data.data;
 
     const res = await createFacultyMember({
       fullName,
-      phoneNumber: Number(phoneNumber),
-      email,
       picture,
       cv: cv ?? null,
+      specialization: specialization ?? null,
     });
 
     console.log("User created successfully:", res);
@@ -59,9 +56,8 @@ export async function updateFacultyMemberAction(
   try {
     const schema = z.object({
       id: z.string().min(1, "معرف المستخدم مطلوب"), // "User ID is required"
-      email: z.string().email("البريد الإلكتروني غير صالح"),
       fullName: z.string().min(4, "الاسم الكامل مطلوب"),
-      phoneNumber: z.string().min(9, "رقم الهاتف مطلوب"),
+      specialization: z.string().optional().nullable(),
       picture: z.string().optional().nullable(),
       cv: z.string().optional().nullable(),
     });
@@ -69,8 +65,7 @@ export async function updateFacultyMemberAction(
     const data = schema.safeParse({
       id: formData.get("id") || "",
       fullName: formData.get("fullName") || "",
-      phoneNumber: formData.get("phoneNumber") || "",
-      email: formData.get("email") || "",
+      specialization: formData.get("specialization") || "",
       picture: formData.get("picture") || "",
       cv: formData.get("cv") || "",
     });
@@ -82,15 +77,14 @@ export async function updateFacultyMemberAction(
       };
     }
 
-    const { id, email, fullName, phoneNumber, picture, cv } = data.data;
+    const { id, fullName, specialization, picture, cv } = data.data;
 
     const res = await updateFacultyMember({
       id,
       fullName,
-      phoneNumber: Number(phoneNumber),
-      email,
       picture,
       cv: cv ?? null,
+      specialization: specialization ?? null,
     });
 
     console.log("User updated successfully:", res);

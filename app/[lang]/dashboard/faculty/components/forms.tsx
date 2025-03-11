@@ -44,23 +44,12 @@ export const CreateFacultyMemberForm = () => {
             />
           </div>
           <div>
-            <Label htmlFor="phoneNumber">رقم الهاتف</Label>
+            <Label htmlFor="email">التخصص</Label>
             <Input
-              type="tel"
-              name="phoneNumber"
-              id="phoneNumber"
-              placeholder="أدخل رقم الهاتف"
-              required
-              dir="rtl"
-            />
-          </div>
-          <div>
-            <Label htmlFor="email">البريد الإلكتروني</Label>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="أدخل البريد الإلكتروني"
+              type="text"
+              name="specialization"
+              id="specialization"
+              placeholder="أدخل التخصص"
               required
             />
           </div>
@@ -114,28 +103,19 @@ export const UpdateFacultyMemberForm = ({ user }: { user: FacultyMember }) => {
               placeholder="أدخل الاسم الكامل"
             />
           </div>
+
           <div>
-            <Label htmlFor="phoneNumber">رقم الهاتف</Label>
+            <Label htmlFor="specialization">التخصص</Label>
             <Input
-              type="tel"
-              name="phoneNumber"
-              id="phoneNumber"
-              defaultValue={user.phoneNumber}
-              placeholder="أدخل رقم الهاتف"
-              dir="rtl"
-            />
-          </div>
-          <div>
-            <Label htmlFor="email">البريد الإلكتروني</Label>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              defaultValue={user.email}
-              placeholder="أدخل البريد الإلكتروني"
+              type="text"
+              name="specialization"
+              id="specialization"
+              defaultValue={user.specialization ?? ""}
+              placeholder="أدخل التخصص"
             />
           </div>
         </div>
+        <div></div>
         <div className="flex flex-col gap-2">
           <div className="my-2">
             <CustomDropzoneUploadImage

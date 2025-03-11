@@ -43,7 +43,7 @@ const Header = async ({
     >
       <div className="bg-primary selection:bg-secondary selection:text-foreground text-white px-4 flex justify-between items-center">
         <div className="flex gap-2 items-center">
-          <Link href={`/${lang}#contact-us`} className="flex items-center">
+          <Link href={`/${lang}/contact-us`} className="flex items-center">
             <LangRenderer ar="تواصل معنا" en="Contact Us" />
             <MdOutlinePermPhoneMsg className="mx-2" size={24} />
           </Link>

@@ -15,6 +15,7 @@ import { getArticles } from "@/database/articles";
 import { FaUserGroup } from "react-icons/fa6";
 import { TbMessage } from "react-icons/tb";
 import { getMsgs } from "@/database/contact";
+import { getFacultyMembers } from "@/database/faculty";
 
 const dashboardPage = async ({
   params,
@@ -23,7 +24,7 @@ const dashboardPage = async ({
 }) => {
   const employees = await getUsers({});
   const articles = await getArticles({});
-  const users = await getUsers({});
+  const users = await getFacultyMembers({});
   const messages = await getMsgs();
   const lang = (await params).lang;
   return (

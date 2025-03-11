@@ -88,14 +88,14 @@
   ],
   "scientific_events": {
     "conferences": 2,
-    "workshops": 34,
-    "scientific_seminars": 18,
+    "workshops": 51,
+    "scientific_seminars": 20,
     "scientific_meetings": 2,
-    "internal_training_courses": 64,
-    "external_training_courses": 9,
-    "lectures": 140,
-    "open_days": 38,
-    "national_and_religious_activities": 6
+    "internal_training_courses": 69,
+    "external_training_courses": 10,
+    "lectures": 157,
+    "open_days": 41,
+    "national_and_religious_activities": 20
   },
   "labs": [
     {

@@ -5,22 +5,23 @@ import { FacultyMember } from "@prisma/client";
 import { revalidateTag, unstable_cache } from "next/cache";
 
 const createFacultyMember = async ({
-  email,
   fullName,
-  phoneNumber,
   picture,
   cv,
-}: Omit<FacultyMember, "id" | "createdAt" | "updatedAt" | "picture"> & {
+  specialization,
+}: {
   picture?: string | null;
+  specialization?: string | null;
+  cv?: string | null;
+  fullName: string;
 }) => {
   try {
     const facultyMember = await prisma.facultyMember.create({
       data: {
-        email,
         fullName,
-        phoneNumber,
         picture,
         cv,
+        specialization,
       },
     });
     if (!facultyMember) {
@@ -36,23 +37,25 @@ const createFacultyMember = async ({
 
 const updateFacultyMember = async ({
   id,
-  email,
   fullName,
-  phoneNumber,
   picture,
   cv,
-}: Omit<FacultyMember, "createdAt" | "updatedAt" | "picture"> & {
+  specialization,
+}: {
   picture?: string | null;
+  specialization?: string | null;
+  cv?: string | null;
+  fullName: string;
+  id: string;
 }) => {
   try {
     let facultyMember = await prisma.facultyMember.update({
       where: { id },
       data: {
-        email,
         fullName,
-        phoneNumber,
         picture,
         cv,
+        specialization,
       },
     });
 

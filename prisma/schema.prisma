@@ -39,14 +39,13 @@ model Article {
 }
 
 model FacultyMember {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  fullName    String
-  email       String   @unique
-  phoneNumber Int
-  picture     String?
-  cv          String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullName       String
+  picture        String?
+  cv             String?
+  specialization String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Contact {

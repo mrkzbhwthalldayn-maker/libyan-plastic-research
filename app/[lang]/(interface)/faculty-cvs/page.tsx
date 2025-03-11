@@ -1,6 +1,6 @@
 import LangBreadcrumbSeparator from "@/components/breadcrumb-separator";
 import LangRenderer from "@/components/lang";
-import MansoryGrid from "@/components/mansory";
+import FacultyGrid from "@/components/mansory";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -71,13 +71,7 @@ const FacultyMembersCvs = async ({
 
   const currentContent = content[lang];
   const members = await getFacultyMembers({});
-  const items = members.map((member) => ({
-    id: member.id,
-    title: member.fullName,
-    url: member.picture,
-    cv: member.cv,
-    email: member.email,
-  }));
+
   return (
     <main className="min-h-screen">
       <div className="container">
@@ -98,7 +92,7 @@ const FacultyMembersCvs = async ({
         </Breadcrumb>
         <h1 className="text-2xl font-bold my-4">{currentContent.header}</h1>
         <p className="mb-8">{currentContent.description}</p>
-        <MansoryGrid items={items} />
+        <FacultyGrid members={members} />
       </div>
     </main>
   );

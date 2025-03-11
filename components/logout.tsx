@@ -1,8 +1,7 @@
 "use client";
-import Form from "./form";
 import { logout } from "@/lib/auth";
 import { cn } from "@/lib/utils";
-import { ReactNode, SetStateAction, useState } from "react";
+import { ReactNode, useState } from "react";
 import AccessibleDialogForm from "./accible-dialog-form";
 
 const Logout = ({

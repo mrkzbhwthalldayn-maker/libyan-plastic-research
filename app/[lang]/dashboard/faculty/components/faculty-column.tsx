@@ -53,25 +53,12 @@ export const facultyTable: ColumnDef<FacultyMember>[] = [
     },
   },
   {
-    accessorKey: "رقم الهاتف",
-    header: "رقم الهاتف",
+    accessorKey: "التخصص",
+    header: "التخصص",
     cell: ({ row }) => {
       if (row) {
-        const phone = row.original?.phoneNumber;
-        return <div>{phone}</div>;
-      } else {
-        return <div>لايوجد</div>;
-      }
-    },
-  },
-
-  {
-    accessorKey: "البريد",
-    header: "البريد",
-    cell: ({ row }) => {
-      if (row) {
-        const email = row.original?.email;
-        return <div>{email}</div>;
+        const specialization = row.original?.specialization;
+        return <div>{specialization}</div>;
       } else {
         return <div>لايوجد</div>;
       }
@@ -112,14 +99,14 @@ export const facultyTable: ColumnDef<FacultyMember>[] = [
             <DropdownMenuLabel>الأحداث</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => {
-                navigator.clipboard.writeText(String(user.phoneNumber));
+                navigator.clipboard.writeText(String(user.fullName));
                 toast({
                   className: "bg-primary text-white",
-                  description: "تم نسخ رقم الهاتف بنجاح",
+                  description: "تم نسخ الاسم بنجاح",
                 });
               }}
             >
-              نسح رقم الهاتف
+              نسح الاسم
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />

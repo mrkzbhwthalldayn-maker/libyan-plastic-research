@@ -19,7 +19,6 @@ import {
 import FieldOfActivityCard from "./components/field-of-activity-card";
 import { AnimatedCard, AnimatedCounter } from "@/components/animations";
 import ImageTabSection from "./components/image-tabs-section";
-
 import { Card } from "@/components/cards";
 import { formatDate } from "@/lib/date";
 import { Article, User } from "@prisma/client";
@@ -77,7 +76,7 @@ const fieldsOfActivity = [
     icon: FaFlask,
     title: {
       en: "Scientific Research",
-      ar: "تنفيذ البحوث العلمية",
+      ar: "البحوث العلمية",
     },
     description: {
       en: "Conducting and supporting research to advance knowledge and innovation.",
@@ -88,7 +87,7 @@ const fieldsOfActivity = [
     icon: FaGraduationCap,
     title: {
       en: "Graduation Projects",
-      ar: "تنفيذ مشاريع التخرج",
+      ar: "مشاريع التخرج",
     },
     description: {
       en: "Implementing graduation projects for university and institute students.",
@@ -99,7 +98,7 @@ const fieldsOfActivity = [
     icon: FaBalanceScale,
     title: {
       en: "Consultations",
-      ar: "تقديم الاستشارات",
+      ar: "الاستشارات العلمية",
     },
     description: {
       en: "Providing scientific and technical consultations.",
@@ -109,8 +108,8 @@ const fieldsOfActivity = [
   {
     icon: FaWrench,
     title: {
-      en: "Industrial Problem Solving",
-      ar: "حل مشاكل القطاع الصناعي",
+      en: "Supporting the Industrial Sector",
+      ar: "دعم القطاع الصناعي",
     },
     description: {
       en: "Solving problems facing the industrial sector (public and private).",
@@ -124,8 +123,8 @@ const fieldsOfActivity = [
       ar: "مطابقة جودة المنتجات",
     },
     description: {
-      en: "Ensuring the quality conformity of plastic products.",
-      ar: "مطابقة جودة المنتجات البلاستيكية.",
+      en: "Ensuring plastic products comply with standard specifications.",
+      ar: "مطابقة المنتجات البلاستيكية للمواصفات القياسية.",
     },
   },
   {
@@ -152,74 +151,74 @@ const fieldsOfActivity = [
   },
 ];
 
-const trainingCourses: FieldOfActivity[] = [
-  {
-    icon: FaCogs, // Gear icon for technical training
-    title: {
-      en: "Technical Training Program: Polymer Processing Techniques (LPRC-T01)",
-      ar: "البرنامج التدريبي التقني 1LPRC-T0: تقنيات وتشكيل المواد البوليمرية",
-    },
-    description: {
-      en: "A technical training program on polymer processing techniques.",
-      ar: "برنامج تدريبي تقني حول تقنيات وتشكيل المواد البوليمرية.",
-    },
-  },
-  {
-    icon: FaFlask, // Flask icon for science-focused training
-    title: {
-      en: "Specialized Training Program: Polymer Science (LPRC-T02)",
-      ar: "البرنامج التدريبي التخصصي 2LPRC-T0: علم البوليمرات",
-    },
-    description: {
-      en: "A specialized training program focusing on polymer science.",
-      ar: "برنامج تدريبي تخصصي يركز على علم البوليمرات.",
-    },
-  },
-  {
-    icon: FaIndustry, // Factory/Industry icon for polyolefins-related training
-    title: {
-      en: "Specialized Training Program: Polyolefins (LPRC-T03)",
-      ar: "البرنامج التدريبي التخصصي 3LPRC-T0: البولي اوليفنات",
-    },
-    description: {
-      en: "A specialized training program on polyolefins.",
-      ar: "برنامج تدريبي تخصصي حول البولي أوليفنات.",
-    },
-  },
-  {
-    icon: FaClipboard, // Clipboard icon for environmental stress cracking program
-    title: {
-      en: "Technical Training Program: Environmental Stress Cracking in Plastic Pipes (LPRC-T04)",
-      ar: "البرنامج التدريبي التقني 4LPRC-T0: الإجهاد البيئي في الأنابيب البلاستيكية",
-    },
-    description: {
-      en: "A technical training program on environmental stress cracking in plastic pipes.",
-      ar: "برنامج تدريبي تقني حول الإجهاد البيئي في الأنابيب البلاستيكية.",
-    },
-  },
-  {
-    icon: FaRecycle, // Recycling icon for awareness of plastic recycling
-    title: {
-      en: "Awareness Training Program: Plastic Recycling (LPRC-T05)",
-      ar: "البرنامج التدريبي التوعوي 5LPRC-T0: إعادة تدوير البلاستيك",
-    },
-    description: {
-      en: "An awareness training program on plastic recycling.",
-      ar: "برنامج تدريبي توعوي حول إعادة تدوير البلاستيك.",
-    },
-  },
-  {
-    icon: FaClipboard, // Clipboard icon for other training titles
-    title: {
-      en: "Other Training Program Titles",
-      ar: "عناوين برامج تدريبية أخرى",
-    },
-    description: {
-      en: "Additional potential training programs to be implemented.",
-      ar: "برامج تدريبية إضافية يمكن تنفيذها.",
-    },
-  },
-];
+// const trainingCourses: FieldOfActivity[] = [
+//   {
+//     icon: FaCogs, // Gear icon for technical training
+//     title: {
+//       en: "Technical Training Program: Polymer Processing Techniques (LPRC-T01)",
+//       ar: "البرنامج التدريبي التقني 1LPRC-T0: تقنيات وتشكيل المواد البوليمرية",
+//     },
+//     description: {
+//       en: "A technical training program on polymer processing techniques.",
+//       ar: "برنامج تدريبي تقني حول تقنيات وتشكيل المواد البوليمرية.",
+//     },
+//   },
+//   {
+//     icon: FaFlask, // Flask icon for science-focused training
+//     title: {
+//       en: "Specialized Training Program: Polymer Science (LPRC-T02)",
+//       ar: "البرنامج التدريبي التخصصي 2LPRC-T0: علم البوليمرات",
+//     },
+//     description: {
+//       en: "A specialized training program focusing on polymer science.",
+//       ar: "برنامج تدريبي تخصصي يركز على علم البوليمرات.",
+//     },
+//   },
+//   {
+//     icon: FaIndustry, // Factory/Industry icon for polyolefins-related training
+//     title: {
+//       en: "Specialized Training Program: Polyolefins (LPRC-T03)",
+//       ar: "البرنامج التدريبي التخصصي 3LPRC-T0: البولي اوليفنات",
+//     },
+//     description: {
+//       en: "A specialized training program on polyolefins.",
+//       ar: "برنامج تدريبي تخصصي حول البولي أوليفنات.",
+//     },
+//   },
+//   {
+//     icon: FaClipboard, // Clipboard icon for environmental stress cracking program
+//     title: {
+//       en: "Technical Training Program: Environmental Stress Cracking in Plastic Pipes (LPRC-T04)",
+//       ar: "البرنامج التدريبي التقني 4LPRC-T0: الإجهاد البيئي في الأنابيب البلاستيكية",
+//     },
+//     description: {
+//       en: "A technical training program on environmental stress cracking in plastic pipes.",
+//       ar: "برنامج تدريبي تقني حول الإجهاد البيئي في الأنابيب البلاستيكية.",
+//     },
+//   },
+//   {
+//     icon: FaRecycle, // Recycling icon for awareness of plastic recycling
+//     title: {
+//       en: "Awareness Training Program: Plastic Recycling (LPRC-T05)",
+//       ar: "البرنامج التدريبي التوعوي 5LPRC-T0: إعادة تدوير البلاستيك",
+//     },
+//     description: {
+//       en: "An awareness training program on plastic recycling.",
+//       ar: "برنامج تدريبي توعوي حول إعادة تدوير البلاستيك.",
+//     },
+//   },
+//   {
+//     icon: FaClipboard, // Clipboard icon for other training titles
+//     title: {
+//       en: "Other Training Program Titles",
+//       ar: "عناوين برامج تدريبية أخرى",
+//     },
+//     description: {
+//       en: "Additional potential training programs to be implemented.",
+//       ar: "برامج تدريبية إضافية يمكن تنفيذها.",
+//     },
+//   },
+// ];
 
 interface ArticleContent extends Article {
   author?: User;
@@ -243,7 +242,7 @@ export default async function Home({
       <section>
         <Carousel />
       </section>
-      <section className="content-center relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-10 md:shadow-xl">
+      {/* <section className="content-center relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-10 md:shadow-xl">
         <Marquee
           pauseOnHover
           repeat={100}
@@ -261,7 +260,7 @@ export default async function Home({
             )
           )}
         </Marquee>
-      </section>
+      </section> */}
       <section id="our-vision" className="min-h-[50vh] bg-secondary">
         <div className="container flex justify-between phone-only:flex-col phone-only:gap-5 py-20 items-center">
           <div className="grid gap-5">
@@ -421,53 +420,61 @@ export default async function Home({
           </AnimatedCard>
         </div>
       </section>
-      <div className="sm:gap-4 gap-10 text-center bg-secondary items-start grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-row  px-4 md:px-16 py-10 mb-2">
-        <StatiscCard
-          to={dictionary.scientific_events.conferences}
-          ar="المؤتمرات العلمية التي نظمها المركز."
-          en="Scientific conferences organized by the center."
-        />
-        <StatiscCard
-          to={dictionary.scientific_events.workshops}
-          ar="ورش العمل التي عقدها المركز."
-          en="Workshops conducted by the center."
-        />
-        <StatiscCard
-          to={dictionary.scientific_events.scientific_seminars}
-          ar="الندوات العلمية التي نظمها المركز."
-          en="Scientific seminars held by the center."
-        />
-        <StatiscCard
-          to={dictionary.scientific_events.scientific_meetings}
-          ar="الاجتماعات العلمية التي تمت في المركز."
-          en="Scientific meetings conducted at the center."
-        />
-        <StatiscCard
-          to={dictionary.scientific_events.internal_training_courses}
-          ar="الدورات التدريبية الداخلية التي نظمها المركز."
-          en="Internal training courses organized by the center."
-        />
-        <StatiscCard
-          to={dictionary.scientific_events.external_training_courses}
-          ar="الدورات التدريبية الخارجية التي حضرها أعضاء المركز."
-          en="External training courses attended by center members."
-        />
-        <StatiscCard
-          to={dictionary.scientific_events.lectures}
-          ar="المحاضرات التي قدمها المركز."
-          en="Lectures delivered by the center."
-        />
-        <StatiscCard
-          to={dictionary.scientific_events.open_days}
-          ar="الأيام المفتوحة التي نظمها المركز."
-          en="Open days organized by the center."
-        />
-        <StatiscCard
-          to={dictionary.scientific_events.national_and_religious_activities}
-          ar="الأنشطة الوطنية والدينية التي شارك فيها المركز."
-          en="National and religious activities participated by the center."
-        />
-      </div>
+      <section className="sm:gap-4 gap-10 text-center bg-secondary items-start   px-4 md:px-16 py-10 mb-2">
+        <h3 className="font-bold mb-5 text-primary text-3xl phone-only:text-xl">
+          <LangRenderer
+            ar="المحافل العلمية التي نظمها المركز من سنة 2001 إلى سنة 2024"
+            en="Scientific events organized by the center from 2001 to 2024"
+          />
+        </h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-row">
+          <StatiscCard
+            to={dictionary.scientific_events.conferences}
+            ar="المؤتمرات العلمية التي نظمها المركز."
+            en="Scientific conferences organized by the center."
+          />
+          <StatiscCard
+            to={dictionary.scientific_events.workshops}
+            ar="ورش العمل التي عقدها المركز."
+            en="Workshops conducted by the center."
+          />
+          <StatiscCard
+            to={dictionary.scientific_events.scientific_seminars}
+            ar="الندوات العلمية التي نظمها المركز."
+            en="Scientific seminars held by the center."
+          />
+          <StatiscCard
+            to={dictionary.scientific_events.scientific_meetings}
+            ar="الاجتماعات العلمية التي تمت في المركز."
+            en="Scientific meetings conducted at the center."
+          />
+          <StatiscCard
+            to={dictionary.scientific_events.internal_training_courses}
+            ar="الدورات التدريبية الداخلية التي نظمها المركز."
+            en="Internal training courses organized by the center."
+          />
+          <StatiscCard
+            to={dictionary.scientific_events.external_training_courses}
+            ar="الدورات التدريبية الخارجية التي حضرها أعضاء المركز."
+            en="External training courses attended by center members."
+          />
+          <StatiscCard
+            to={dictionary.scientific_events.lectures}
+            ar="المحاضرات التي قدمها المركز."
+            en="Lectures delivered by the center."
+          />
+          <StatiscCard
+            to={dictionary.scientific_events.open_days}
+            ar="الأيام المفتوحة التي نظمها المركز."
+            en="Open days organized by the center."
+          />
+          <StatiscCard
+            to={dictionary.scientific_events.national_and_religious_activities}
+            ar="الأنشطة الوطنية والدينية التي شارك فيها المركز."
+            en="National and religious activities participated by the center."
+          />
+        </div>
+      </section>
       <section id="q&a" className="py-10">
         <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl text-center">
           <LangRenderer ar="الأسئلة والأجوبة" en="Q & A" />
@@ -498,7 +505,7 @@ export default async function Home({
         </CustomLink>
       </div>
 
-      <section id="training-courses" className="min-h-[50vh] py-20">
+      {/* <section id="training-courses" className="min-h-[50vh] py-20">
         <h3 className="font-bold text-primary text-3xl text-center mb-5 phone-only:text-xl">
           <LangRenderer ar="الدورات التدريبية" en="Training Courses" />
         </h3>
@@ -521,7 +528,7 @@ export default async function Home({
         >
           {lang === "en" ? "Details" : "التفاصيل"}
         </CustomLink>
-      </section>
+      </section> */}
       <div id="#contact-us" className="py-10 bg-primary">
         <h3 className="font-bold text-primary text-3xl mb-5 phone-only:text-xl text-white text-center">
           <LangRenderer ar="تواصل معنا" en="Contact Us" />

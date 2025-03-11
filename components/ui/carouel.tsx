@@ -40,11 +40,8 @@ const Carousel = () => {
         en: "Pioneering Research in Polymers",
       },
       description: {
-        ar: `نحن نقود أبحاثًا مبتكرة في تقنيات اللدائن، باستخدام مختبرات
-             وأدوات متقدمة لدفع حدود العلوم والاستدامة.`,
-        en: `We lead innovative research in polymer technology, utilizing
-             advanced labs and tools to push boundaries in science and
-             sustainability.`,
+        ar: `بحوث ودراسات هادفة نحن نقود أبحاثا مبتكره في تقنيات البوليمرات باستخدام مختبرات متطورة تقود للمعرفة والاستدامة.`,
+        en: `Purposeful research and studies We conduct innovative research in polymer technologies using advanced laboratories that drive knowledge and sustainability.`,
       },
       links: [
         {
@@ -62,11 +59,8 @@ const Carousel = () => {
         en: "A Vision for Innovation & Sustainability",
       },
       description: {
-        ar: `مهمتنا هي تعزيز علم البوليمرات مع حماية البيئة وتحسين الصحة
-             العامة من خلال الابتكار المستدام.`,
-        en: `Our mission is to advance polymer science while protecting
-             the environment and enhancing public health through sustainable
-             innovation.`,
+        ar: `مهمتنا هي تعزيز وتوطين علوم وتقنيات البوليمرات في مجالات حماية البيئة والاستفادة من الموارد الطبيعية ودعم الصناعات المحلية.`,
+        en: `Our mission is to advance and localize polymer science and technology in environmental protection, natural resource utilization, and support for local industries.`,
       },
       links: [
         {

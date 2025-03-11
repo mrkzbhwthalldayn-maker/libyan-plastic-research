@@ -1,31 +1,21 @@
 "use client";
 // inspired by tom is loading
-import React, { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useState } from "react";
 import Link from "next/link";
 import { CustomLink } from "./custom-link";
-interface Item {
-  id: string;
-  url?: string | null;
-  title: string;
-  email?: string | null;
-  cv?: string | null;
-}
-function MansoryGrid({ items }: { items: Item[] }) {
-  const [_, setSelected] = useState(null);
+import Image from "next/image";
+import { FacultyMember } from "@prisma/client";
+import LangRenderer from "./lang";
+import { IoCloudDownload } from "react-icons/io5";
 
+function FacultyGrid({ members }: { members: FacultyMember[] }) {
   return (
     <>
       <div className="container mx-auto p-1">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <>
-            {items.map((item, index) => (
-              <ImageItem
-                key={item.id}
-                item={item}
-                index={index}
-                setSelected={setSelected}
-              />
+            {members.map((member, index) => (
+              <CvCard {...member} key={index} />
             ))}
           </>
         </div>
@@ -34,67 +24,46 @@ function MansoryGrid({ items }: { items: Item[] }) {
   );
 }
 
-interface ImageItemProps {
-  item: Item;
-  index: number | string;
-  setSelected: any;
-}
-
-function ImageItem({ item, setSelected }: ImageItemProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
+function CvCard({ fullName, cv, specialization, picture }: FacultyMember) {
   return (
-    <motion.figure
-      whileTap={{ scale: 1 }}
-      initial="hidden"
-      animate={isInView && "visible"}
-      ref={ref}
-      className="inline-block  w-full rounded-md  relative dark:bg-black
-       bg-white 
-       overflow-hidden
-        before:absolute
-       before:top-0 before:content-['']
-       before:h-full 
-    cursor-pointer"
-      onClick={() => setSelected(item)}
-    >
-      {item.url ? (
-        <motion.img
-          layoutId={`card-${item.id}`}
-          whileHover={{ scale: 1.025 }}
-          src={item.url}
-          className="w-full bg-base-100 shadow-xl image-full cursor-pointer"
-        />
-      ) : (
-        <motion.img
-          layoutId={`card-${item.id}`}
-          whileHover={{ scale: 1.025 }}
-          src={"/images/unknown.png"}
-          className="w-full bg-base-100 shadow-xl image-full cursor-pointer"
-        />
-      )}
-      <div className="flex flex-col z-50 w-full mt-0 bottom-0 left-0 p-2 font-semibold">
-        <h1>{item.title}</h1>
-        <div className="flex justify-between w-full">
-          <Link
-            href={`mailto:${item.email}`}
-            className="text-primary-500 hover:text-primary-700"
-          >
-            {item.email}
-          </Link>
-          <CustomLink
-            href={item.cv ?? "#"}
-            download={item.cv}
-            target="_blank"
-            className="text-primary hover:text-primary/80 p-0 m-0"
-          >
-            cv
-          </CustomLink>
-        </div>
+    <div className="bg-accent border border-foreground/20 shadow-lg rounded-lg overflow-hidden">
+      <div className="overflow-hidden rounded-md h-56 w-full aspect-square">
+        {picture ? (
+          <Image
+            width={400}
+            height={400}
+            src={picture}
+            alt={`${fullName}-image`}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <Image
+            width={400}
+            height={400}
+            src={"/images/default_image.png"}
+            alt={`${fullName}-image`}
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
-    </motion.figure>
+      <br />
+      <div className="p-4 grid gap-2">
+        <h3>{fullName}</h3>
+        <p>{specialization ?? "لا يوجد بيانات"}</p>
+        {cv && (
+          <CustomLink
+            target="_blank"
+            className="gap-2"
+            variant={"default"}
+            href={cv}
+          >
+            <LangRenderer ar="السيرة الذاتية" en="CV" />
+            <IoCloudDownload size={18} />
+          </CustomLink>
+        )}
+      </div>
+    </div>
   );
 }
 
-export default MansoryGrid;
+export default FacultyGrid;

@@ -262,7 +262,7 @@ export default async function Home({
         </Marquee>
       </section> */}
       <section id="our-vision" className="min-h-[50vh] bg-secondary">
-        <div className="container flex justify-between phone-only:flex-col phone-only:gap-5 py-20 items-center">
+        <div className="container flex justify-between phone-only:flex-col gap-5 py-20 items-center">
           <div className="grid gap-5">
             <h2 className="font-bold text-primary text-3xl phone-only:text-xl">
               {dictionary.hopes.title}
@@ -290,10 +290,17 @@ export default async function Home({
           </div>
           <AnimatedCard
             XorY="x"
-            className="relative max-w-sm max-h-96 overflow-hidden"
+            className="relative rounded-md max-w-sm max-h-96 overflow-hidden"
             initialX={lang === "en" ? 20 : -20}
           >
-            <svg className="clipppy absolute -top-[999px] -left-[999px] w-0 h-0">
+            <Image
+              src="/images/mission.jpg"
+              alt="Description"
+              width={1000}
+              height={1000}
+              className="h-full object-cover w-full"
+            />
+            {/* <svg className="clipppy absolute -top-[999px] -left-[999px] w-0 h-0">
               <defs>
                 <clipPath id="clip-another" clipPathUnits={"objectBoundingBox"}>
                   <path
@@ -307,13 +314,13 @@ export default async function Home({
             </svg>
             <figure style={{ clipPath: "url(#clip-another)" }}>
               <Image
-                src="/images/vision.avif"
+                src="/images/mission.jpg"
                 alt="Description"
                 width={1000}
                 height={1000}
                 className="transition-all h-full duration-300 aspect-[3/4] min-h-full align-top object-fill hover:scale-105 w-full"
               />
-            </figure>
+            </figure> */}
           </AnimatedCard>
         </div>
       </section>
@@ -423,55 +430,55 @@ export default async function Home({
       <section className="sm:gap-4 gap-10 text-center bg-secondary items-start   px-4 md:px-16 py-10 mb-2">
         <h3 className="font-bold mb-5 text-primary text-3xl phone-only:text-xl">
           <LangRenderer
-            ar="المحافل العلمية التي نظمها المركز من سنة 2001 إلى سنة 2024"
-            en="Scientific events organized by the center from 2001 to 2024"
+            ar="المحافل العلمية من سنة 2001 إلى سنة 2024"
+            en="Scientific events from 2001 to 2024"
           />
         </h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-row">
           <StatiscCard
             to={dictionary.scientific_events.conferences}
-            ar="المؤتمرات العلمية التي نظمها المركز."
-            en="Scientific conferences organized by the center."
+            ar="المؤتمرات العلمية الدولية."
+            en="International Scientific Conferences."
           />
           <StatiscCard
             to={dictionary.scientific_events.workshops}
-            ar="ورش العمل التي عقدها المركز."
-            en="Workshops conducted by the center."
+            ar="ورش العمل."
+            en="Workshops."
           />
           <StatiscCard
             to={dictionary.scientific_events.scientific_seminars}
-            ar="الندوات العلمية التي نظمها المركز."
-            en="Scientific seminars held by the center."
+            ar="الندوات العلمية."
+            en="Scientific seminars."
           />
           <StatiscCard
             to={dictionary.scientific_events.scientific_meetings}
-            ar="الاجتماعات العلمية التي تمت في المركز."
-            en="Scientific meetings conducted at the center."
+            ar="الملتقيات العلمية."
+            en="Scientific meetings."
           />
           <StatiscCard
             to={dictionary.scientific_events.internal_training_courses}
-            ar="الدورات التدريبية الداخلية التي نظمها المركز."
-            en="Internal training courses organized by the center."
+            ar="الدورات التدريبية المحلية."
+            en="Local training courses."
           />
           <StatiscCard
             to={dictionary.scientific_events.external_training_courses}
-            ar="الدورات التدريبية الخارجية التي حضرها أعضاء المركز."
-            en="External training courses attended by center members."
+            ar="الدورات التدريبية الخارجية."
+            en="External training courses."
           />
           <StatiscCard
             to={dictionary.scientific_events.lectures}
-            ar="المحاضرات التي قدمها المركز."
-            en="Lectures delivered by the center."
+            ar="المحاضرات"
+            en="Lectures."
           />
           <StatiscCard
             to={dictionary.scientific_events.open_days}
-            ar="الأيام المفتوحة التي نظمها المركز."
-            en="Open days organized by the center."
+            ar="الأيام المفتوحة."
+            en="Open days."
           />
           <StatiscCard
             to={dictionary.scientific_events.national_and_religious_activities}
-            ar="الأنشطة الوطنية والدينية التي شارك فيها المركز."
-            en="National and religious activities participated by the center."
+            ar="الأنشطة الوطنية والدينية."
+            en="National and Religious Activities."
           />
         </div>
       </section>

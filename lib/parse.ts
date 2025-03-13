@@ -6,11 +6,13 @@ const parseArticleType = (type: ArticleType, language: "en" | "ar"): string => {
       [ArticleType.news]: "News",
       [ArticleType.conference]: "Conference",
       [ArticleType.research]: "Research",
+      [ArticleType.article]: "article",
     },
     ar: {
       [ArticleType.news]: "أخبار",
       [ArticleType.conference]: "مؤتمر",
       [ArticleType.research]: "بحث",
+      [ArticleType.article]: "مقالة",
     },
   };
 

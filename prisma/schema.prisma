@@ -58,6 +58,15 @@ model Contact {
   updatedAt DateTime @updatedAt
 }
 
+model Form {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  enName    String
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 enum Roles {
   admin
   superAdmin
@@ -67,4 +76,5 @@ enum ArticleType {
   news
   conference
   research
+  article
 }

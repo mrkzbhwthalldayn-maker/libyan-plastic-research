@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { FaBars } from "react-icons/fa";
 import { useParams, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { FaRegNewspaper } from "react-icons/fa6";
+import { FaFileWaveform, FaRegNewspaper } from "react-icons/fa6";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { IconType } from "react-icons/lib";
 import { GoHome } from "react-icons/go";
@@ -167,6 +167,14 @@ const NavigationRail = () => {
             name="الرسائل"
           />
         </li>
+        <li className="my-2">
+          <NavigationRailItem
+            collapsed={collapsed}
+            href="/dashboard/regulations"
+            Icon={FaFileWaveform}
+            name="نماذج ولوائح"
+          />
+        </li>
       </Menu>
     </Sidebar>
   );
@@ -219,12 +227,20 @@ export const DashboardNavigation = () => {
                 onClick={toggleOpen}
               />
             </li>
-            <li className="my-2">
+            <li className="w-full">
               <NavigationRailItem
                 href="/dashboard/contact"
                 Icon={TbMessageSearch}
                 onClick={toggleOpen}
                 name="طلبات المراسلة"
+              />
+            </li>
+            <li className="w-full">
+              <NavigationRailItem
+                href="/dashboard/regulations"
+                Icon={FaFileWaveform}
+                onClick={toggleOpen}
+                name="نماذج ولوائح"
               />
             </li>
           </ul>

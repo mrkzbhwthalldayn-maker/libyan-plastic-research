@@ -45,30 +45,61 @@ const Header = async ({
         <div className="flex gap-2 items-center">
           <Link href={`/${lang}/contact-us`} className="flex items-center">
             <LangRenderer ar="تواصل معنا" en="Contact Us" />
-            <MdOutlinePermPhoneMsg className="mx-2" size={24} />
+            {/* <MdOutlinePermPhoneMsg className="mx-2" size={24} /> */}
+          </Link>
+          <span className="mx-2 md:block hidden">|</span>
+
+          <Link
+            href={`/${lang}/regulations`}
+            className="hidden md:flex items-center"
+          >
+            <LangRenderer en="Forms & Rules" ar="نمادج ولوائح" />
+            {/* <MdOutlinePermPhoneMsg className="mx-2" size={24} /> */}
           </Link>
         </div>
-        <LocaleSwitcher
-          arTitle="عربي"
-          className={cn(
-            "text-white/80 font-normal hover:text-white pl-14",
-            lang === "en" && "pl-0"
-          )}
-          enTitle="English"
-          varians={"link"}
-        />
+        <div className="flex justify-between items-center gap-2">
+          <div className="md:block hidden">
+            {data.href === "dashboard" ? (
+              <Link
+                href={`/${lang}/${data.href}`}
+                passHref
+                className={cn("text-white")}
+              >
+                <LangRenderer en="Dashboard" ar="لوحة التحكم" />
+              </Link>
+            ) : (
+              <Link
+                href={`/${lang}/${data.href}`}
+                passHref
+                className={cn("text-white")}
+              >
+                <LangRenderer ar="تسجيل الدخول" en="Sign In" />
+              </Link>
+            )}
+          </div>
+          <span className="mx-2 md:block hidden">|</span>
+
+          <LocaleSwitcher
+            arTitle="عربي"
+            className={cn(
+              "text-white/80 font-normal hover:text-white pl-14",
+              lang === "en" && "pl-0"
+            )}
+            enTitle="English"
+            varians={"link"}
+          />
+        </div>
       </div>
-      <div
-        dir="rtl"
-        className="flex justify-between xl:container px-4 items-center"
-      >
+      <div dir="rtl" className="flex justify-between  px-4 items-center">
         <div className="hidden lg:flex justify-center gap-2 items-center">
           <CustomLink href={`/${lang}/search`} size={"icon"} variant={"ghost"}>
             <IoSearchOutline className="w-4 h-4" />
           </CustomLink>
-          <ToggleTheme />
+          <div className="xl:flex hidden">
+            <ToggleTheme />
+          </div>
         </div>
-        <div className="md:hidden flex justify-center gap-2 items-center">
+        <div className="lg:hidden flex justify-center gap-2 items-center">
           <CustomLink href={`/${lang}/search`} size={"icon"} variant={"ghost"}>
             <IoSearchOutline className="w-4 h-4" />
           </CustomLink>

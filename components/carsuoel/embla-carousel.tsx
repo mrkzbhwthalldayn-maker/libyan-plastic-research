@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { CustomLink } from "../custom-link";
 import { useParams } from "next/navigation";
 import LangRenderer from "../lang";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
 type PropType = {
   slides: number[];
@@ -44,10 +44,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             </div>
           ))}
           <div className="embla__slide">
-            <div className="content-center min-h-full text-center">
+            <div className="content-center min-h-full text-center flex justify-center items-center">
               <CustomLink href={`/${lang}/articles`} variant={"default"}>
                 <LangRenderer ar={"كل المقالات"} en={"All Articles"} />
-                <FaLongArrowAltRight className="mx-2" />
+                {lang === "en" ? (
+                  <FaLongArrowAltRight className="inline-block ml-2" />
+                ) : (
+                  <FaLongArrowAltLeft className="inline-block mr-2" />
+                )}
               </CustomLink>
             </div>
           </div>

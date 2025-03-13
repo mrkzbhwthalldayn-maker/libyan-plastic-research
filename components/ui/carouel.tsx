@@ -67,10 +67,6 @@ const Carousel = () => {
           href: `/${lang}/#our-vision`,
           text: { ar: "تعرف على رؤيتنا", en: "Learn About Our Vision" },
         },
-        // {
-        //   href: `/${lang}/#achievements`,
-        //   text: { ar: "إنجازاتنا", en: "Our Achievements" },
-        // },
       ],
     },
   ];

@@ -57,19 +57,6 @@ export async function generateMetadata(props: {
   const url =
     process.env.NODE_ENV === "production" ? uri : "http://localhost:3000";
 
-  //   "@context": "https://schema.org",
-  //   "@type": "Organization",
-  //   name: info.title,
-  //   // description: info.description,
-  //   // url: url,
-  //   // logo: logo,
-  //   // sameAs: [
-  //   //   "https://www.facebook.com/yourpage", // Replace with actual social links
-  //   //   "https://twitter.com/yourpage",
-  //   //   "https://www.linkedin.com/company/yourpage",
-  //   // ],
-  // };
-
   return {
     title: info.title,
     // description: info.description,
@@ -139,17 +126,19 @@ const ArticlesPage = async (props: {
     author: true,
     content: searchParams?.query,
     createdAt: searchParams?.createdAt,
-    type: searchParams?.type ? [searchParams?.type as ArticleType] : undefined,
+    // type: searchParams?.type ? [searchParams?.type as ArticleType] : undefined,
+    type: ["article"],
   });
   const articlesNumber = await getArticles({
     select: { id: true },
+    // type: ["article"],
   });
 
   const allPages = Math.ceil(articlesNumber.length / take);
 
   return (
     <main className="phone-only:px-4 relative py-2 min-h-[50vh]">
-      <div className="my-2 px-2 md:px-16 xl:px-24">
+      <div className="my-2 md:my-4 px-2 md:px-16 xl:px-24">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -181,6 +170,7 @@ const ArticlesPage = async (props: {
             />
             <div className="flex items-center gap-2 justify-end w-full">
               <ArticleFilters
+                showType={false}
                 defaultType={searchParams?.type as ArticleType}
                 sort={searchParams?.createdAt}
               >

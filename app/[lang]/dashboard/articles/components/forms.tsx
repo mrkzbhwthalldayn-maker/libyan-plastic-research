@@ -54,6 +54,7 @@ export const CreateNewArticleForm = () => {
             <SelectItem value="news">إخبارية</SelectItem>
             <SelectItem value="research">بحثية</SelectItem>
             <SelectItem value="confrenece">مؤتمر</SelectItem>
+            <SelectItem value="article">مقالة</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -163,6 +164,7 @@ export const UpdateArticleForm = ({ article }: { article: Article }) => {
             <SelectItem value="news">إخبارية</SelectItem>
             <SelectItem value="research">بحثية</SelectItem>
             <SelectItem value="conference">مؤتمر</SelectItem>
+            <SelectItem value="article">مقالة</SelectItem>
           </SelectContent>
         </Select>
       </div>

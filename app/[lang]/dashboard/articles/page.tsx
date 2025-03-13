@@ -37,7 +37,9 @@ const page = async (props: { searchParams: Promise<{ content?: string }> }) => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <CustomLink href={`/dashboard/articles/new`}>مقالة جديدة</CustomLink>
+        <CustomLink variant={"default"} href={`/dashboard/articles/new`}>
+          مقالة جديدة
+        </CustomLink>
       </div>
       <div className=" my-4 md:container">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

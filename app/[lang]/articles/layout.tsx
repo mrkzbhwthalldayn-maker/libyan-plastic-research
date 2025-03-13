@@ -24,7 +24,8 @@ export default async function RootLayout({
       dir={lang === "ar" ? "rtl" : "ltr"}
       className={cn(
         lang === "ar" ? cairo.className : outfit.className,
-        "relative"
+        "relative",
+        lang === "ar" ? "text-right" : "text-left"
       )}
     >
       <Header
@@ -32,7 +33,7 @@ export default async function RootLayout({
         lang={lang as Locale}
       />
 
-      <div className="md:mt-28 mt-20">{children}</div>
+      <div className="md:mt-[120px] mt-24">{children}</div>
       <Footer className="bg-secondary" lang={lang} />
     </div>
   );

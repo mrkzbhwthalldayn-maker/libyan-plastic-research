@@ -293,7 +293,24 @@ export function NavigationMenuDesktop({
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        {href === "dashboard" ? (
+
+        {/* <NavigationMenuItem className="hidden xl:flex">
+          <Link
+            href={`/${lang}/articles`}
+            passHref
+            className={cn(
+              navigationMenuTriggerStyle(),
+              pathname === `/${lang}/regulations` && "bg-primary text-white",
+              pathname.startsWith(`/${lang}/regulations`) &&
+                "bg-primary text-white"
+            )}
+          >
+            <NavigationMenuLink asChild>
+              <LangRenderer en="Forms & Rules" ar="نمادج ولوائح" />
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem> */}
+        {/* {href === "dashboard" ? (
           <NavigationMenuItem>
             <Link
               href={`/${lang}/${href}`}
@@ -327,7 +344,7 @@ export function NavigationMenuDesktop({
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
-        )}
+        )} */}
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -645,6 +662,21 @@ export default function NavigationSheet({
           >
             <LangRenderer en="All Articles" ar="كل المقالات" />
           </CustomLink>
+
+          <CustomLink
+            variant={
+              pathname === `/${lang}/regulations` ||
+              pathname.startsWith(`/${lang}/regulations`)
+                ? "default"
+                : "ghost"
+            }
+            href={`/${lang}/regulations`}
+            className="text-start block px-2 shadow"
+            onClick={() => setOpen(!open)}
+          >
+            <LangRenderer en="Forms and Regulations" ar="نمادج ولوائح" />
+          </CustomLink>
+
           <CustomLink
             variant={
               pathname === `/${lang}/${href}` ||

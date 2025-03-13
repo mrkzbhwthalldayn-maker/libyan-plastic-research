@@ -6,11 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { CiMail } from "react-icons/ci";
-import { FaInstagram, FaMapMarkerAlt } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { FiFacebook } from "react-icons/fi";
 import { IconType } from "react-icons/lib";
-import { PiTiktokLogo } from "react-icons/pi";
+// import { PiTiktokLogo } from "react-icons/pi";
 
 const Footer = async ({
   className,
@@ -39,6 +38,10 @@ const Footer = async ({
     {
       title: isArabic ? "المقالات" : "Articles",
       href: "/articles",
+    },
+    {
+      title: isArabic ? "نمادج ولوائح" : "Forms & Rules",
+      href: "/regulations",
     },
   ];
 
@@ -100,6 +103,7 @@ const Footer = async ({
                 <SocailMediaLink
                   lang={lang}
                   key={index}
+                  target="_self"
                   title={link.title}
                   href={link.href}
                 />

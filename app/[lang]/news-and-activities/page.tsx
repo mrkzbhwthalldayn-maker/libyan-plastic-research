@@ -55,19 +55,6 @@ export async function generateMetadata(props: {
   const url =
     process.env.NODE_ENV === "production" ? uri : "http://localhost:3000";
 
-  //   "@context": "https://schema.org",
-  //   "@type": "Organization",
-  //   name: info.title,
-  //   // description: info.description,
-  //   // url: url,
-  //   // logo: logo,
-  //   // sameAs: [
-  //   //   "https://www.facebook.com/yourpage", // Replace with actual social links
-  //   //   "https://twitter.com/yourpage",
-  //   //   "https://www.linkedin.com/company/yourpage",
-  //   // ],
-  // };
-
   return {
     title: info.title,
     // description: info.description,
@@ -171,10 +158,7 @@ const ArticlesPage = async (props: {
         <div className="flex justify-between phone-only:flex-col items-center">
           <div className="mt-8">
             <h1 className="my-4 font-bold md:text-[60px] text-2xl leading-[64px]">
-              <LangRenderer
-                ar={"الأخبار و الأنشطة"}
-                en={"Research & Studies"}
-              />
+              <LangRenderer ar={"الأخبار و الأنشطة"} en={"News & Studies"} />
             </h1>
           </div>
           <div className="flex flex-col phone-only:justify-between md:min-w-1/2 phone-only:w-full gap-2">

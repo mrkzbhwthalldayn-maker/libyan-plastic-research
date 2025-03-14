@@ -5,7 +5,7 @@ import Carousel from "@/components/ui/carouel";
 import { getArticles } from "@/database/articles";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
-import { cn } from "@/lib/utils";
+import { cn, getArticleUrlSegment } from "@/lib/utils";
 import { EmblaOptionsType } from "embla-carousel";
 import Image from "next/image";
 import {
@@ -337,7 +337,9 @@ export default async function Home({
               type={article.type}
               lang={lang}
               key={index}
-              href={`/${lang}/articles/${article.slug}`}
+              href={`/${lang}/${getArticleUrlSegment(article.type)}/${
+                article.slug
+              }`}
               imageUrl={article.poster!}
               title={lang === "ar" ? article.title : article.enTitle}
               description={lang === "ar" ? article.body : article.enBody}

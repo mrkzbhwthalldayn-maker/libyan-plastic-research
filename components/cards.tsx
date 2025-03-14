@@ -105,7 +105,9 @@ const Card: React.FC<CardProps> = ({
                 type === "news" &&
                   "dark:bg-rose-700 text-rose-700 dark:text-rose-200 bg-rose-200",
                 type === "conference" &&
-                  "dark:bg-sky-700 text-sky-700 dark:text-sky-200 bg-sky-200"
+                  "dark:bg-sky-700 text-sky-700 dark:text-sky-200 bg-sky-200",
+                type === "article" &&
+                  "dark:bg-yellow-700 text-yellow-700 dark:text-yellow-200 bg-yellow-200"
               )}
             >
               {parseArticleType(type, lang)}

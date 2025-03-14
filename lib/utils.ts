@@ -1,3 +1,4 @@
+import { ArticleType } from "@prisma/client";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -24,3 +25,17 @@ export function isValidPhoneNumber(phoneNumber: string): boolean {
   const pattern = /^(092|091|094|093|92|91|94|93)\d{7}$/;
   return pattern.test(phoneNumber);
 }
+
+export const getArticleUrlSegment = (type: ArticleType): string => {
+  switch (type) {
+    case "research":
+      return "research-and-studies";
+    case "news":
+    case "conference":
+      return "news-and-activities";
+    case "article":
+      return "articles";
+    default:
+      return "articles"; // Default fallback
+  }
+};

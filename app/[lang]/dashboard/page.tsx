@@ -12,10 +12,11 @@ import InfoCard from "./components/info-card";
 import { getUsers } from "@/database/users";
 import { FaUsersCog } from "react-icons/fa";
 import { getArticles } from "@/database/articles";
-import { FaUserGroup } from "react-icons/fa6";
+import { FaFileWaveform, FaUserGroup } from "react-icons/fa6";
 import { TbMessage } from "react-icons/tb";
 import { getMsgs } from "@/database/contact";
 import { getFacultyMembers } from "@/database/faculty";
+import { getForms } from "@/database/forms";
 
 const dashboardPage = async ({
   params,
@@ -26,6 +27,7 @@ const dashboardPage = async ({
   const articles = await getArticles({});
   const users = await getFacultyMembers({});
   const messages = await getMsgs();
+  const froms = await getForms({});
   const lang = (await params).lang;
   return (
     <main className="container mt-4">
@@ -79,6 +81,15 @@ const dashboardPage = async ({
           content={`${messages.length}`}
         >
           كل طلبات المراسلة
+        </InfoCard>
+        <InfoCard
+          href={`/${lang}/dashboard/regulations`}
+          className=" bg-red-500"
+          title="النماذج و اللوائح"
+          icon={<FaFileWaveform size={24} />}
+          content={`${froms.length}`}
+        >
+          كل النماذج و اللوائح
         </InfoCard>
       </div>
     </main>

@@ -44,6 +44,16 @@ export const CreateFacultyMemberForm = () => {
             />
           </div>
           <div>
+            <Label htmlFor="enName">الاسم الأجنبي</Label>
+            <Input
+              type="text"
+              name="enName"
+              id="enName"
+              placeholder="أدخل الاسم الأجنبي"
+            />
+          </div>
+
+          <div>
             <Label htmlFor="email">التخصص</Label>
             <Input
               type="text"
@@ -51,6 +61,15 @@ export const CreateFacultyMemberForm = () => {
               id="specialization"
               placeholder="أدخل التخصص"
               required
+            />
+          </div>
+          <div>
+            <Label htmlFor="enSpecialization">التخصص بالانجليزي</Label>
+            <Input
+              type="text"
+              name="enSpecialization"
+              id="enSpecialization"
+              placeholder="أدخل التخصص بالانجليزي"
             />
           </div>
         </div>
@@ -103,6 +122,16 @@ export const UpdateFacultyMemberForm = ({ user }: { user: FacultyMember }) => {
               placeholder="أدخل الاسم الكامل"
             />
           </div>
+          <div>
+            <Label htmlFor="enName">الاسم الأجنبي</Label>
+            <Input
+              type="text"
+              name="enName"
+              id="enName"
+              defaultValue={user.enName}
+              placeholder="أدخل الاسم الأجنبي"
+            />
+          </div>
 
           <div>
             <Label htmlFor="specialization">التخصص</Label>
@@ -112,6 +141,16 @@ export const UpdateFacultyMemberForm = ({ user }: { user: FacultyMember }) => {
               id="specialization"
               defaultValue={user.specialization ?? ""}
               placeholder="أدخل التخصص"
+            />
+          </div>
+          <div>
+            <Label htmlFor="enSpecialization">التخصص بالانجليزي</Label>
+            <Input
+              type="text"
+              name="enSpecialization"
+              id="enSpecialization"
+              defaultValue={user.enSpecialization ?? ""}
+              placeholder="أدخل التخصص بالانجليزي"
             />
           </div>
         </div>

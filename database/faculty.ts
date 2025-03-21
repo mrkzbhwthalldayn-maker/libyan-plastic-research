@@ -9,11 +9,15 @@ const createFacultyMember = async ({
   picture,
   cv,
   specialization,
+  enName,
+  enSpecialization,
 }: {
   picture?: string | null;
   specialization?: string | null;
   cv?: string | null;
   fullName: string;
+  enName: string;
+  enSpecialization?: string | null;
 }) => {
   try {
     const facultyMember = await prisma.facultyMember.create({
@@ -22,6 +26,8 @@ const createFacultyMember = async ({
         picture,
         cv,
         specialization,
+        enName,
+        enSpecialization,
       },
     });
     if (!facultyMember) {
@@ -41,12 +47,16 @@ const updateFacultyMember = async ({
   picture,
   cv,
   specialization,
+  enName,
+  enSpecialization,
 }: {
   picture?: string | null;
   specialization?: string | null;
   cv?: string | null;
   fullName: string;
   id: string;
+  enName: string;
+  enSpecialization?: string | null;
 }) => {
   try {
     let facultyMember = await prisma.facultyMember.update({
@@ -56,6 +66,8 @@ const updateFacultyMember = async ({
         picture,
         cv,
         specialization,
+        enName,
+        enSpecialization,
       },
     });
 

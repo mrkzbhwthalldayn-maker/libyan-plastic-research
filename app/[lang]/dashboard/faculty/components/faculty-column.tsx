@@ -53,12 +53,36 @@ export const facultyTable: ColumnDef<FacultyMember>[] = [
     },
   },
   {
+    accessorKey: "الاسم الأجنبي",
+    header: "الاسم الأجنبي",
+    cell: ({ row }) => {
+      if (row) {
+        const fullName = row.original?.enName;
+        return <div>{fullName ?? "لايوجد"}</div>;
+      } else {
+        return <div>لايوجد</div>;
+      }
+    },
+  },
+  {
     accessorKey: "التخصص",
     header: "التخصص",
     cell: ({ row }) => {
       if (row) {
         const specialization = row.original?.specialization;
         return <div>{specialization}</div>;
+      } else {
+        return <div>لايوجد</div>;
+      }
+    },
+  },
+  {
+    accessorKey: "التخصص الاجنبي",
+    header: "التخصص الاجنبي",
+    cell: ({ row }) => {
+      if (row) {
+        const enSpecialization = row.original?.enSpecialization;
+        return <div>{enSpecialization}</div>;
       } else {
         return <div>لايوجد</div>;
       }

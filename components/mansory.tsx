@@ -1,12 +1,12 @@
 "use client";
 // inspired by tom is loading
-import React, { useState } from "react";
-import Link from "next/link";
+import React from "react";
 import { CustomLink } from "./custom-link";
 import Image from "next/image";
 import { FacultyMember } from "@prisma/client";
 import LangRenderer from "./lang";
 import { IoCloudDownload } from "react-icons/io5";
+import { useParams } from "next/navigation";
 
 function FacultyGrid({ members }: { members: FacultyMember[] }) {
   return (
@@ -24,7 +24,15 @@ function FacultyGrid({ members }: { members: FacultyMember[] }) {
   );
 }
 
-function CvCard({ fullName, cv, specialization, picture }: FacultyMember) {
+function CvCard({
+  fullName,
+  cv,
+  specialization,
+  picture,
+  enName,
+  enSpecialization,
+}: FacultyMember) {
+  const { lang } = useParams();
   return (
     <div className="bg-accent border border-foreground/20 shadow-lg rounded-lg overflow-hidden">
       <div className="overflow-hidden rounded-md h-56 w-full aspect-square">
@@ -48,8 +56,8 @@ function CvCard({ fullName, cv, specialization, picture }: FacultyMember) {
       </div>
       <br />
       <div className="p-4 grid gap-2">
-        <h3>{fullName}</h3>
-        <p>{specialization ?? "لا يوجد بيانات"}</p>
+        <h3>{lang === "ar" ? fullName : enName}</h3>
+        <p>{lang === "ar" ? specialization : enSpecialization}</p>
         {cv && (
           <CustomLink
             target="_blank"

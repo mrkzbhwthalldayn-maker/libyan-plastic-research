@@ -214,10 +214,10 @@ const ArticlePage = async (props: {
           </div>
           <div className={cn("grid gap-2 h-full content-end")}>
             <ul>
-              <li>
+              {/* <li>
                 <LangRenderer ar={"تم الرفع بواسطة : "} en={"Uploaded by: "} />
                 {article.author.fullName}
-              </li>
+              </li> */}
               <li>
                 {article.views} <LangRenderer ar={"مشاهدة"} en={"views"} />
               </li>

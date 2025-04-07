@@ -119,7 +119,7 @@ const Card: React.FC<CardProps> = ({
               {extractText(description, 200)}
             </p>
           </div>
-          <div className="flex items-center justify-between p-4">
+          {/* <div className="flex items-center justify-between p-4">
             <div className="flex items-center mb-4">
               <Image
                 alt={authorName}
@@ -133,7 +133,7 @@ const Card: React.FC<CardProps> = ({
                 <span>{date}</span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </Link>

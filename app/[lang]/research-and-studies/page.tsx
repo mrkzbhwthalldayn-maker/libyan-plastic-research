@@ -19,7 +19,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Article, ArticleType, User } from "@prisma/client";
+import { Article, User } from "@prisma/client";
 import { Locale } from "@/i18n-config";
 import { Card, SideCard } from "@/components/cards";
 import SearchInput from "@/components/search";
@@ -54,19 +54,6 @@ export async function generateMetadata(props: {
   const logo = "/logo.png"; // Update this path to your actual logo location
   const url =
     process.env.NODE_ENV === "production" ? uri : "http://localhost:3000";
-
-  //   "@context": "https://schema.org",
-  //   "@type": "Organization",
-  //   name: info.title,
-  //   // description: info.description,
-  //   // url: url,
-  //   // logo: logo,
-  //   // sameAs: [
-  //   //   "https://www.facebook.com/yourpage", // Replace with actual social links
-  //   //   "https://twitter.com/yourpage",
-  //   //   "https://www.linkedin.com/company/yourpage",
-  //   // ],
-  // };
 
   return {
     title: info.title,
@@ -116,8 +103,11 @@ const ArticlesPage = async (props: {
   const lang = params.lang;
   let take = 25;
   let page: number = 1;
-  const list = searchParams?.view === "list";
-
+  const list =
+    searchParams?.view === "list" ||
+    searchParams?.view === undefined ||
+    searchParams?.view === null ||
+    !searchParams?.view;
   if (searchParams && searchParams.page) {
     if (!Number.isNaN(Number(searchParams.page))) {
       page = Number(searchParams.page);

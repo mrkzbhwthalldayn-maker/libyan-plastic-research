@@ -103,7 +103,11 @@ const ArticlesPage = async (props: {
   const lang = params.lang;
   let take = 25;
   let page: number = 1;
-  const list = searchParams?.view === "list";
+  const list =
+    searchParams?.view === "list" ||
+    searchParams?.view === undefined ||
+    searchParams?.view === null ||
+    !searchParams?.view;
 
   if (searchParams && searchParams.page) {
     if (!Number.isNaN(Number(searchParams.page))) {

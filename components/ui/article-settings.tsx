@@ -24,7 +24,7 @@ type Display = "list" | "grid";
 const ALLOWED_VALUES: string[] = ["50", "25", "15"];
 const ArticleSettings = ({
   children,
-  defaultDisplay = "grid",
+  defaultDisplay = "list",
   take: defaultTake = "25",
 }: {
   children?: ReactNode;

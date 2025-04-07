@@ -15,7 +15,7 @@ import { formatDateInDetails } from "@/lib/date";
 import { Locale } from "@/i18n-config";
 import { after } from "next/server";
 import prisma from "@/prisma/db";
-import { cn } from "@/lib/utils";
+import { cn, getArticleUrlSegment } from "@/lib/utils";
 import ShareDialog from "@/components/share-dialog";
 import uri from "@/lib/uri";
 import CopyToClipboard from "@/components/copy-to-clipboard";
@@ -252,7 +252,9 @@ const ArticlePage = async (props: {
                     ? extractText(content.enBody, 150)
                     : extractText(content.body, 150)
                 }
-                link={`/${lang}/articles/${content.slug}`}
+                link={`/${lang}/${getArticleUrlSegment(article.type)}/${
+                  article.slug
+                }`}
               />
               <Separator className="bg-foreground/50" />
             </div>

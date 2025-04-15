@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Locale } from "@/i18n-config";
 import { formatToDate } from "@/lib/date";
 import { extractText } from "@/lib/text";
+import { ArticleType } from "@prisma/client";
 
 interface CardProps {
   title: string;
@@ -19,6 +20,7 @@ interface CardProps {
   lang?: Locale;
   createdAt: Date;
   views?: number;
+  type: ArticleType;
 }
 
 const ArticleCard: React.FC<CardProps> = ({
@@ -32,6 +34,7 @@ const ArticleCard: React.FC<CardProps> = ({
   lang,
   createdAt,
   views,
+  type,
 }) => {
   // Truncate the HTML body into plain text
   const truncatedBody = extractText(body, 200);
@@ -41,10 +44,13 @@ const ArticleCard: React.FC<CardProps> = ({
       <div
         dir={lang === "en" ? "ltr" : "rtl"}
         className={cn(
-          "max-w-full flex flex-col justify-between border duration-300 transition-colors hover:bg-accent border-foreground/20 bg-accent/30 rounded-lg shadow",
+          "max-w-full flex relative flex-col justify-between border duration-300 transition-colors hover:bg-accent border-foreground/20 bg-accent/30 rounded-lg shadow",
           className
         )}
       >
+        <div className="absolute top-2 left-2 bg-primary text-white px-2 py-1 rounded-md text-sm font-semibold">
+          {type}
+        </div>
         <Link
           href={href}
           className="w-full block overflow-hidden max-w-full h-64 content-center max-h-96"

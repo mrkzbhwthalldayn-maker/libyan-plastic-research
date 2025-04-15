@@ -11,6 +11,7 @@ import { getArticles } from "@/database/articles";
 import { CustomLink } from "@/components/custom-link";
 import ArticleCard from "@/components/article-card";
 import { DeleteArticleForm } from "./components/forms";
+import SearchInput from "@/components/search";
 const page = async (props: { searchParams: Promise<{ content?: string }> }) => {
   const searchParams = await props.searchParams;
   const articles = await getArticles({ content: searchParams?.content });
@@ -41,11 +42,22 @@ const page = async (props: { searchParams: Promise<{ content?: string }> }) => {
           مقالة جديدة
         </CustomLink>
       </div>
+
       <div className=" my-4 md:container">
+        <div className="flex justify-between my-4 items-center gap-2 phone-only:flex-col">
+          <h1 className=" font-bold text-2xl ">ادارة المقالات</h1>
+          <SearchInput
+            query="content"
+            className="max-w-sm phone-only:max-w-full "
+            placeholder="ابحث عن مقالة"
+          />
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {articles?.map((article, i) => {
             return (
               <ArticleCard
+                type={article.type}
                 key={i}
                 title={article.title}
                 body={article.body}

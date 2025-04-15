@@ -235,7 +235,10 @@ export default async function Home({
     align: "start",
     direction: lang === "ar" ? "rtl" : "ltr",
   };
-  const articles: ArticleContent[] = await getArticles({ author: true });
+  const articles: ArticleContent[] = await getArticles({
+    author: true,
+    take: 9,
+  });
 
   return (
     <main>

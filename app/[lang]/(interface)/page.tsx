@@ -33,6 +33,7 @@ import {
 import { Metadata } from "next";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { MdOutlineAttachEmail } from "react-icons/md";
+import prisma from "@/prisma/db";
 
 export async function generateMetadata({
   params,
@@ -238,6 +239,15 @@ export default async function Home({
   const articles: ArticleContent[] = await getArticles({
     author: true,
     take: 9,
+  });
+
+  await prisma.article.updateMany({
+    where: {
+      readTime: undefined,
+    },
+    data: {
+      readTime: 3,
+    },
   });
 
   return (

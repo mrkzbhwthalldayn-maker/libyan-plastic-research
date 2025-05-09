@@ -1,6 +1,5 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
 import { Locale } from "@/i18n-config";
 import { cn } from "@/lib/utils";
 import { ReactNode, useState } from "react";

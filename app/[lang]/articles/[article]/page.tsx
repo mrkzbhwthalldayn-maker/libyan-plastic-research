@@ -186,7 +186,7 @@ const ArticlePage = async (props: {
                 </span>
               </div>{" "}
               <h1 className="my-4 font-bold md:text-[60px] text-2xl leading-[64px]">
-                {lang === "en" ? article.enTitle : article.title}
+                {lang === "en" ? article?.enTitle : article?.title}
               </h1>
               <Suspense
                 fallback={

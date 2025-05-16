@@ -23,13 +23,7 @@ import { Card } from "@/components/cards";
 import { formatDate } from "@/lib/date";
 import { Article, User } from "@prisma/client";
 import { CustomLink } from "@/components/custom-link";
-import {
-  FaCogs,
-  FaFlask,
-  FaRecycle,
-  FaIndustry,
-  FaClipboard,
-} from "react-icons/fa";
+import { FaCogs, FaFlask } from "react-icons/fa";
 import { Metadata } from "next";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { MdOutlineAttachEmail } from "react-icons/md";
@@ -358,7 +352,7 @@ export default async function Home({
               description={lang === "ar" ? article.body : article.enBody}
               authorName={article?.author?.fullName ?? "مشرف"}
               authorImageUrl={article.poster!}
-              date={formatDate(new Date(article.createdAt), lang)}
+              date={formatDate(new Date(article?.createdAt), lang ?? "ar")}
             />
           ))}
         </EmblaCarousel>

@@ -80,7 +80,7 @@ body {
     margin-top: 0;
   }
   img {
-    @apply my-4 rounded-md !important;
+    @apply rounded-md !important;
   }
 
   /* List styles */

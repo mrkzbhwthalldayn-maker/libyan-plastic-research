@@ -141,7 +141,7 @@ const ArticlePage = async (props: {
     <main className="phone-only:px-4 relative py-2  min-h-[50vh]">
       <div className="my-2 px-2 md:px-16 xl:px-24">
         <article className="relative flex justify-between items-end phone-only:flex-col phone-only:items-center">
-          <div className="md:w-4/6">
+          <div className="md:w-4/6 phone-only:w-full">
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -167,7 +167,7 @@ const ArticlePage = async (props: {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
-            <div className="mt-8">
+            <div className="mt-8 overflow-hidden">
               <div className="flex phone-only:flex-col justify-start text-start items-center md:gap-2">
                 {article.readTime && (
                   <>

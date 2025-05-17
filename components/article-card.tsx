@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { Fragment, ReactNode, Suspense } from "react";
@@ -44,13 +45,10 @@ const ArticleCard: React.FC<CardProps> = ({
       <div
         dir={lang === "en" ? "ltr" : "rtl"}
         className={cn(
-          "max-w-full flex relative flex-col justify-between border duration-300 transition-colors hover:bg-accent border-foreground/20 bg-accent/30 rounded-lg shadow",
+          "max-w-full flex mx-auto overflow-hidden flex-col justify-between phone-only:max-w-full border duration-300 transition-colors hover:bg-accent border-foreground/20 bg-accent/30 rounded-lg shadow",
           className
         )}
       >
-        <div className="absolute top-2 left-2 bg-primary text-white px-2 py-1 rounded-md text-sm font-semibold">
-          {type}
-        </div>
         <Link
           href={href}
           className="w-full block overflow-hidden max-w-full h-64 content-center max-h-96"

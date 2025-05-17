@@ -1,2 +1,2 @@
-const uri = "https://libyan-plastic-research.vercel.app";
+const uri = "https://www.prc.ly";
 export default uri;

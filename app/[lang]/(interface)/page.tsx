@@ -1,6 +1,6 @@
 import EmblaCarousel from "@/components/carsuoel/embla-carousel";
 import LangRenderer from "@/components/lang";
-import Marquee from "@/components/marquee";
+// import Marquee from "@/components/marquee";
 import Carousel from "@/components/ui/carouel";
 import { getArticles } from "@/database/articles";
 import { getDictionary } from "@/get-dictionary";
@@ -235,14 +235,14 @@ export default async function Home({
     take: 9,
   });
 
-  await prisma.article.updateMany({
-    where: {
-      readTime: undefined,
-    },
-    data: {
-      readTime: 3,
-    },
-  });
+  // await prisma.article.updateMany({
+  //   where: {
+  //     readTime: undefined,
+  //   },
+  //   data: {
+  //     readTime: 3,
+  //   },
+  // });
 
   return (
     <main>

@@ -132,15 +132,42 @@ const Footer = async ({
           </nav>
         </div>
       </div>
-      <p className="mx-auto w-fit text-foreground/90 text-sm">
-        &copy; {new Date().getFullYear()}{" "}
-        <span className="text-foreground">
-          {isArabic
-            ? "المركز الليبي لبحوث اللدائن"
-            : "The Libyan Center for Polymer Research"}
-        </span>{" "}
-        {isArabic ? "كل الحقوق محفوظة." : "All rights reserved."}
-      </p>
+      <div className="border-t border-gray-700 mt-8 pt-8 text-center py-4">
+        <p className="mx-auto w-fit text-foreground/90 text-sm">
+          &copy; {new Date().getFullYear()}{" "}
+          <span className="text-foreground">
+            {isArabic
+              ? "المركز الليبي لبحوث اللدائن"
+              : "The Libyan Center for Polymer Research"}
+          </span>{" "}
+          {isArabic ? "كل الحقوق محفوظة." : "All rights reserved."}
+        </p>
+        {lang === "ar" ? (
+          <p className="text-sm text-gray-400 mt-2">
+            تم التطوير بواسطة{" "}
+            <a
+              href="https://www.ebtkar.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-text-primary/80 transition-colors"
+            >
+              الابتكار العصري
+            </a>
+          </p>
+        ) : (
+          <p className="text-sm text-gray-400 mt-2">
+            Developed by{" "}
+            <a
+              href="https://www.ebtkar.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-text-primary/80 transition-colors"
+            >
+              Alebtkar Alasri
+            </a>
+          </p>
+        )}
+      </div>
     </footer>
   );
 };

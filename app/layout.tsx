@@ -6,7 +6,7 @@ import ThemeProvider from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import "./css/base.css";
 import "./css/embla.css";
-import PaymentRequiredPage from "./new-page";
+// import PaymentRequiredPage from "./new-page";
 
 const cairo = Cairo({ subsets: ["arabic"] });
 
@@ -35,8 +35,8 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <PaymentRequiredPage />
-          {/* {children} */}
+          {/* <PaymentRequiredPage /> */}
+          {children}
           <Toaster />
         </ThemeProvider>{" "}
       </body>

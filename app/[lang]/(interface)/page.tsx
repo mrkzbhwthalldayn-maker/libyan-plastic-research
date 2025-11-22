@@ -568,7 +568,7 @@ export default async function Home({
             <FaPhone
               className={cn(lang === "en" ? "mr-2" : "ml-2", "w-4 h-4")}
             />
-            {lang === "ar" ? "218-92-866-64-58+" : "+218-92-866-64-58"}{" "}
+            {lang === "ar" ? "218-92-866-64-58+" : "+218912637380"}{" "}
           </CustomLink>{" "}
           <CustomLink
             variant={"default"}

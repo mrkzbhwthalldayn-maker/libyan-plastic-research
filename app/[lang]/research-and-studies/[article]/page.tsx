@@ -6,7 +6,7 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
-import { getArticleBySlug, getArticles } from "@/database/articles";
+import { getArticleById, getArticles } from "@/database/articles";
 import { notFound } from "next/navigation";
 import RenderHtml from "@/components/render-html";
 import LangBreadcrumbSeparator from "@/components/breadcrumb-separator";
@@ -29,7 +29,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export async function generateStaticParams() {
   const articles = await getArticles({ type: ["research", "conference"] });
   return articles.map((article) => ({
-    article: article.slug,
+    article: article.id,
   }));
 }
 
@@ -39,7 +39,7 @@ export async function generateMetadata(props: {
 }) {
   const params = await props.params;
   const { article: slug, lang } = params;
-  const article = await getArticleBySlug(slug, true);
+  const article = await getArticleById(slug);
 
   if (!article) {
     return { title: "Article Not Found" };
@@ -49,8 +49,8 @@ export async function generateMetadata(props: {
   const title = lang === "en" ? article.enTitle : article.title;
   const description =
     lang === "en"
-      ? article.enBody.slice(0, 150).replace(/<[^>]+>/g, "") // Strip HTML for description
-      : article.body.slice(0, 150).replace(/<[^>]+>/g, "");
+      ? article.enBody?.slice(0, 150).replace(/<[^>]+>/g, "") // Strip HTML for description
+      : article.body?.slice(0, 150).replace(/<[^>]+>/g, "");
   const publishDate = article.createdAt.toISOString(); // Adding publish date
 
   // Structured Data (Schema Markup) for SEO
@@ -115,7 +115,7 @@ const ArticlePage = async (props: {
   const slug = params.article;
   const lang = params.lang;
 
-  const article = await getArticleBySlug(slug, true);
+  const article = await getArticleById(slug);
 
   if (!article) {
     return notFound();
@@ -128,7 +128,7 @@ const ArticlePage = async (props: {
 
   after(async () => {
     await prisma.article.update({
-      where: { slug: article.slug },
+      where: { id: article.id },
       data: {
         views: { increment: 1 },
       },
@@ -228,9 +228,9 @@ const ArticlePage = async (props: {
               <li className="flex gap-2 items-center">
                 <ShareDialog
                   title={lang === "en" ? article.enTitle : article.title}
-                  url={`${uri}/articles/${article.slug}`}
+                  url={`${uri}/articles/${article.id}`}
                 />
-                <CopyToClipboard content={`${uri}/articles/${article.slug}`} />
+                <CopyToClipboard content={`${uri}/articles/${article.id}`} />
               </li>
             </ul>
           </div>
@@ -253,7 +253,7 @@ const ArticlePage = async (props: {
                     : extractText(content.body, 150)
                 }
                 link={`/${lang}/${getArticleUrlSegment(article.type)}/${
-                  article.slug
+                  article.id
                 }`}
               />
               <Separator className="bg-foreground/50" />

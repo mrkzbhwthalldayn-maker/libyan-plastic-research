@@ -11,8 +11,8 @@ import { extractText } from "@/lib/text";
 import { ArticleType } from "@prisma/client";
 
 interface CardProps {
-  title: string;
-  body: string; // HTML string
+  title?: string | null;
+  body?: string | null; // HTML string
   src: string;
   href?: string;
   edit?: boolean;
@@ -56,7 +56,7 @@ const ArticleCard: React.FC<CardProps> = ({
           <Image
             className="rounded-t-lg w-full h-full object-cover"
             src={src}
-            alt={title}
+            alt={title ?? "Article Image"}
             width={1000}
             height={1000}
           />

@@ -5,13 +5,13 @@ import { Button } from "./ui/button";
 import { FaShare } from "react-icons/fa";
 import { useParams } from "next/navigation";
 
-function ShareDialog({ title, url }: { title: string; url: string }) {
+function ShareDialog({ title, url }: { title?: string | null; url: string }) {
   const { lang } = useParams();
   const openMobileShare = () => {
     if (navigator.share) {
       navigator
         .share({
-          title,
+          title: title || "Check this out",
           url,
         })
         .then(() => console.log("Content shared successfully"))

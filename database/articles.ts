@@ -1,7 +1,6 @@
 "use server";
 
 import { getSession } from "@/lib/session";
-import { generateSlug } from "@/lib/slug";
 import prisma from "@/prisma/db";
 import { Article, ArticleType } from "@prisma/client";
 import { revalidateTag, unstable_cache } from "next/cache";
@@ -33,7 +32,7 @@ const createArtcle = async ({
     if (!user) {
       return { message: "يجب تسجيل الدخول اولا" };
     }
-    const slug = await generateSlug(enTitle);
+    // const slug = await generateSlug(enTitle);
     const article = await prisma.article.create({
       data: {
         body,
@@ -43,7 +42,7 @@ const createArtcle = async ({
         authorId: user.id,
         poster,
         type,
-        slug,
+        // slug,
         readTime,
       },
     });
@@ -233,13 +232,11 @@ const getArticles = unstable_cache(
   { tags: ["articles"] }
 );
 
-const getArticleBySlug = async (slug: string, author = false) => {
+const getArticleById = async (id: string) => {
   try {
     const article = await prisma.article.findUnique({
-      where: { slug },
-      include: {
-        author,
-      },
+      where: { id },
+      include: { author: true },
     });
     if (!article) {
       return undefined;
@@ -288,11 +285,11 @@ const searchArticles = unstable_cache(
       const articles = await prisma.article.findMany({
         where: filter,
         select: {
-          slug: true,
           title: true,
           enTitle: true,
           body: true,
           enBody: true,
+          id: true,
         },
       });
       if (!articles) {
@@ -316,7 +313,7 @@ export {
   createArtcle,
   getArticles,
   deleteArticle,
-  getArticleBySlug,
   updateArticle,
   searchArticles,
+  getArticleById,
 };

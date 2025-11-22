@@ -16,8 +16,8 @@ import { searchArticles } from "@/database/articles";
 import { extractText } from "@/lib/text";
 // Define types for centerData structure
 interface CenterItem {
-  title: string;
-  description: string;
+  title?: string | null;
+  description?: string | null;
   link: string;
 }
 
@@ -479,7 +479,7 @@ const SearchPage = async ({
         lang === "en"
           ? extractText(article.enBody, 200)
           : extractText(article.body, 200),
-      link: `/articles/${article.slug}`,
+      link: `/articles/${article.id}`,
     })),
   ];
   return (
@@ -531,7 +531,7 @@ const SearchPage = async ({
                 >
                   <span className="text-xl">{result.title}</span>
                   <span className="text-sm text-foreground/70">
-                    {result.description.slice(0, 200)}
+                    {result.description?.slice(0, 200)}
                   </span>
                   <Separator />
                 </Link>

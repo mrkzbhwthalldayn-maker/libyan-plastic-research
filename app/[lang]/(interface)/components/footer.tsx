@@ -142,31 +142,34 @@ const Footer = async ({
           </span>{" "}
           {isArabic ? "كل الحقوق محفوظة." : "All rights reserved."}
         </p>
-        {lang === "ar" ? (
-          <p className="text-sm text-gray-400 mt-2">
-            تم التطوير بواسطة{" "}
-            <a
-              href="https://www.ebtkar.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-text-primary/80 transition-colors"
-            >
-              الابتكار العصري
-            </a>
-          </p>
-        ) : (
-          <p className="text-sm text-gray-400 mt-2">
-            Developed by{" "}
-            <a
-              href="https://www.ebtkar.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-text-primary/80 transition-colors"
-            >
-              Alebtkar Alasri
-            </a>
-          </p>
-        )}
+        <div className="sr-only">
+          {" "}
+          {lang === "ar" ? (
+            <p className="text-sm text-gray-400 mt-2">
+              تم التطوير بواسطة{" "}
+              <a
+                href="https://www.ebtkar.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-text-primary/80 transition-colors"
+              >
+                الابتكار العصري
+              </a>
+            </p>
+          ) : (
+            <p className="text-sm text-gray-400 mt-2">
+              Developed by{" "}
+              <a
+                href="https://www.ebtkar.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-text-primary/80 transition-colors"
+              >
+                Alebtkar Alasri
+              </a>
+            </p>
+          )}
+        </div>
       </div>
     </footer>
   );

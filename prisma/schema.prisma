@@ -23,11 +23,11 @@ model User {
 
 model Article {
   id        String      @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  slug      String      @unique
-  body      String
-  enTitle   String
-  enBody    String
+  title     String?
+  // slug      String      @unique
+  body      String?
+  enTitle   String?
+  enBody    String?
   poster    String?     @default("/images/default_image.png")
   author    User        @relation(fields: [authorId], references: [id])
   authorId  String      @db.ObjectId

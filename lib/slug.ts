@@ -14,7 +14,7 @@ async function generateSlug(title: string): Promise<string> {
   // Step 2: Check if the slug already exists
   let uniqueSlug = slug;
   let article = await prisma.article.findFirst({
-    where: { slug: uniqueSlug },
+    where: { id: uniqueSlug },
   });
 
   // Step 3: If slug exists, append a unique identifier

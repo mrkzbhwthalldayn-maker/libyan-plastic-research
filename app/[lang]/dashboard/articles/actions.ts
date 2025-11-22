@@ -13,10 +13,10 @@ export async function createArticleAction(
   try {
     // Define the schema for article data validation
     const schema = z.object({
-      title: z.string().min(3, "عنوان المقال مطلوب"), // "Title is required"
-      body: z.string().min(10, "نص المقال مطلوب"), // "Body content is required"
-      enTitle: z.string().min(1, "The English title is required"), // "The English title is required"
-      enBody: z.string().min(3, "The English body is required"), // "The English body is required"
+      title: z.string().optional(), // "Title is required"
+      body: z.string().optional(), // "Body content is required"
+      enTitle: z.string().optional(), // "The English title is required"
+      enBody: z.string().optional(), // "The English body is required"
       poster: z.string().nullable().optional(), // "Poster URL is required"
       type: z.nativeEnum(ArticleType), // "Type is required"
       readTime: z.string().nullable().optional(), // Optional poster image
@@ -44,10 +44,10 @@ export async function createArticleAction(
 
     // Create the article in the database using Prisma
     const res = await createArtcle({
-      title,
-      body,
-      enTitle,
-      enBody,
+      title: title ?? null,
+      body: body ?? null,
+      enTitle: enTitle ?? null,
+      enBody: enBody ?? null,
       poster,
       type,
       readTime: Number(readTime),
@@ -66,10 +66,10 @@ export async function updateArticleAction(
   try {
     const schema = z.object({
       id: z.string().min(1, "معرف المقالة مطلوب"), // "Article ID is required"
-      title: z.string().min(1, "عنوان المقالة مطلوب"), // "Article title is required"
-      body: z.string().min(1, "محتوى المقالة مطلوب"), // "Article body is required"
-      enTitle: z.string().min(1, "عنوان المقالة بالإنجليزية مطلوب"), // "English article title is required"
-      enBody: z.string().min(1, "محتوى المقالة بالإنجليزية مطلوب"), // "English article body is required"
+      title: z.string().optional(), // "Title is required"
+      body: z.string().optional(), // "Body content is required"
+      enTitle: z.string().optional(), // "The English title is required"
+      enBody: z.string().optional(), // "The English body is required"
       type: z.nativeEnum(ArticleType), // "Article type is required"
       poster: z.string().nullable().optional(), // Optional poster image
       readTime: z.string().nullable().optional(), // Optional poster image
@@ -98,10 +98,10 @@ export async function updateArticleAction(
 
     const res = await updateArticle({
       id,
-      title,
-      body,
-      enTitle,
-      enBody,
+      title: title ?? null,
+      body: body ?? null,
+      enTitle: enTitle ?? null,
+      enBody: enBody ?? null,
       type,
       poster,
       readTime: Number(readTime),

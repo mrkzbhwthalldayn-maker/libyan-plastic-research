@@ -2,11 +2,12 @@ import { cn } from "@/lib/utils";
 import * as cheerio from "cheerio";
 
 interface Props {
-  html: string;
+  html?: string | null;
   className?: string;
 }
 
-function wrapImagesInDiv(html: string): string {
+function wrapImagesInDiv(defaultHtml?: string | null): string {
+  const html = defaultHtml || "";
   const cheerioApi = cheerio.load(html, {}, false);
 
   cheerioApi("img").each((_, img) => {

@@ -345,7 +345,7 @@ export default async function Home({
               lang={lang}
               key={index}
               href={`/${lang}/${getArticleUrlSegment(article.type)}/${
-                article.slug
+                article.id
               }`}
               imageUrl={article.poster!}
               title={lang === "ar" ? article.title : article.enTitle}
@@ -563,7 +563,7 @@ export default async function Home({
           <CustomLink
             variant={"default"}
             className="phone-only:w-full md:text-lg bg-background hover:bg-background/80 text-foreground"
-            href={"tel:+218928666458"}
+            href={"tel:+218912637380"}
           >
             <FaPhone
               className={cn(lang === "en" ? "mr-2" : "ml-2", "w-4 h-4")}

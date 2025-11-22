@@ -132,8 +132,8 @@ export const DeleteArticleForm = ({ id }: { id: string }) => {
 };
 
 export const UpdateArticleForm = ({ article }: { article: Article }) => {
-  const [body, setBody] = useState<string>(article.body);
-  const [enBody, setEnBody] = useState<string>(article.enBody);
+  const [body, setBody] = useState<string>(article?.body ?? "");
+  const [enBody, setEnBody] = useState<string>(article?.enBody ?? "");
 
   return (
     <Form
@@ -191,7 +191,7 @@ export const UpdateArticleForm = ({ article }: { article: Article }) => {
                 name="title"
                 id="title"
                 placeholder="العنوان هنا"
-                defaultValue={article.title}
+                defaultValue={article.title ?? ""}
               />
             </div>
             <div className="my-2">
@@ -210,7 +210,7 @@ export const UpdateArticleForm = ({ article }: { article: Article }) => {
                 name="enTitle"
                 id="enTitle"
                 placeholder="enter title"
-                defaultValue={article.enTitle}
+                defaultValue={article.enTitle ?? ""}
               />
             </div>
             <div className="my-2">

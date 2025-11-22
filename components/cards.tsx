@@ -9,8 +9,8 @@ import LangRenderer from "./lang";
 
 interface SideCardProps {
   imageUrl: string;
-  title: string;
-  description: string;
+  title?: string | null;
+  description?: string | null;
   link: string;
   readTime?: nullable | number;
   views?: number;
@@ -18,8 +18,8 @@ interface SideCardProps {
 
 interface CardProps {
   imageUrl: string;
-  title: string;
-  description: string;
+  title?: string | null;
+  description?: string | null;
   authorName: string;
   authorImageUrl: string;
   date: string;

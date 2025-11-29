@@ -36,6 +36,12 @@ const SideCard: React.FC<SideCardProps> = ({
   link,
   readTime,
 }) => {
+  if (title == null && description == null) {
+    return null;
+  }
+  if (title?.length === 0 && description?.length === 0) {
+    return null;
+  }
   return (
     <Link
       href={link}
@@ -84,6 +90,12 @@ const Card: React.FC<CardProps> = ({
   type,
   views = 0,
 }) => {
+  if (title == null && description == null) {
+    return null;
+  }
+  if (title?.length === 0 && description?.length === 0) {
+    return null;
+  }
   return (
     <Link
       href={href}

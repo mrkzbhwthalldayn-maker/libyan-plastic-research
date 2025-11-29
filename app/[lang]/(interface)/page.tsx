@@ -570,16 +570,7 @@ export default async function Home({
             />
           +218912637380
           </CustomLink>{" "}
-          <CustomLink
-            variant={"default"}
-            className="phone-only:w-full md:text-lg bg-background hover:bg-background/80 text-foreground"
-            href={"mailto:info@prc.ly"}
-          >
-            <MdOutlineAttachEmail
-              className={cn(lang === "en" ? "mr-2" : "ml-2", "w-4 h-4")}
-            />
-            info@prc.ly{" "}
-          </CustomLink>{" "}
+ 
         </div>
       </div>
     </main>

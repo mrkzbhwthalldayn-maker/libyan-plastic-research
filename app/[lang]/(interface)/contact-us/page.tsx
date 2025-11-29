@@ -102,10 +102,7 @@ const page = async ({ params }: { params: Promise<{ lang: "ar" | "en" }> }) => {
               <LangRenderer ar="الهاتف:" en="Phone:" />{" "}
               <Link href={"tel:+218912637380"}>912637380</Link> (218+)
             </p>
-            <p>
-              <LangRenderer ar="البريد الإلكتروني:" en="Email:" />{" "}
-              <Link href={"mailto:info@prc.ly"}>info@prc.ly</Link>
-            </p>
+            
             <h3 className="font-semibold mt-4">
               <LangRenderer ar="ساعات العمل:" en="Working Hours:" />
             </h3>

@@ -28,8 +28,8 @@ export const CreateNewForm = () => {
       replaceLink="/dashboard/forms"
       className="w-full"
       action={async (formData: FormData) => {
-        const name = formData.get("name")?.toString().trim();
-        const enName = formData.get("enName")?.toString().trim();
+        const name = formData.get("name")?.toString().trim() || null;
+        const enName = formData.get("enName")?.toString().trim() || null;
 
         if (!name && !enName) {
           setError("يجب تعبئة الاسم إما بالعربية أو بالإنجليزية");
@@ -42,6 +42,10 @@ export const CreateNewForm = () => {
         if (pdfFile) {
           formData.set("url", pdfFile);
         }
+
+        // تأكد إرسال null إذا الحقول فارغة
+        formData.set("name", name);
+        formData.set("enName", enName);
 
         return await createFormAction(formData);
       }}
@@ -95,8 +99,8 @@ export const UpdateForm = ({ form }: { form: Form }) => {
       replaceLink="/dashboard/forms"
       className="w-full"
       action={async (formData: FormData) => {
-        const name = formData.get("name")?.toString().trim();
-        const enName = formData.get("enName")?.toString().trim();
+        const name = formData.get("name")?.toString().trim() || null;
+        const enName = formData.get("enName")?.toString().trim() || null;
 
         if (!name && !enName) {
           setError("يجب تعبئة الاسم إما بالعربية أو بالإنجليزية");
@@ -108,6 +112,9 @@ export const UpdateForm = ({ form }: { form: Form }) => {
         if (pdfFile) {
           formData.set("url", pdfFile);
         }
+
+        formData.set("name", name);
+        formData.set("enName", enName);
 
         return await updateFormAction(formData);
       }}

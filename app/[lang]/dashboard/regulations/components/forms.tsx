@@ -5,15 +5,17 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import {
   createFormAction,
-  deleteFormAction,
   updateFormAction,
+  deleteFormAction,
 } from "../actions";
 import AccessibleDialogForm from "@/components/accible-dialog-form";
 import { CustomDropzoneUploadPdf } from "@/components/custom-dropzone";
 import { Form } from "@prisma/client";
 
+// === Create New Form with inline validation ===
 export const CreateNewForm = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   return (
     <AccessibleDialogForm
@@ -24,7 +26,18 @@ export const CreateNewForm = () => {
       success="تم إنشاء النموذج بنجاح"
       replaceLink="/dashboard/forms"
       className="w-full"
-      action={createFormAction}
+      action={async (formData: any) => {
+        const name = formData.get("name")?.trim();
+        const enName = formData.get("enName")?.trim();
+
+        if (!name && !enName) {
+          setError("يجب تعبئة الاسم إما بالعربية أو بالإنجليزية");
+          throw new Error("Validation error");
+        }
+
+        setError(""); // إزالة الرسالة عند النجاح
+        return await createFormAction(formData);
+      }}
       submit="إنشاء"
     >
       <div className="flex gap-4 phone-only:flex-col justify-between">
@@ -42,6 +55,9 @@ export const CreateNewForm = () => {
               placeholder="أدخل الاسم بالإنجليزية"
             />
           </div>
+          {error && (
+            <p className="text-red-500 text-sm mt-1">{error}</p>
+          )}
           <div className="my-2">
             <CustomDropzoneUploadPdf
               name="url"
@@ -56,8 +72,10 @@ export const CreateNewForm = () => {
   );
 };
 
+// === Update Form with inline validation ===
 export const UpdateForm = ({ form }: { form: Form }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   return (
     <AccessibleDialogForm
@@ -68,10 +86,22 @@ export const UpdateForm = ({ form }: { form: Form }) => {
       success="تم تحديث النموذج بنجاح"
       replaceLink="/dashboard/forms"
       className="w-full"
-      action={updateFormAction}
+      action={async (formData: any) => {
+        const name = formData.get("name")?.trim();
+        const enName = formData.get("enName")?.trim();
+
+        if (!name && !enName) {
+          setError("يجب تعبئة الاسم إما بالعربية أو بالإنجليزية");
+          throw new Error("Validation error");
+        }
+
+        setError("");
+        return await updateFormAction(formData);
+      }}
       submit="تحديث"
     >
-      <Input type="hidden" value={form.id} name="id" readOnly required />
+      <Input type="hidden" value={form.id} name="id" readOnly />
+
       <div className="flex gap-4 phone-only:flex-col justify-between">
         <div className="w-full flex flex-col gap-4 justify-center">
           <div>
@@ -81,7 +111,7 @@ export const UpdateForm = ({ form }: { form: Form }) => {
               name="name"
               id="name"
               placeholder="أدخل الاسم"
-              defaultValue={form.name}
+              defaultValue={form.name || ""}
             />
           </div>
           <div>
@@ -91,9 +121,12 @@ export const UpdateForm = ({ form }: { form: Form }) => {
               name="enName"
               id="enName"
               placeholder="أدخل الاسم بالإنجليزية"
-              defaultValue={form.enName}
+              defaultValue={form.enName || ""}
             />
           </div>
+          {error && (
+            <p className="text-red-500 text-sm mt-1">{error}</p>
+          )}
           <div className="my-2">
             <CustomDropzoneUploadPdf
               name="url"
@@ -109,23 +142,3 @@ export const UpdateForm = ({ form }: { form: Form }) => {
   );
 };
 
-export const DeleteForm = ({ id }: { id: string }) => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  return (
-    <AccessibleDialogForm
-      submit="حذف"
-      open={open}
-      setOpen={setOpen}
-      dontReplace
-      trigger={<button>حذف النموذج</button>}
-      action={deleteFormAction}
-      title="حذف النموذج"
-      discardVariant="default"
-      submitVariant="outline"
-      description="سيتم حذف النموذج بشكل نهائي."
-    >
-      <Input type="hidden" name="id" id="id" readOnly value={id} required />
-    </AccessibleDialogForm>
-  );
-};

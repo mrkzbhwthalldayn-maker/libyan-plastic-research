@@ -3,19 +3,15 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import {
-  createFormAction,
-  updateFormAction,
-  deleteFormAction,
-} from "../actions";
 import AccessibleDialogForm from "@/components/accible-dialog-form";
 import { CustomDropzoneUploadPdf } from "@/components/custom-dropzone";
 import { Form } from "@prisma/client";
+import { createFormAction, updateFormAction, deleteFormAction } from "../actions";
 
-// ==================== Create Form ====================
+// === Create Form ===
 export const CreateNewForm = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
   const [pdfFile, setPdfFile] = useState<File | null>(null);
 
   return (
@@ -35,15 +31,9 @@ export const CreateNewForm = () => {
           setError("يجب تعبئة الاسم إما بالعربية أو بالإنجليزية");
           throw new Error("Validation error");
         }
-
         setError("");
 
-        // أضف ملف PDF إلى FormData إذا موجود
-        if (pdfFile) {
-          formData.set("url", pdfFile);
-        }
-
-        // تأكد إرسال null إذا الحقول فارغة
+        if (pdfFile) formData.set("url", pdfFile);
         formData.set("name", name);
         formData.set("enName", enName);
 
@@ -56,19 +46,11 @@ export const CreateNewForm = () => {
           <Label htmlFor="name">الاسم</Label>
           <Input type="text" name="name" id="name" placeholder="أدخل الاسم" />
         </div>
-
         <div>
           <Label htmlFor="enName">الاسم بالإنجليزية</Label>
-          <Input
-            type="text"
-            name="enName"
-            id="enName"
-            placeholder="أدخل الاسم بالإنجليزية"
-          />
+          <Input type="text" name="enName" id="enName" placeholder="أدخل الاسم بالإنجليزية" />
         </div>
-
         {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-
         <div className="my-2">
           <CustomDropzoneUploadPdf
             name="url"
@@ -83,10 +65,10 @@ export const CreateNewForm = () => {
   );
 };
 
-// ==================== Update Form ====================
+// === Update Form ===
 export const UpdateForm = ({ form }: { form: Form }) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
   const [pdfFile, setPdfFile] = useState<File | null>(null);
 
   return (
@@ -106,13 +88,9 @@ export const UpdateForm = ({ form }: { form: Form }) => {
           setError("يجب تعبئة الاسم إما بالعربية أو بالإنجليزية");
           throw new Error("Validation error");
         }
-
         setError("");
 
-        if (pdfFile) {
-          formData.set("url", pdfFile);
-        }
-
+        if (pdfFile) formData.set("url", pdfFile);
         formData.set("name", name);
         formData.set("enName", enName);
 
@@ -121,32 +99,16 @@ export const UpdateForm = ({ form }: { form: Form }) => {
       submit="تحديث"
     >
       <Input type="hidden" value={form.id} name="id" readOnly />
-
       <div className="flex flex-col gap-4">
         <div>
           <Label htmlFor="name">الاسم</Label>
-          <Input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="أدخل الاسم"
-            defaultValue={form.name || ""}
-          />
+          <Input type="text" name="name" id="name" defaultValue={form.name || ""} />
         </div>
-
         <div>
           <Label htmlFor="enName">الاسم بالإنجليزية</Label>
-          <Input
-            type="text"
-            name="enName"
-            id="enName"
-            placeholder="أدخل الاسم بالإنجليزية"
-            defaultValue={form.enName || ""}
-          />
+          <Input type="text" name="enName" id="enName" defaultValue={form.enName || ""} />
         </div>
-
         {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-
         <div className="my-2">
           <CustomDropzoneUploadPdf
             name="url"
@@ -162,9 +124,9 @@ export const UpdateForm = ({ form }: { form: Form }) => {
   );
 };
 
-// ==================== Delete Form ====================
+// === Delete Form ===
 export const DeleteForm = ({ id }: { id: string }) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <AccessibleDialogForm
